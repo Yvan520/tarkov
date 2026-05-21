@@ -200,4 +200,24 @@
     <loc>https://tarkov.gamewayz.com/articles/flea-market-deep-dive.html</loc>
     <priority>0.7</priority>
   </url>
+  <url>
+    <loc>https://tarkov.gamewayz.com/articles/story-endings-guide.html</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://tarkov.gamewayz.com/articles/scav-karma-guide.html</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://tarkov.gamewayz.com/articles/therapist-quest-guide.html</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://tarkov.gamewayz.com/articles/graphics-settings-guide.html</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://tarkov.gamewayz.com/articles/version-history-guide.html</loc>
+    <priority>0.7</priority>
+  </url>
 </urlset>
