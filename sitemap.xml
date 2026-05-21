@@ -220,4 +220,20 @@
     <loc>https://tarkov.gamewayz.com/articles/version-history-guide.html</loc>
     <priority>0.7</priority>
   </url>
+  <url>
+    <loc>https://tarkov.gamewayz.com/articles/weapon-modding-guide.html</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://tarkov.gamewayz.com/articles/inventory-management-guide.html</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://tarkov.gamewayz.com/articles/tarkov-glossary.html</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://tarkov.gamewayz.com/articles/throwables-guide.html</loc>
+    <priority>0.7</priority>
+  </url>
 </urlset>
