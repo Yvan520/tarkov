@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="中心区是1-20级新手专属地图，包含BTR装甲车、Boss科隆泰等重要机制">
+<title>中心区（街区）完全攻略：1-20级专属地图全出口/BTR公交/Boss科隆泰详解 | 塔科夫攻略站</title>
+<meta name="baidu-site-verification" content="codeva-E78NFWmiO9" />
+<!-- Google Analytics placeholder -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-XXXXXXXXXX');
+</script>
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "Article", "headline": "中心区（街区）完全攻略：1-20级专属地图全出口/BTR公交/Boss科隆泰详解", "description": "中心区是1-20级新手专属地图，包含BTR装甲车、Boss科隆泰等重要机制", "datePublished": "2026-05-16", "author": {"@type": "Organization", "name": "TarkovGuide"}, "publisher": {"@type": "Organization", "name": "TarkovGuide", "logo": {"@type": "ImageObject", "url": "https://tarkov.gamewayz.com/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://tarkov.gamewayz.com/articles/streets-guide.html"}, "image": "https://tarkov.gamewayz.com/favicon.ico"}
+</script>
+<style>
+:root{--bg0:#07090b;--bg1:#0a0c0f;--bg2:#111418;--bg3:#161b21;--border:#2a3540;--gold:#c8a96e;--gold3:#a07840;--text1:#eae0cc;--text2:#9aabb8;--text3:#5a7080;--green2:#6aaa7a;--red2:#c05050;--blue2:#4a80b0;--orange2:#e09050;--purple2:#9060d0;--font:'Segoe UI','Microsoft YaHei',sans-serif;--mono:'Courier New',monospace;--r:4px;--r2:8px}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg1);color:var(--text1);font-family:var(--font);line-height:1.6}
+::-webkit-scrollbar{width:5px}::-webkit-scrollbar-track{background:var(--bg2)}::-webkit-scrollbar-thumb{background:var(--gold3);border-radius:3px}
+a{text-decoration:none;color:inherit;transition:all .2s}
+.nav{position:sticky;top:0;z-index:1000;height:60px;background:rgba(10,12,15,.97);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 32px;gap:16px}
+.nav-logo{display:flex;align-items:center;gap:10px;cursor:pointer;flex-shrink:0;color:inherit}
+.mark{width:32px;height:32px;background:linear-gradient(135deg,var(--gold),var(--gold3));border-radius:var(--r);display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:900;color:var(--bg0)}
+.logo-name{font-size:17px;font-weight:800;letter-spacing:2px;color:var(--text1)}
+.logo-name span{color:var(--gold)}
+.nav-links{display:flex;gap:2px;list-style:none}
+.nav-links a{padding:7px 12px;border-radius:var(--r);font-size:13px;color:var(--text2);font-weight:500;white-space:nowrap}
+.nav-links a:hover{color:var(--text1);background:var(--bg3)}
+.nav-back{display:flex;align-items:center;gap:6px;background:var(--bg3);border:1px solid var(--border);color:var(--text2);padding:7px 14px;border-radius:var(--r);font-size:12px;cursor:pointer;transition:all .2s;text-decoration:none}
+.nav-back:hover{border-color:var(--gold);color:var(--gold)}
+
+button{font-family:var(--font);cursor:pointer}
+.nav-right{display:flex;gap:8px;align-items:center;flex-shrink:0}
+.nav-search-btn{display:flex;align-items:center;gap:8px;background:var(--bg3);border:1px solid var(--border);color:var(--text2);padding:7px 14px;border-radius:var(--r);font-size:12px;transition:all .2s;white-space:nowrap}
+.nav-search-btn:hover{border-color:var(--gold);color:var(--gold)}
+.nav-burger{display:none;flex-direction:column;gap:5px;background:transparent;border:none;padding:4px}
+.nav-burger span{display:block;width:22px;height:2px;background:var(--text2);border-radius:2px}
+.mobile-menu{display:none;position:fixed;top:60px;left:0;right:0;background:rgba(10,12,15,.98);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);z-index:999;padding:12px 0}
+.mobile-menu.open{display:block}
+.mobile-menu a{display:flex;align-items:center;gap:10px;padding:12px 24px;font-size:14px;color:var(--text2);text-decoration:none;border-bottom:1px solid rgba(255,255,255,.03)}
+.mobile-menu a:hover{color:var(--gold);background:rgba(200,169,110,.05)}
+.ver{font-size:10px;color:var(--text3);background:var(--bg3);border:1px solid var(--border);padding:2px 6px;border-radius:3px;font-family:var(--mono);margin-left:-4px}
+.container{max-width:860px;margin:0 auto;padding:48px 24px}
+
+/* 面包屑 */
+.breadcrumb{display:flex;align-items:center;gap:8px;margin-bottom:24px;font-size:12px;color:var(--text3)}
+.breadcrumb a{color:var(--text3)}
+.breadcrumb a:hover{color:var(--gold)}
+.breadcrumb .sep{color:var(--border)}
+
+/* 文章头部 */
+.art-header{margin-bottom:36px}
+.art-category{font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;margin-bottom:12px}
+.cat-guide{color:var(--gold)}
+.cat-weapon{color:var(--blue2)}
+.cat-map{color:var(--green2)}
+.cat-economy{color:var(--orange2)}
+.cat-newbie{color:var(--purple2)}
+.art-h1{font-size:clamp(22px,3vw,36px);font-weight:900;line-height:1.3;color:var(--text1);margin-bottom:16px}
+.art-meta{display:flex;align-items:center;gap:16px;flex-wrap:wrap;padding:14px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.meta-item{font-size:12px;color:var(--text3);display:flex;align-items:center;gap:5px}
+.badge-hot{font-size:10px;background:rgba(192,80,80,.15);color:var(--red2);border:1px solid rgba(192,80,80,.2);padding:3px 9px;border-radius:3px;font-weight:800}
+.badge-new{font-size:10px;background:rgba(74,140,92,.15);color:var(--green2);border:1px solid rgba(74,140,92,.2);padding:3px 9px;border-radius:3px;font-weight:800}
+
+/* 文章正文 */
+.art-content{color:var(--text2);font-size:15px;line-height:1.9;margin-bottom:48px}
+.art-content h1,.art-content h2{color:var(--text1);font-weight:800;margin:32px 0 14px;padding-bottom:8px;border-bottom:1px solid var(--border)}
+.art-content h1{font-size:24px}
+.art-content h2{font-size:20px;color:var(--gold)}
+.art-content h3{color:var(--text1);font-size:17px;font-weight:700;margin:24px 0 10px}
+.art-content p{margin-bottom:16px}
+.art-content ul,.art-content ol{padding-left:24px;margin-bottom:16px}
+.art-content li{margin-bottom:6px}
+.art-content strong{color:var(--text1);font-weight:700}
+.art-content em{color:var(--gold);font-style:normal}
+.art-content code{background:var(--bg3);border:1px solid var(--border);padding:2px 8px;border-radius:3px;font-family:var(--mono);font-size:13px;color:var(--gold)}
+.art-content pre{background:var(--bg3);border:1px solid var(--border);border-radius:var(--r2);padding:20px;overflow-x:auto;margin-bottom:16px}
+.art-content pre code{background:none;border:none;padding:0;font-size:13px;color:var(--text2)}
+.art-content blockquote{border-left:3px solid var(--gold);background:rgba(200,169,110,.05);padding:14px 20px;margin-bottom:16px;border-radius:0 var(--r) var(--r) 0;color:var(--text2)}
+.art-content hr{border:none;border-top:1px solid var(--border);margin:28px 0}
+.art-content table{width:100%;border-collapse:collapse;margin-bottom:16px;font-size:13px}
+.art-content th{background:var(--bg2);padding:10px 14px;text-align:left;font-weight:700;color:var(--text3);font-size:11px;letter-spacing:1px;text-transform:uppercase;border-bottom:1px solid var(--border)}
+.art-content td{padding:10px 14px;border-bottom:1px solid rgba(255,255,255,.04);color:var(--text2)}
+.art-content a{color:var(--gold)}
+.art-content a:hover{text-decoration:underline}
+.art-content img{border-radius:var(--r2);max-width:100%;border:1px solid var(--border)}
+
+/* 标签 */
+.art-tags{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:36px}
+.art-tag{background:var(--bg3);border:1px solid var(--border);color:var(--text2);padding:5px 12px;border-radius:16px;font-size:11px}
+
+/* 相关文章 */
+.related{border-top:1px solid var(--border);padding-top:36px;margin-bottom:36px}
+.related-title{font-size:16px;font-weight:700;color:var(--text1);margin-bottom:16px;display:flex;align-items:center;gap:8px}
+.related-title::before{content:'';width:4px;height:20px;background:linear-gradient(180deg,var(--gold),transparent);border-radius:2px}
+.related-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.related-card{background:var(--bg3);border:1px solid var(--border);border-radius:var(--r2);padding:14px;cursor:pointer;transition:all .25s;text-decoration:none;display:block;color:inherit}
+.related-card:hover{border-color:var(--gold);transform:translateY(-2px)}
+.rc-cat{font-size:10px;font-weight:800;letter-spacing:1px;text-transform:uppercase;margin-bottom:4px}
+.rc-title{font-size:13px;font-weight:600;color:var(--text1);line-height:1.4}
+.rc-meta{font-size:11px;color:var(--text3);margin-top:6px}
+
+/* 返回按钮 */
+.back-btn{display:inline-flex;align-items:center;gap:8px;background:var(--bg3);border:1px solid var(--border);color:var(--text2);padding:10px 20px;border-radius:var(--r2);font-size:13px;cursor:pointer;transition:all .2s;text-decoration:none}
+.back-btn:hover{border-color:var(--gold);color:var(--gold)}
+
+/* 加载/错误状态 */
+.state-box{text-align:center;padding:80px 24px}
+.state-icon{font-size:48px;margin-bottom:16px}
+.state-title{font-size:20px;font-weight:700;color:var(--text1);margin-bottom:8px}
+.state-desc{font-size:14px;color:var(--text3);margin-bottom:24px}
+
+/* 页脚 */
+.footer{background:var(--bg2);border-top:1px solid var(--border);padding:24px 32px;margin-top:80px}
+.footer-inner{max-width:860px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;font-size:12px;color:var(--text3);flex-wrap:wrap;gap:8px}
+.footer-inner a{color:var(--text3)}
+.footer-inner a:hover{color:var(--gold)}
+
+@media(max-width:700px){.nav-links{display:none}.nav-burger{display:flex}.related-grid{grid-template-columns:1fr}.container{padding:32px 16px}.nav-search-btn span{display:none}}
+@media(max-width:480px){.art-h1{font-size:clamp(18px,5vw,22px)}.art-content{font-size:14px}.art-content table{display:block;overflow-x:auto;max-width:100%;white-space:nowrap;-webkit-overflow-scrolling:touch}.art-content td,.art-content th{padding:8px 10px;font-size:12px}.art-meta{gap:10px}.meta-item{font-size:11px}.container{padding:24px 12px}}
+</style>
+</head>
+<body>
+<nav class="nav">
+  <a class="nav-logo" href="index.html">
+    <div class="mark">⚔</div>
+    <span class="logo-name">TARKOV<span>GUIDE</span></span>
+    <span class="ver">v1.2.0</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">🏠 首页</a></li>
+    <li><a href="maps.html">🗺️ 地图</a></li>
+    <li><a href="ammo.html">💊 弹药</a></li>
+    <li><a href="loadouts.html">🔫 武器</a></li>
+    <li><a href="quests.html">📋 任务</a></li>
+    <li><a href="articles.html">📰 攻略</a></li>
+  </ul>
+  <div class="nav-right">
+    <button class="nav-search-btn" onclick="openSearch()">🔍 搜索 <kbd>Ctrl+K</kbd></button>
+    <button class="nav-burger" onclick="toggleMenu()" id="burgerBtn"><span></span><span></span><span></span></button>
+    <a class="nav-back" href="articles.html">← 返回</a>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html">🏠 首页</a>
+  <a href="maps.html">🗺️ 地图攻略</a>
+  <a href="ammo.html">💊 弹药数据</a>
+  <a href="loadouts.html">🔫 武器配装</a>
+  <a href="quests.html">📋 任务攻略</a>
+  <a href="articles.html">📰 全部攻略</a>
+</div>
+<div class="search-ov" id="searchOv" onclick="closeSearchOv(event)">
+  <div class="search-box" onclick="event.stopPropagation()">
+    <div class="sm-wrap">
+      <span class="sm-icon">🔍</span>
+      <input class="sm-input" id="smInput" placeholder="搜索地图、武器、弹药、任务..." oninput="doSearch(this.value)">
+      <div class="sm-esc" onclick="closeSearch()">ESC</div>
+<div class="container">
+  <div class="breadcrumb">
+    <a href="../index.html">首页</a>
+    <span class="sep">›</span>
+    <a href="../articles.html">攻略文章</a>
+    <span class="sep">›</span>
+    <span>地图攻略</span>
+  </div>
+  <div class="art-header">
+    <div class="art-category cat-map">地图攻略</div>
+    <h1 class="art-h1">中心区（街区）完全攻略：1-20级专属地图全出口/BTR公交/Boss科隆泰详解</h1>
+    <div class="art-meta">
+      <span class="meta-item">👁 45200 次阅读</span>
+      <span class="meta-item">🕐 2026-05-16</span>
+      <span class="meta-item">✍️ 塔科夫攻略站</span>
+<span class="badge-hot">🔥 HOT</span>
+    </div>
+  </div>
+  <div class="art-content"><h1>中心区（街区）完全攻略</h1>
+<p>中心区是塔科夫1-20级新手专属地图，也是0.14版本加入后最热门的新手地图。</p>
+<h2>地图基本信息</h2>
+<li><strong>时长</strong>：45分钟</li>
+<li><strong>最大玩家</strong>：10人</li>
+<li><strong>入口等级</strong>：1-20级PMC / 任意等级SCAV</li>
+<li><strong>出口</strong>：6个</li>
+<li><strong>Boss</strong>：科隆泰（Kollontai）</li>
+<li><strong>NPC</strong>：BTR-82A装甲车司机</li>
+<h2>地图特色</h2>
+中心区是塔科夫的市中心，拥有大量城市设施：
+<li>银行、咖啡馆、餐厅、商店、药店</li>
+<li>塔科夫云霄大厦</li>
+<li>TerraGroup俄罗斯总部</li>
+<li>Klimov购物中心</li>
+<li>内务部学院</li>
+<h2>全出口位置</h2>
+<table><thead><tr><th>出口</th><th>条件</th><th>难度</th></tr></thead><tbody><tr><td>Klimov街</td><td>无特殊条件</td><td>★☆☆</td></tr><tr><td>地下通道</td><td>无特殊条件</td><td>★☆☆</td></tr><tr><td>法院后方</td><td>需要互动物品</td><td>★★☆</td></tr><tr><td>大厦停车场</td><td>无特殊条件</td><td>★★☆</td></tr><tr><td>铁路桥</td><td>需支付BTR</td><td>★★★</td></tr><tr><td>购物中心出口</td><td>需要钥匙</td><td>★★★</td></tr></tbody></table>
+<h2>BTR装甲车服务</h2>
+<p>BTR-82A装甲车提供多种服务（通过互动面板使用）：</p>
+<ul><strong>出租服务</strong>：安全在市区多个地点间转移
+<li>价格：根据阵营和Scav声望，约2,000-8,000₽</li>
+<li>适合新手安全移动</li></ul>
+<ul><strong>物品运送</strong>：将战局中找到的物品运回藏身处
+<li>仅限PMC使用</li>
+<li>高价物品推荐使用</li></ul>
+<ul><strong>火力掩护</strong>：下车后获得车载武器掩护
+<li>仅限PMC使用</li>
+<li>需要在出租车服务后购买</li>
+<li>最安全的下车方式</li></ul>
+<h2>Boss科隆泰打法</h2>
+<p>科隆泰出没在Klimov购物中心和内务部学院附近：</p>
+<ul><strong>特性</strong>：
+<li>保镖数量较少（2-3人）</li>
+<li>驻守在固定地点巡逻</li>
+<li>占上风时会掏出警棍近战</li>
+<li>装备5级甲+重型头盔</li></ul>
+<ul><strong>打法</strong>：
+<li>远程狙击点消耗</li>
+<li>利用地形拉扯，不要室内硬刚</li>
+<li>先清小兵再打Boss</li>
+<li>奖励狗牌+专属武器</li></ul>
+<h2>新手推荐路线</h2>
+<ul><strong>入门路线（安全）</strong>：
+<li>从Klimov街进入</li>
+<li>搜刮沿街商店（食物、电子设备）</li>
+<li>前往法院区域搜刮</li>
+<li>从地下通道撤离</li></ul>
+<ul><strong>进阶路线（富裕）</strong>：
+<li>直奔云霄大厦</li>
+<li>办公室区域搜刮电子设备</li>
+<li>TerraGroup总部碰运气</li>
+<li>使用BTR出租车转移至撤离点</li></ul>
+<blockquote><strong>重要提示</strong>：20级以上的高等级玩家只能以SCAV身份进入，所以PMC模式下对手都是同级新手，非常适合练手！</blockquote></div>
+<div class="art-tags"><span class="art-tag"># 中心区</span><span class="art-tag"># 街区</span><span class="art-tag"># 新手</span><span class="art-tag"># BTR</span><span class="art-tag"># 科隆泰</span></div>
+<div class="related"><div class="related-title">📌 相关文章</div><div class="related-grid"><a href="dark-corner-map.html" class="related-card"><div class="rc-cat cat-map">地图攻略</div><div class="rc-title">🗺️ 新地图「黑暗之角」完全攻略：所有出口、物资点、Boss位置全标注</div><div class="rc-meta">👁 18640 · 2026-05-10</div></a><a href="map-customs-guide.html" class="related-card"><div class="rc-cat cat-map">地图攻略</div><div class="rc-title">🏭 海关地图终极攻略：所有出口位置、高价值物资点、Boss獾打法详解</div><div class="rc-meta">👁 38600 · 2026-05-08</div></a><a href="woods-map-guide.html" class="related-card"><div class="rc-cat cat-map">地图攻略</div><div class="rc-title">🌲 森林地图深度攻略：狙击手天堂的生存法则，Boss沙皇击杀策略</div><div class="rc-meta">👁 15200 · 2026-05-05</div></a><a href="labs-strategy.html" class="related-card"><div class="rc-cat cat-map">地图攻略</div><div class="rc-title">🔬 实验室生存指南：高收益高风险的核心打法，通行证获取全途径</div><div class="rc-meta">👁 22300 · 2026-05-05</div></a></div></div>
+  <a href="../articles.html" class="back-btn">← 返回攻略列表</a>
+</div>
+<footer class="footer">
+  <div class="footer-inner">
+    <span>© 2024-2026 TarkovGuide · <a href="../index.html">返回首页</a></span>
+    <span><a href="../privacy.html">隐私政策</a> · <a href="../terms.html">服务条款</a> · <a href="../about.html">关于我们</a></span>
+  </div>
+</footer>
+</body>
+</html>

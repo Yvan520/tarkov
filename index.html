@@ -927,7 +927,7 @@ function renderArticles() {
   document.getElementById('articleCount').textContent = G.articles.length;
   document.getElementById('articleList').innerHTML = G.articles.slice(0,5).map(a => {
     const id = a.id || encodeURIComponent(a.title);
-    return `<a href="article.html?id=${id}" class="art-card">
+    return `<a href="articles/${id}.html" class="art-card">
       <div class="art-icon">${a.icon||'📄'}</div>
       <div class="art-body">
         <div class="art-cat ${catStyle[a.category]||'cat-guide'}">${a.categoryName||a.categoryLabel||''}</div>
@@ -986,7 +986,7 @@ function doSearch(kw) {
   const results = [];
   // 搜文章
   G.articles.filter(a=>a.title.includes(kw)||a.content?.includes(kw)).forEach(a=>{
-    results.push({title:a.title,icon:a.icon||'📄',cat:a.categoryName||'攻略',url:`article.html?id=${a.id||encodeURIComponent(a.title)}`});
+    results.push({title:a.title,icon:a.icon||'📄',cat:a.categoryName||'攻略',url:`articles/${a.id||encodeURIComponent(a.title)}.html`});
   });
   // 搜地图
   G.maps.filter(m=>m.name.includes(kw)||m.nameEn?.toLowerCase().includes(kw.toLowerCase())).forEach(m=>{

@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="比特币农场L1-L3全攻略，显卡收益计算/回本周期/燃油管理/获取攻略">
+<title>比特币农场完全攻略：从L1到L3最优升级/显卡收益计算/回本周期/大小农场对比 | 塔科夫攻略站</title>
+<meta name="baidu-site-verification" content="codeva-E78NFWmiO9" />
+<!-- Google Analytics placeholder -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-XXXXXXXXXX');
+</script>
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "Article", "headline": "比特币农场完全攻略：从L1到L3最优升级/显卡收益计算/回本周期/大小农场对比", "description": "比特币农场L1-L3全攻略，显卡收益计算/回本周期/燃油管理/获取攻略", "datePublished": "2026-05-19", "author": {"@type": "Organization", "name": "TarkovGuide"}, "publisher": {"@type": "Organization", "name": "TarkovGuide", "logo": {"@type": "ImageObject", "url": "https://tarkov.gamewayz.com/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://tarkov.gamewayz.com/articles/bitcoin-farm-guide.html"}, "image": "https://tarkov.gamewayz.com/favicon.ico"}
+</script>
+<style>
+:root{--bg0:#07090b;--bg1:#0a0c0f;--bg2:#111418;--bg3:#161b21;--border:#2a3540;--gold:#c8a96e;--gold3:#a07840;--text1:#eae0cc;--text2:#9aabb8;--text3:#5a7080;--green2:#6aaa7a;--red2:#c05050;--blue2:#4a80b0;--orange2:#e09050;--purple2:#9060d0;--font:'Segoe UI','Microsoft YaHei',sans-serif;--mono:'Courier New',monospace;--r:4px;--r2:8px}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg1);color:var(--text1);font-family:var(--font);line-height:1.6}
+::-webkit-scrollbar{width:5px}::-webkit-scrollbar-track{background:var(--bg2)}::-webkit-scrollbar-thumb{background:var(--gold3);border-radius:3px}
+a{text-decoration:none;color:inherit;transition:all .2s}
+.nav{position:sticky;top:0;z-index:1000;height:60px;background:rgba(10,12,15,.97);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 32px;gap:16px}
+.nav-logo{display:flex;align-items:center;gap:10px;cursor:pointer;flex-shrink:0;color:inherit}
+.mark{width:32px;height:32px;background:linear-gradient(135deg,var(--gold),var(--gold3));border-radius:var(--r);display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:900;color:var(--bg0)}
+.logo-name{font-size:17px;font-weight:800;letter-spacing:2px;color:var(--text1)}
+.logo-name span{color:var(--gold)}
+.nav-links{display:flex;gap:2px;list-style:none}
+.nav-links a{padding:7px 12px;border-radius:var(--r);font-size:13px;color:var(--text2);font-weight:500;white-space:nowrap}
+.nav-links a:hover{color:var(--text1);background:var(--bg3)}
+.nav-back{display:flex;align-items:center;gap:6px;background:var(--bg3);border:1px solid var(--border);color:var(--text2);padding:7px 14px;border-radius:var(--r);font-size:12px;cursor:pointer;transition:all .2s;text-decoration:none}
+.nav-back:hover{border-color:var(--gold);color:var(--gold)}
+
+button{font-family:var(--font);cursor:pointer}
+.nav-right{display:flex;gap:8px;align-items:center;flex-shrink:0}
+.nav-search-btn{display:flex;align-items:center;gap:8px;background:var(--bg3);border:1px solid var(--border);color:var(--text2);padding:7px 14px;border-radius:var(--r);font-size:12px;transition:all .2s;white-space:nowrap}
+.nav-search-btn:hover{border-color:var(--gold);color:var(--gold)}
+.nav-burger{display:none;flex-direction:column;gap:5px;background:transparent;border:none;padding:4px}
+.nav-burger span{display:block;width:22px;height:2px;background:var(--text2);border-radius:2px}
+.mobile-menu{display:none;position:fixed;top:60px;left:0;right:0;background:rgba(10,12,15,.98);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);z-index:999;padding:12px 0}
+.mobile-menu.open{display:block}
+.mobile-menu a{display:flex;align-items:center;gap:10px;padding:12px 24px;font-size:14px;color:var(--text2);text-decoration:none;border-bottom:1px solid rgba(255,255,255,.03)}
+.mobile-menu a:hover{color:var(--gold);background:rgba(200,169,110,.05)}
+.ver{font-size:10px;color:var(--text3);background:var(--bg3);border:1px solid var(--border);padding:2px 6px;border-radius:3px;font-family:var(--mono);margin-left:-4px}
+.container{max-width:860px;margin:0 auto;padding:48px 24px}
+
+/* 面包屑 */
+.breadcrumb{display:flex;align-items:center;gap:8px;margin-bottom:24px;font-size:12px;color:var(--text3)}
+.breadcrumb a{color:var(--text3)}
+.breadcrumb a:hover{color:var(--gold)}
+.breadcrumb .sep{color:var(--border)}
+
+/* 文章头部 */
+.art-header{margin-bottom:36px}
+.art-category{font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;margin-bottom:12px}
+.cat-guide{color:var(--gold)}
+.cat-weapon{color:var(--blue2)}
+.cat-map{color:var(--green2)}
+.cat-economy{color:var(--orange2)}
+.cat-newbie{color:var(--purple2)}
+.art-h1{font-size:clamp(22px,3vw,36px);font-weight:900;line-height:1.3;color:var(--text1);margin-bottom:16px}
+.art-meta{display:flex;align-items:center;gap:16px;flex-wrap:wrap;padding:14px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.meta-item{font-size:12px;color:var(--text3);display:flex;align-items:center;gap:5px}
+.badge-hot{font-size:10px;background:rgba(192,80,80,.15);color:var(--red2);border:1px solid rgba(192,80,80,.2);padding:3px 9px;border-radius:3px;font-weight:800}
+.badge-new{font-size:10px;background:rgba(74,140,92,.15);color:var(--green2);border:1px solid rgba(74,140,92,.2);padding:3px 9px;border-radius:3px;font-weight:800}
+
+/* 文章正文 */
+.art-content{color:var(--text2);font-size:15px;line-height:1.9;margin-bottom:48px}
+.art-content h1,.art-content h2{color:var(--text1);font-weight:800;margin:32px 0 14px;padding-bottom:8px;border-bottom:1px solid var(--border)}
+.art-content h1{font-size:24px}
+.art-content h2{font-size:20px;color:var(--gold)}
+.art-content h3{color:var(--text1);font-size:17px;font-weight:700;margin:24px 0 10px}
+.art-content p{margin-bottom:16px}
+.art-content ul,.art-content ol{padding-left:24px;margin-bottom:16px}
+.art-content li{margin-bottom:6px}
+.art-content strong{color:var(--text1);font-weight:700}
+.art-content em{color:var(--gold);font-style:normal}
+.art-content code{background:var(--bg3);border:1px solid var(--border);padding:2px 8px;border-radius:3px;font-family:var(--mono);font-size:13px;color:var(--gold)}
+.art-content pre{background:var(--bg3);border:1px solid var(--border);border-radius:var(--r2);padding:20px;overflow-x:auto;margin-bottom:16px}
+.art-content pre code{background:none;border:none;padding:0;font-size:13px;color:var(--text2)}
+.art-content blockquote{border-left:3px solid var(--gold);background:rgba(200,169,110,.05);padding:14px 20px;margin-bottom:16px;border-radius:0 var(--r) var(--r) 0;color:var(--text2)}
+.art-content hr{border:none;border-top:1px solid var(--border);margin:28px 0}
+.art-content table{width:100%;border-collapse:collapse;margin-bottom:16px;font-size:13px}
+.art-content th{background:var(--bg2);padding:10px 14px;text-align:left;font-weight:700;color:var(--text3);font-size:11px;letter-spacing:1px;text-transform:uppercase;border-bottom:1px solid var(--border)}
+.art-content td{padding:10px 14px;border-bottom:1px solid rgba(255,255,255,.04);color:var(--text2)}
+.art-content a{color:var(--gold)}
+.art-content a:hover{text-decoration:underline}
+.art-content img{border-radius:var(--r2);max-width:100%;border:1px solid var(--border)}
+
+/* 标签 */
+.art-tags{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:36px}
+.art-tag{background:var(--bg3);border:1px solid var(--border);color:var(--text2);padding:5px 12px;border-radius:16px;font-size:11px}
+
+/* 相关文章 */
+.related{border-top:1px solid var(--border);padding-top:36px;margin-bottom:36px}
+.related-title{font-size:16px;font-weight:700;color:var(--text1);margin-bottom:16px;display:flex;align-items:center;gap:8px}
+.related-title::before{content:'';width:4px;height:20px;background:linear-gradient(180deg,var(--gold),transparent);border-radius:2px}
+.related-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.related-card{background:var(--bg3);border:1px solid var(--border);border-radius:var(--r2);padding:14px;cursor:pointer;transition:all .25s;text-decoration:none;display:block;color:inherit}
+.related-card:hover{border-color:var(--gold);transform:translateY(-2px)}
+.rc-cat{font-size:10px;font-weight:800;letter-spacing:1px;text-transform:uppercase;margin-bottom:4px}
+.rc-title{font-size:13px;font-weight:600;color:var(--text1);line-height:1.4}
+.rc-meta{font-size:11px;color:var(--text3);margin-top:6px}
+
+/* 返回按钮 */
+.back-btn{display:inline-flex;align-items:center;gap:8px;background:var(--bg3);border:1px solid var(--border);color:var(--text2);padding:10px 20px;border-radius:var(--r2);font-size:13px;cursor:pointer;transition:all .2s;text-decoration:none}
+.back-btn:hover{border-color:var(--gold);color:var(--gold)}
+
+/* 加载/错误状态 */
+.state-box{text-align:center;padding:80px 24px}
+.state-icon{font-size:48px;margin-bottom:16px}
+.state-title{font-size:20px;font-weight:700;color:var(--text1);margin-bottom:8px}
+.state-desc{font-size:14px;color:var(--text3);margin-bottom:24px}
+
+/* 页脚 */
+.footer{background:var(--bg2);border-top:1px solid var(--border);padding:24px 32px;margin-top:80px}
+.footer-inner{max-width:860px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;font-size:12px;color:var(--text3);flex-wrap:wrap;gap:8px}
+.footer-inner a{color:var(--text3)}
+.footer-inner a:hover{color:var(--gold)}
+
+@media(max-width:700px){.nav-links{display:none}.nav-burger{display:flex}.related-grid{grid-template-columns:1fr}.container{padding:32px 16px}.nav-search-btn span{display:none}}
+@media(max-width:480px){.art-h1{font-size:clamp(18px,5vw,22px)}.art-content{font-size:14px}.art-content table{display:block;overflow-x:auto;max-width:100%;white-space:nowrap;-webkit-overflow-scrolling:touch}.art-content td,.art-content th{padding:8px 10px;font-size:12px}.art-meta{gap:10px}.meta-item{font-size:11px}.container{padding:24px 12px}}
+</style>
+</head>
+<body>
+<nav class="nav">
+  <a class="nav-logo" href="index.html">
+    <div class="mark">⚔</div>
+    <span class="logo-name">TARKOV<span>GUIDE</span></span>
+    <span class="ver">v1.2.0</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">🏠 首页</a></li>
+    <li><a href="maps.html">🗺️ 地图</a></li>
+    <li><a href="ammo.html">💊 弹药</a></li>
+    <li><a href="loadouts.html">🔫 武器</a></li>
+    <li><a href="quests.html">📋 任务</a></li>
+    <li><a href="articles.html">📰 攻略</a></li>
+  </ul>
+  <div class="nav-right">
+    <button class="nav-search-btn" onclick="openSearch()">🔍 搜索 <kbd>Ctrl+K</kbd></button>
+    <button class="nav-burger" onclick="toggleMenu()" id="burgerBtn"><span></span><span></span><span></span></button>
+    <a class="nav-back" href="articles.html">← 返回</a>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html">🏠 首页</a>
+  <a href="maps.html">🗺️ 地图攻略</a>
+  <a href="ammo.html">💊 弹药数据</a>
+  <a href="loadouts.html">🔫 武器配装</a>
+  <a href="quests.html">📋 任务攻略</a>
+  <a href="articles.html">📰 全部攻略</a>
+</div>
+<div class="search-ov" id="searchOv" onclick="closeSearchOv(event)">
+  <div class="search-box" onclick="event.stopPropagation()">
+    <div class="sm-wrap">
+      <span class="sm-icon">🔍</span>
+      <input class="sm-input" id="smInput" placeholder="搜索地图、武器、弹药、任务..." oninput="doSearch(this.value)">
+      <div class="sm-esc" onclick="closeSearch()">ESC</div>
+<div class="container">
+  <div class="breadcrumb">
+    <a href="../index.html">首页</a>
+    <span class="sep">›</span>
+    <a href="../articles.html">攻略文章</a>
+    <span class="sep">›</span>
+    <span>通用攻略</span>
+  </div>
+  <div class="art-header">
+    <div class="art-category cat-guide">通用攻略</div>
+    <h1 class="art-h1">比特币农场完全攻略：从L1到L3最优升级/显卡收益计算/回本周期/大小农场对比</h1>
+    <div class="art-meta">
+      <span class="meta-item">👁 38700 次阅读</span>
+      <span class="meta-item">🕐 2026-05-19</span>
+      <span class="meta-item">✍️ 塔科夫攻略站</span>
+<span class="badge-new">✨ NEW</span>
+    </div>
+  </div>
+  <div class="art-content"><h1>比特币农场完全攻略</h1>
+<p>比特币农场（Bitcoin Farm）是塔科夫藏匿处里最赚钱的设施——只要显卡够，躺着收钱。但升级成本和显卡投入需要精打细算。</p>
+<h2>比特币农场基础</h2>
+<h3>建筑要求</h3>
+<table><thead><tr><th>等级</th><th>需要显卡</th><th>生产时长</th><th>单日产币</th><th>升级成本</th></tr></thead><tbody><tr><td>L1</td><td>10张</td><td>~22小时/个</td><td>~1.1个</td><td>~240万</td></tr><tr><td>L2</td><td>25张</td><td>~14小时/个</td><td>~1.7个</td><td>~440万</td></tr><tr><td>L3</td><td>50张</td><td>~10小时/个</td><td>~2.4个</td><td>~800万</td></tr></tbody></table>
+<h3>当前比特币价格</h3>
+<li>约 280,000-300,000 ₽/个（随游戏内经济波动）</li>
+<li>GDP系统会影响：价格会上升和下跌</li>
+<h2>升级材料清单</h2>
+<h3>L1→L1（首次建造）</h3>
+需要前置：工作站L2 → 医疗站L2
+材料：
+<li>电钻 × 2</li>
+<li>军用硬盘 × 5</li>
+<li>CPU风扇 × 5</li>
+<li>电源线 × 5</li>
+<li>螺丝刀套装 × 3</li>
+<h3>L2升级</h3>
+<li>显卡 × 3（FiR）</li>
+<li>军用电源 × 3</li>
+<li>导电丝 × 5</li>
+<li>焊料 × 5</li>
+<h3>L3升级</h3>
+<li>显卡 × 5（FiR）</li>
+<li>电容器 × 5</li>
+<li>军用风扇 × 3</li>
+<li>断电器 × 3</li>
+<li>继电器 × 5</li>
+<h2>显卡收益计算</h2>
+<h3>显卡价格（当前行情）</h3>
+<li>跳蚤市场：约 350,000-450,000 ₽/张</li>
+<li>自己找到：0成本</li>
+<h3>收益表</h3>
+<table><thead><tr><th>农场等级</th><th>显卡数</th><th>日收益</th><th>日耗电*</th><th>净日收益</th></tr></thead><tbody><tr><td>L1</td><td>10</td><td>~310K</td><td>~80K</td><td>~230K</td></tr><tr><td>L2</td><td>25</td><td>~480K</td><td>~150K</td><td>~330K</td></tr><tr><td>L3</td><td>50</td><td>~670K</td><td>~220K</td><td>~450K</td></tr></tbody></table>
+<p>*燃油成本根据发电机运行估算</p>
+<h3>回本周期</h3>
+<table><thead><tr><th>显卡获得方式</th><th>L1回本</th><th>L2回本</th><th>L3回本</th></tr></thead><tbody><tr><td>全部自己找到</td><td>~3天</td><td>~5天</td><td>~10天</td></tr><tr><td>全部跳蚤买</td><td>~20天</td><td>~35天</td><td>~55天</td></tr><tr><td>混合一半</td><td>~12天</td><td>~20天</td><td>~35天</td></tr></tbody></table>
+<h2>大小农场选择</h2>
+<h3>小作坊模式（L1，10张卡）</h3>
+<li>适合：新手/半退坑玩家</li>
+<li>优点：投入低、回收快</li>
+<li>收益：~23万/天</li>
+<li>建议：有什么显卡放什么，不必刻意收</li>
+<h3>中型农场（L2，25张卡）</h3>
+<li>适合：活跃玩家</li>
+<li>优点：收益翻倍，可满足日常开销</li>
+<li>收益：~33万/天</li>
+<li>建议：优先攒够25张再启用</li>
+<h3>全规模农场（L3，50张卡）</h3>
+<li>适合：老玩家/终局内容</li>
+<li>优点：日入45万，真正的被动收入</li>
+<li>收益：~45万/天</li>
+<li>建议：不要一次性买齐显卡，打图慢慢攒</li>
+<h2>显卡获取攻略</h2>
+<h3>高概率刷新点</h3>
+<li><strong>Interchange</strong>：Texho、电脑房、办公区</li>
+<li><strong>储备站</strong>：服务器机房、电脑室</li>
+<li><strong>实验室</strong>：所有电脑都有概率</li>
+<li><strong>灯塔</strong>：水电站控制室</li>
+<li><strong>街区</strong>：新地图的办公区</li>
+<h3>隐藏知识</h3>
+<li>SCAV尸体口袋里偶尔有显卡</li>
+<li>队友死亡的物品里可以薅</li>
+<li>情报文件夹开出来的显卡不要卖！</li>
+<h2>燃油管理技巧</h2>
+<ul>比特币农场需要发电机运行，而发电机需要燃油：
+<li>燃油桶：约 60,000₽（可用50分钟）</li>
+<li>金属燃油罐：约 120,000₽（可用110分钟）</li>
+<li>不要购买满载燃油的——价格虚高</li>
+<li>空燃油罐可以卖回给商人</li></ul>
+<h3>省油攻略</h3>
+<li><strong>只在线时开启</strong>：下线关发电机</li>
+<li><strong>批量生产</strong>：攒够燃油一次烧完</li>
+<li><strong>利用SCAV</strong>：SCAV模式找到的燃油免费</li>
+<li><strong>通过Jaeger换</strong>：部分任务可用</li>
+<blockquote><strong>最终建议</strong>：L1农场投入最小收益最快，适合所有人。L3农场需要50张显卡（约1500-2000万投入），回本周期长，适合不缺钱的终局玩家。</blockquote></div>
+<div class="art-tags"><span class="art-tag"># 比特币</span><span class="art-tag"># 农场</span><span class="art-tag"># 显卡</span><span class="art-tag"># 被动收入</span><span class="art-tag"># 藏匿处</span><span class="art-tag"># 收益</span></div>
+<div class="related"><div class="related-title">📌 相关文章</div><div class="related-grid"><a href="ammo-rank-015.html" class="related-card"><div class="rc-cat cat-guide">通用攻略</div><div class="rc-title">💊 弹道系统重做后弹药重新排行：哪些弹药值得继续用？完整对比</div><div class="rc-meta">👁 15200 · 2026-05-09</div></a><a href="hideout-upgrade-guide.html" class="related-card"><div class="rc-cat cat-guide">通用攻略</div><div class="rc-title">🏠 藏匿处升级全攻略：从L1到L3最优升级路线，材料清单+成本计算</div><div class="rc-meta">👁 29800 · 2026-05-07</div></a><a href="armor-guide.html" class="related-card"><div class="rc-cat cat-guide">通用攻略</div><div class="rc-title">🛡️ 护甲系统深度解析：6级/5级/4级甲怎么选？穿透机制与护甲耐久详解</div><div class="rc-meta">👁 21500 · 2026-05-07</div></a><a href="medical-guide.html" class="related-card"><div class="rc-cat cat-guide">通用攻略</div><div class="rc-title">💉 医疗系统完全教程：全伤势类型处理方案，医疗用品性价比对比</div><div class="rc-meta">👁 28900 · 2026-05-06</div></a></div></div>
+  <a href="../articles.html" class="back-btn">← 返回攻略列表</a>
+</div>
+<footer class="footer">
+  <div class="footer-inner">
+    <span>© 2024-2026 TarkovGuide · <a href="../index.html">返回首页</a></span>
+    <span><a href="../privacy.html">隐私政策</a> · <a href="../terms.html">服务条款</a> · <a href="../about.html">关于我们</a></span>
+  </div>
+</footer>
+</body>
+</html>

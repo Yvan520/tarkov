@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="帧数优化全方位教程，游戏设置/NVIDIA驱动/系统调优全涵盖">
+<title>帧数优化全方位教程：从游戏设置到NVIDIA驱动到系统调优，帧数翻倍不是梦 | 塔科夫攻略站</title>
+<meta name="baidu-site-verification" content="codeva-E78NFWmiO9" />
+<!-- Google Analytics placeholder -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-XXXXXXXXXX');
+</script>
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "Article", "headline": "帧数优化全方位教程：从游戏设置到NVIDIA驱动到系统调优，帧数翻倍不是梦", "description": "帧数优化全方位教程，游戏设置/NVIDIA驱动/系统调优全涵盖", "datePublished": "2026-05-16", "author": {"@type": "Organization", "name": "TarkovGuide"}, "publisher": {"@type": "Organization", "name": "TarkovGuide", "logo": {"@type": "ImageObject", "url": "https://tarkov.gamewayz.com/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://tarkov.gamewayz.com/articles/fps-optimization.html"}, "image": "https://tarkov.gamewayz.com/favicon.ico"}
+</script>
+<style>
+:root{--bg0:#07090b;--bg1:#0a0c0f;--bg2:#111418;--bg3:#161b21;--border:#2a3540;--gold:#c8a96e;--gold3:#a07840;--text1:#eae0cc;--text2:#9aabb8;--text3:#5a7080;--green2:#6aaa7a;--red2:#c05050;--blue2:#4a80b0;--orange2:#e09050;--purple2:#9060d0;--font:'Segoe UI','Microsoft YaHei',sans-serif;--mono:'Courier New',monospace;--r:4px;--r2:8px}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg1);color:var(--text1);font-family:var(--font);line-height:1.6}
+::-webkit-scrollbar{width:5px}::-webkit-scrollbar-track{background:var(--bg2)}::-webkit-scrollbar-thumb{background:var(--gold3);border-radius:3px}
+a{text-decoration:none;color:inherit;transition:all .2s}
+.nav{position:sticky;top:0;z-index:1000;height:60px;background:rgba(10,12,15,.97);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 32px;gap:16px}
+.nav-logo{display:flex;align-items:center;gap:10px;cursor:pointer;flex-shrink:0;color:inherit}
+.mark{width:32px;height:32px;background:linear-gradient(135deg,var(--gold),var(--gold3));border-radius:var(--r);display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:900;color:var(--bg0)}
+.logo-name{font-size:17px;font-weight:800;letter-spacing:2px;color:var(--text1)}
+.logo-name span{color:var(--gold)}
+.nav-links{display:flex;gap:2px;list-style:none}
+.nav-links a{padding:7px 12px;border-radius:var(--r);font-size:13px;color:var(--text2);font-weight:500;white-space:nowrap}
+.nav-links a:hover{color:var(--text1);background:var(--bg3)}
+.nav-back{display:flex;align-items:center;gap:6px;background:var(--bg3);border:1px solid var(--border);color:var(--text2);padding:7px 14px;border-radius:var(--r);font-size:12px;cursor:pointer;transition:all .2s;text-decoration:none}
+.nav-back:hover{border-color:var(--gold);color:var(--gold)}
+
+button{font-family:var(--font);cursor:pointer}
+.nav-right{display:flex;gap:8px;align-items:center;flex-shrink:0}
+.nav-search-btn{display:flex;align-items:center;gap:8px;background:var(--bg3);border:1px solid var(--border);color:var(--text2);padding:7px 14px;border-radius:var(--r);font-size:12px;transition:all .2s;white-space:nowrap}
+.nav-search-btn:hover{border-color:var(--gold);color:var(--gold)}
+.nav-burger{display:none;flex-direction:column;gap:5px;background:transparent;border:none;padding:4px}
+.nav-burger span{display:block;width:22px;height:2px;background:var(--text2);border-radius:2px}
+.mobile-menu{display:none;position:fixed;top:60px;left:0;right:0;background:rgba(10,12,15,.98);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);z-index:999;padding:12px 0}
+.mobile-menu.open{display:block}
+.mobile-menu a{display:flex;align-items:center;gap:10px;padding:12px 24px;font-size:14px;color:var(--text2);text-decoration:none;border-bottom:1px solid rgba(255,255,255,.03)}
+.mobile-menu a:hover{color:var(--gold);background:rgba(200,169,110,.05)}
+.ver{font-size:10px;color:var(--text3);background:var(--bg3);border:1px solid var(--border);padding:2px 6px;border-radius:3px;font-family:var(--mono);margin-left:-4px}
+.container{max-width:860px;margin:0 auto;padding:48px 24px}
+
+/* 面包屑 */
+.breadcrumb{display:flex;align-items:center;gap:8px;margin-bottom:24px;font-size:12px;color:var(--text3)}
+.breadcrumb a{color:var(--text3)}
+.breadcrumb a:hover{color:var(--gold)}
+.breadcrumb .sep{color:var(--border)}
+
+/* 文章头部 */
+.art-header{margin-bottom:36px}
+.art-category{font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;margin-bottom:12px}
+.cat-guide{color:var(--gold)}
+.cat-weapon{color:var(--blue2)}
+.cat-map{color:var(--green2)}
+.cat-economy{color:var(--orange2)}
+.cat-newbie{color:var(--purple2)}
+.art-h1{font-size:clamp(22px,3vw,36px);font-weight:900;line-height:1.3;color:var(--text1);margin-bottom:16px}
+.art-meta{display:flex;align-items:center;gap:16px;flex-wrap:wrap;padding:14px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.meta-item{font-size:12px;color:var(--text3);display:flex;align-items:center;gap:5px}
+.badge-hot{font-size:10px;background:rgba(192,80,80,.15);color:var(--red2);border:1px solid rgba(192,80,80,.2);padding:3px 9px;border-radius:3px;font-weight:800}
+.badge-new{font-size:10px;background:rgba(74,140,92,.15);color:var(--green2);border:1px solid rgba(74,140,92,.2);padding:3px 9px;border-radius:3px;font-weight:800}
+
+/* 文章正文 */
+.art-content{color:var(--text2);font-size:15px;line-height:1.9;margin-bottom:48px}
+.art-content h1,.art-content h2{color:var(--text1);font-weight:800;margin:32px 0 14px;padding-bottom:8px;border-bottom:1px solid var(--border)}
+.art-content h1{font-size:24px}
+.art-content h2{font-size:20px;color:var(--gold)}
+.art-content h3{color:var(--text1);font-size:17px;font-weight:700;margin:24px 0 10px}
+.art-content p{margin-bottom:16px}
+.art-content ul,.art-content ol{padding-left:24px;margin-bottom:16px}
+.art-content li{margin-bottom:6px}
+.art-content strong{color:var(--text1);font-weight:700}
+.art-content em{color:var(--gold);font-style:normal}
+.art-content code{background:var(--bg3);border:1px solid var(--border);padding:2px 8px;border-radius:3px;font-family:var(--mono);font-size:13px;color:var(--gold)}
+.art-content pre{background:var(--bg3);border:1px solid var(--border);border-radius:var(--r2);padding:20px;overflow-x:auto;margin-bottom:16px}
+.art-content pre code{background:none;border:none;padding:0;font-size:13px;color:var(--text2)}
+.art-content blockquote{border-left:3px solid var(--gold);background:rgba(200,169,110,.05);padding:14px 20px;margin-bottom:16px;border-radius:0 var(--r) var(--r) 0;color:var(--text2)}
+.art-content hr{border:none;border-top:1px solid var(--border);margin:28px 0}
+.art-content table{width:100%;border-collapse:collapse;margin-bottom:16px;font-size:13px}
+.art-content th{background:var(--bg2);padding:10px 14px;text-align:left;font-weight:700;color:var(--text3);font-size:11px;letter-spacing:1px;text-transform:uppercase;border-bottom:1px solid var(--border)}
+.art-content td{padding:10px 14px;border-bottom:1px solid rgba(255,255,255,.04);color:var(--text2)}
+.art-content a{color:var(--gold)}
+.art-content a:hover{text-decoration:underline}
+.art-content img{border-radius:var(--r2);max-width:100%;border:1px solid var(--border)}
+
+/* 标签 */
+.art-tags{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:36px}
+.art-tag{background:var(--bg3);border:1px solid var(--border);color:var(--text2);padding:5px 12px;border-radius:16px;font-size:11px}
+
+/* 相关文章 */
+.related{border-top:1px solid var(--border);padding-top:36px;margin-bottom:36px}
+.related-title{font-size:16px;font-weight:700;color:var(--text1);margin-bottom:16px;display:flex;align-items:center;gap:8px}
+.related-title::before{content:'';width:4px;height:20px;background:linear-gradient(180deg,var(--gold),transparent);border-radius:2px}
+.related-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.related-card{background:var(--bg3);border:1px solid var(--border);border-radius:var(--r2);padding:14px;cursor:pointer;transition:all .25s;text-decoration:none;display:block;color:inherit}
+.related-card:hover{border-color:var(--gold);transform:translateY(-2px)}
+.rc-cat{font-size:10px;font-weight:800;letter-spacing:1px;text-transform:uppercase;margin-bottom:4px}
+.rc-title{font-size:13px;font-weight:600;color:var(--text1);line-height:1.4}
+.rc-meta{font-size:11px;color:var(--text3);margin-top:6px}
+
+/* 返回按钮 */
+.back-btn{display:inline-flex;align-items:center;gap:8px;background:var(--bg3);border:1px solid var(--border);color:var(--text2);padding:10px 20px;border-radius:var(--r2);font-size:13px;cursor:pointer;transition:all .2s;text-decoration:none}
+.back-btn:hover{border-color:var(--gold);color:var(--gold)}
+
+/* 加载/错误状态 */
+.state-box{text-align:center;padding:80px 24px}
+.state-icon{font-size:48px;margin-bottom:16px}
+.state-title{font-size:20px;font-weight:700;color:var(--text1);margin-bottom:8px}
+.state-desc{font-size:14px;color:var(--text3);margin-bottom:24px}
+
+/* 页脚 */
+.footer{background:var(--bg2);border-top:1px solid var(--border);padding:24px 32px;margin-top:80px}
+.footer-inner{max-width:860px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;font-size:12px;color:var(--text3);flex-wrap:wrap;gap:8px}
+.footer-inner a{color:var(--text3)}
+.footer-inner a:hover{color:var(--gold)}
+
+@media(max-width:700px){.nav-links{display:none}.nav-burger{display:flex}.related-grid{grid-template-columns:1fr}.container{padding:32px 16px}.nav-search-btn span{display:none}}
+@media(max-width:480px){.art-h1{font-size:clamp(18px,5vw,22px)}.art-content{font-size:14px}.art-content table{display:block;overflow-x:auto;max-width:100%;white-space:nowrap;-webkit-overflow-scrolling:touch}.art-content td,.art-content th{padding:8px 10px;font-size:12px}.art-meta{gap:10px}.meta-item{font-size:11px}.container{padding:24px 12px}}
+</style>
+</head>
+<body>
+<nav class="nav">
+  <a class="nav-logo" href="index.html">
+    <div class="mark">⚔</div>
+    <span class="logo-name">TARKOV<span>GUIDE</span></span>
+    <span class="ver">v1.2.0</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">🏠 首页</a></li>
+    <li><a href="maps.html">🗺️ 地图</a></li>
+    <li><a href="ammo.html">💊 弹药</a></li>
+    <li><a href="loadouts.html">🔫 武器</a></li>
+    <li><a href="quests.html">📋 任务</a></li>
+    <li><a href="articles.html">📰 攻略</a></li>
+  </ul>
+  <div class="nav-right">
+    <button class="nav-search-btn" onclick="openSearch()">🔍 搜索 <kbd>Ctrl+K</kbd></button>
+    <button class="nav-burger" onclick="toggleMenu()" id="burgerBtn"><span></span><span></span><span></span></button>
+    <a class="nav-back" href="articles.html">← 返回</a>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html">🏠 首页</a>
+  <a href="maps.html">🗺️ 地图攻略</a>
+  <a href="ammo.html">💊 弹药数据</a>
+  <a href="loadouts.html">🔫 武器配装</a>
+  <a href="quests.html">📋 任务攻略</a>
+  <a href="articles.html">📰 全部攻略</a>
+</div>
+<div class="search-ov" id="searchOv" onclick="closeSearchOv(event)">
+  <div class="search-box" onclick="event.stopPropagation()">
+    <div class="sm-wrap">
+      <span class="sm-icon">🔍</span>
+      <input class="sm-input" id="smInput" placeholder="搜索地图、武器、弹药、任务..." oninput="doSearch(this.value)">
+      <div class="sm-esc" onclick="closeSearch()">ESC</div>
+<div class="container">
+  <div class="breadcrumb">
+    <a href="../index.html">首页</a>
+    <span class="sep">›</span>
+    <a href="../articles.html">攻略文章</a>
+    <span class="sep">›</span>
+    <span>通用攻略</span>
+  </div>
+  <div class="art-header">
+    <div class="art-category cat-guide">通用攻略</div>
+    <h1 class="art-h1">帧数优化全方位教程：从游戏设置到NVIDIA驱动到系统调优，帧数翻倍不是梦</h1>
+    <div class="art-meta">
+      <span class="meta-item">👁 62400 次阅读</span>
+      <span class="meta-item">🕐 2026-05-16</span>
+      <span class="meta-item">✍️ 塔科夫攻略站</span>
+<span class="badge-hot">🔥 HOT</span>
+    </div>
+  </div>
+  <div class="art-content"><h1>帧数优化全方位教程</h1>
+<p>逃离塔科夫优化出了名的差，但正确的设置能让帧数翻倍！本文涵盖了从游戏内到系统级的全部优化方案。</p>
+<h2>一、游戏内画面设置</h2>
+<h3>推荐画质设置（帧数优先）</h3>
+<table><thead><tr><th>选项</th><th>推荐值</th><th>说明</th></tr></thead><tbody><tr><td>全屏模式</td><td>全屏</td><td>窗口化损失10-15%帧数</td></tr><tr><td>分辨率</td><td>原生</td><td>不要降分辨率，画面太糊</td></tr><tr><td>纹理质量</td><td>高</td><td>吃显存但影响视觉重要</td></tr><tr><td>阴影质量</td><td>中</td><td>中和高差别极小</td></tr><tr><td>物体细节</td><td>2.5</td><td>太高影响视野，太低看不见物资</td></tr><tr><td>抗锯齿</td><td>TAA 高</td><td>画面清晰度和性能平衡</td></tr><tr><td>各向异性过滤</td><td>关闭</td><td>性价比最低的设置</td></tr><tr><td>NVIDIA Reflex</td><td>开启+增强</td><td>减少延迟必备</td></tr></tbody></table>
+<h3>关键优化选项</h3>
+<ul><strong>唯一渲染线程</strong>：开启
+<li>对多核CPU优化，大幅提升帧数</li></ul>
+<ul><strong>草地Quality</strong>：中
+<li>森林地图影响较大，但不要关太低</li></ul>
+<ul><strong>云Quality</strong>：低
+<li>完全不影响的视觉效果</li></ul>
+<h2>二、NVIDIA驱动设置</h2>
+<h3>NVIDIA控制面板设置</h3>
+<li><strong>管理3D设置</strong> → 程序设置 → 添加EFT.exe</li>
+<li>电源管理模式：最高性能优先</li>
+<li>着色器缓存：启用（大小无限制）</li>
+<li>线程优化：开启</li>
+<li>低延时模式：超高</li>
+<h3>NVIDIA Smooth Motion（40/50系显卡）</h3>
+NVIDIA已将Smooth Motion技术下放至40系显卡！
+<li>在NVIDIA App中开启</li>
+<li>帧数可近乎翻倍</li>
+<li>对不支持DLSS FG的游戏有效</li>
+<h2>三、系统级优化</h2>
+<h3>Windows设置</h3>
+<li><strong>电源计划</strong>：高性能/卓越性能</li>
+<li><strong>游戏模式</strong>：开启</li>
+<li><strong>硬件加速GPU调度</strong>：开启</li>
+<li><strong>虚拟内存</strong>：至少16GB（建议32GB）</li>
+   - 放在SSD上
+   - 初始16GB，最大32GB
+<li><strong>关闭Xbox Game Bar</strong>：不需要</li>
+<h3>BIOS设置</h3>
+<li><strong>XMP/EXPO</strong>：开启（内存跑标称频率）</li>
+<li><strong>ReSize BAR</strong>：开启（40系显卡）</li>
+<li><strong>CPU Core Ratio</strong>：全核锁频（有条件的话）</li>
+<h2>四、硬件建议</h2>
+<table><thead><tr><th>组件</th><th>最低要求</th><th>推荐配置</th><th>最佳配置</th></tr></thead><tbody><tr><td>CPU</td><td>i5-8400/R5 2600</td><td>i5-12600K/R5 7600</td><td>i7-13700K/R7 7800X3D</td></tr><tr><td>内存</td><td>16GB DDR4</td><td>32GB DDR4-3600</td><td>32GB DDR5-6000</td></tr><tr><td>显卡</td><td>GTX 1060</td><td>RTX 3060/4060</td><td>RTX 4070+/RX 7800 XT</td></tr><tr><td>硬盘</td><td>SATA SSD</td><td>NVMe SSD</td><td>NVMe PCIe 4.0</td></tr></tbody></table>
+<p><strong>最重要的是CPU单核性能和内存频率</strong>，塔科夫极其依赖这两个。</p>
+<h2>五、启动项参数</h2>
+<p>在游戏启动器中添加：<br><pre><code>-batchmode -disablebehindthedeskalpha<br></code></pre><br>减少启动时的CPU负载。</p>
+<blockquote><strong>实测效果</strong>：按照以上设置，i5-12600K+RTX 3060+32GB DDR4，海关帧数从55→98，提升近80%！</blockquote></div>
+<div class="art-tags"><span class="art-tag"># 帧数</span><span class="art-tag"># 优化</span><span class="art-tag"># 性能</span><span class="art-tag"># 设置</span><span class="art-tag"># NVIDIA</span></div>
+<div class="related"><div class="related-title">📌 相关文章</div><div class="related-grid"><a href="ammo-rank-015.html" class="related-card"><div class="rc-cat cat-guide">通用攻略</div><div class="rc-title">💊 弹道系统重做后弹药重新排行：哪些弹药值得继续用？完整对比</div><div class="rc-meta">👁 15200 · 2026-05-09</div></a><a href="hideout-upgrade-guide.html" class="related-card"><div class="rc-cat cat-guide">通用攻略</div><div class="rc-title">🏠 藏匿处升级全攻略：从L1到L3最优升级路线，材料清单+成本计算</div><div class="rc-meta">👁 29800 · 2026-05-07</div></a><a href="armor-guide.html" class="related-card"><div class="rc-cat cat-guide">通用攻略</div><div class="rc-title">🛡️ 护甲系统深度解析：6级/5级/4级甲怎么选？穿透机制与护甲耐久详解</div><div class="rc-meta">👁 21500 · 2026-05-07</div></a><a href="medical-guide.html" class="related-card"><div class="rc-cat cat-guide">通用攻略</div><div class="rc-title">💉 医疗系统完全教程：全伤势类型处理方案，医疗用品性价比对比</div><div class="rc-meta">👁 28900 · 2026-05-06</div></a></div></div>
+  <a href="../articles.html" class="back-btn">← 返回攻略列表</a>
+</div>
+<footer class="footer">
+  <div class="footer-inner">
+    <span>© 2024-2026 TarkovGuide · <a href="../index.html">返回首页</a></span>
+    <span><a href="../privacy.html">隐私政策</a> · <a href="../terms.html">服务条款</a> · <a href="../about.html">关于我们</a></span>
+  </div>
+</footer>
+</body>
+</html>

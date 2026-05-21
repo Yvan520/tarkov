@@ -198,7 +198,7 @@ function renderArticles(){
   }
   document.getElementById('articlesGrid').innerHTML=data.map(a=>{
     const id=a.id||encodeURIComponent(a.title);
-    return `<a href="article.html?id=${id}" class="art-card">
+    return `<a href="articles/${id}.html" class="art-card">
       <div class="art-icon">${a.icon||'📄'}</div>
       <div class="art-body">
         <div class="art-cat ${catStyle[a.category]||'cat-guide'}">${a.categoryName||a.categoryLabel||''}</div>

@@ -259,11 +259,26 @@ function md2html(md) {
     .replace(/^\- (.+)$/gm,'<li>$1</li>')
     // 有序列表
     .replace(/^\d+\. (.+)$/gm,'<li>$1</li>')
+    // 表格（匹配连续以|开头结尾的行）
+    .replace(/^(\|.+\|(\n\|.+\|)+)/gm, function(match) {
+      var lines = match.trim().split('\n');
+      if (lines.length < 3) return match;
+      if (!lines[1].match(/^\|[-:| ]+\|$/)) return match;
+      var html = '<table>';
+      var th = lines[0].slice(1,-1).split('|').map(function(c){return c.trim()});
+      html += '<thead><tr>'+th.map(function(c){return '<th>'+c+'</th>'}).join('')+'</tr></thead><tbody>';
+      for (var i=2; i<lines.length; i++) {
+        var td = lines[i].slice(1,-1).split('|').map(function(c){return c.trim()});
+        html += '<tr>'+td.map(function(c){return '<td>'+c+'</td>'}).join('')+'</tr>';
+      }
+      html += '</tbody></table>';
+      return html;
+    })
     // 换行变段落
     .split('\n\n').map(block => {
       block = block.trim();
       if (!block) return '';
-      if (block.match(/^<(h[1-6]|hr|pre|blockquote|ul|ol|li)/)) return block;
+      if (block.match(/^<(h[1-6]|hr|pre|blockquote|table|ul|ol|li)/)) return block;
       if (block.includes('<li>')) return '<ul>'+block+'</ul>';
       return '<p>'+block.replace(/\n/g,'<br>')+'</p>';
     }).join('\n');
@@ -374,7 +389,7 @@ function renderArticle(art, allArticles) {
       <div class="related-title">📌 相关文章</div>
       <div class="related-grid">
         ${related.map(r=>`
-        <a href="article.html?id=${r.id||encodeURIComponent(r.title)}" class="related-card">
+        <a href="articles/${r.id||encodeURIComponent(r.title)}.html" class="related-card">
           <div class="rc-cat ${catStyle[r.category]||'cat-guide'}">${r.categoryName||r.categoryLabel||''}</div>
           <div class="rc-title">${r.icon||''} ${r.title}</div>
           <div class="rc-meta">👁 ${(r.views||0).toLocaleString()} · ${r.date||r.timeAgo||''}</div>
@@ -404,7 +419,7 @@ function closeSearch(){document.getElementById('searchOv').classList.remove('on'
 function closeSearchOv(e){if(e.target===document.getElementById('searchOv'))closeSearch()}
 const searchData=[];
 async function initSearch(){
-  try{const r=await fetch('data/articles.json?t='+Date.now());if(r.ok){const j=await r.json();const arts=j.articles||j||[];arts.forEach(a=>{if(a.title){searchData.push({title:a.title,icon:a.icon||'📄',url:'article.html?id='+(a.id||encodeURIComponent(a.title)),cat:a.categoryName||a.categoryLabel||'攻略',type:'article'})}})}}
+  try{const r=await fetch('data/articles.json?t='+Date.now());if(r.ok){const j=await r.json();const arts=j.articles||j||[];arts.forEach(a=>{if(a.title){searchData.push({title:a.title,icon:a.icon||'📄',url:'articles/'+(a.id||encodeURIComponent(a.title))+'.html',cat:a.categoryName||a.categoryLabel||'攻略',type:'article'})}})}}
   catch(e){}
 }
 function doSearch(kw){

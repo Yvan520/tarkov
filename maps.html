@@ -283,7 +283,7 @@ function closeSearch(){document.getElementById('searchOv').classList.remove('on'
 function closeSearchOv(e){if(e.target===document.getElementById('searchOv'))closeSearch()}
 const searchData=[];let searchIdx=0;
 async function initSearch(){
-  try{const r=await fetch('data/articles.json?t='+Date.now());if(r.ok){const j=await r.json();const arts=j.articles||j||[];arts.forEach(a=>{if(a.title){searchData.push({title:a.title,icon:a.icon||'📄',url:'article.html?id='+(a.id||encodeURIComponent(a.title)),cat:a.categoryName||a.categoryLabel||'攻略',type:'article'})}})}}
+  try{const r=await fetch('data/articles.json?t='+Date.now());if(r.ok){const j=await r.json();const arts=j.articles||j||[];arts.forEach(a=>{if(a.title){searchData.push({title:a.title,icon:a.icon||'📄',url:'articles/'+(a.id||encodeURIComponent(a.title))+'.html',cat:a.categoryName||a.categoryLabel||'攻略',type:'article'})}})}}
   catch(e){}
 }
 function doSearch(kw){
