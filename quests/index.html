@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="逃离塔科夫任务攻略大全，各商人任务详细说明和完成指南">
+<title>任务攻略 | 塔科夫攻略站</title>
+<meta name="baidu-site-verification" content="codeva-E78NFWmiO9" />
+<!-- Google Analytics placeholder -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-XXXXXXXXXX');
+</script>
+<style>
+:root{--bg1:#0a0c0f;--bg2:#111418;--bg3:#161b21;--border:#2a3540;--gold:#c8a96e;--gold3:#a07840;--text1:#eae0cc;--text2:#9aabb8;--text3:#5a7080;--green2:#6aaa7a;--red2:#c05050;--blue2:#4a80b0;--orange2:#e09050;--purple2:#9060d0;--font:'Segoe UI','Microsoft YaHei',sans-serif;--r:4px;--r2:8px}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg1);color:var(--text1);font-family:var(--font);line-height:1.6}
+::-webkit-scrollbar{width:5px}::-webkit-scrollbar-track{background:var(--bg2)}::-webkit-scrollbar-thumb{background:var(--gold3);border-radius:3px}
+a{text-decoration:none;color:inherit}
+.nav{position:sticky;top:0;z-index:1000;height:60px;background:rgba(10,12,15,.97);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 32px;gap:16px}
+.nav-logo{display:flex;align-items:center;gap:10px}
+.mark{width:32px;height:32px;background:linear-gradient(135deg,var(--gold),var(--gold3));border-radius:var(--r);display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:900;color:#07090b}
+.logo-name{font-size:17px;font-weight:800;letter-spacing:2px}.logo-name span{color:var(--gold)}
+.nav-links{display:flex;gap:2px;list-style:none;flex:1;justify-content:center}
+.nav-links a{padding:7px 12px;border-radius:var(--r);font-size:13px;color:var(--text2);white-space:nowrap}
+.nav-links a:hover{color:var(--text1);background:var(--bg3)}
+.nav-links a.active{color:var(--gold);background:rgba(200,169,110,.07)}
+.page-hero{background:linear-gradient(135deg,rgba(42,80,112,.15),rgba(22,27,33,.9));border-bottom:1px solid var(--border);padding:48px 32px}
+.page-hero-inner{max-width:1200px;margin:0 auto}
+.page-hero h1{font-size:32px;font-weight:900;margin-bottom:8px}.page-hero h1 span{color:var(--gold)}
+.page-hero p{font-size:14px;color:var(--text2)}
+.wrap{max-width:1200px;margin:0 auto;padding:40px 32px;display:grid;grid-template-columns:220px 1fr;gap:28px;align-items:start}
+/* 左侧商人菜单 */
+.merchants-sidebar{background:var(--bg3);border:1px solid var(--border);border-radius:var(--r2);overflow:hidden;position:sticky;top:80px}
+.sidebar-title{padding:12px 16px;background:var(--bg2);border-bottom:1px solid var(--border);font-size:12px;font-weight:700;color:var(--text3);letter-spacing:1px;text-transform:uppercase}
+.merchant-item{display:flex;align-items:center;gap:10px;padding:12px 16px;cursor:pointer;transition:all .2s;border-bottom:1px solid rgba(255,255,255,.04);border-left:3px solid transparent}
+.merchant-item:last-child{border-bottom:none}
+.merchant-item:hover{background:rgba(200,169,110,.04)}
+.merchant-item.on{background:rgba(200,169,110,.07);border-left-color:var(--gold)}
+.merchant-icon{font-size:18px}
+.merchant-name{font-size:13px;font-weight:600;color:var(--text2)}
+.merchant-item.on .merchant-name{color:var(--gold)}
+.merchant-count{margin-left:auto;font-size:10px;background:var(--bg2);border:1px solid var(--border);color:var(--text3);padding:1px 6px;border-radius:10px}
+/* 右侧内容 */
+.quests-main{}
+.quests-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;flex-wrap:wrap;gap:10px}
+.quests-header h2{font-size:20px;font-weight:700;display:flex;align-items:center;gap:8px}
+.quests-header h2::before{content:'';width:4px;height:22px;background:linear-gradient(180deg,var(--gold),transparent);border-radius:2px}
+.diff-filter{display:flex;gap:6px;flex-wrap:wrap}
+.d-btn{background:var(--bg3);border:1px solid var(--border);color:var(--text2);padding:5px 12px;border-radius:14px;font-size:11px;cursor:pointer;transition:all .2s}
+.d-btn:hover,.d-btn.on{background:rgba(200,169,110,.08);border-color:var(--gold);color:var(--gold)}
+/* 任务卡片 */
+.quest-list{display:flex;flex-direction:column;gap:12px}
+.qc{background:var(--bg3);border:1px solid var(--border);border-radius:var(--r2);overflow:hidden;transition:all .25s;cursor:pointer}
+.qc:hover{border-color:var(--gold)}
+.qc-hd{display:flex;align-items:center;justify-content:space-between;padding:14px 16px;gap:10px}
+.qc-left{flex:1;min-width:0}
+.qc-name{font-size:14px;font-weight:700;color:var(--text1);margin-bottom:4px}
+.qc-desc{font-size:12px;color:var(--text2)}
+.qc-right{display:flex;flex-direction:column;align-items:flex-end;gap:6px;flex-shrink:0}
+.qc-diff{font-size:9px;font-weight:800;padding:3px 9px;border-radius:3px;white-space:nowrap}
+.qc-expand{font-size:18px;color:var(--text3);transition:transform .25s}
+.qc.open .qc-expand{transform:rotate(90deg);color:var(--gold)}
+.qc-body{display:none;padding:0 16px 16px;border-top:1px solid var(--border)}
+.qc.open .qc-body{display:block}
+.qc-rewards{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px;margin-bottom:12px}
+.qr{font-size:11px;padding:4px 10px;border-radius:3px;display:flex;align-items:center;gap:4px}
+.qr-exp{background:rgba(200,169,110,.1);color:var(--gold)}
+.qr-rep{background:rgba(74,128,176,.15);color:var(--blue2)}
+.qr-item{background:rgba(74,140,92,.15);color:var(--green2)}
+.qc-guide{background:var(--bg2);border-radius:var(--r);padding:12px;font-size:12px;color:var(--text2);line-height:1.7}
+.qc-guide p{margin-bottom:6px}
+.qc-guide p:last-child{margin-bottom:0}
+/* 空状态 */
+.empty{text-align:center;padding:60px;color:var(--text3)}
+.footer{background:var(--bg2);border-top:1px solid var(--border);padding:24px 32px;margin-top:60px}
+.footer-inner{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;font-size:12px;color:var(--text3);flex-wrap:wrap;gap:8px}
+.footer-inner a:hover{color:var(--gold)}
+button{font-family:var(--font);cursor:pointer}
+.nav-right{display:flex;gap:8px;align-items:center;flex-shrink:0}
+.nav-search-btn{display:flex;align-items:center;gap:8px;background:var(--bg3);border:1px solid var(--border);color:var(--text2);padding:7px 14px;border-radius:var(--r);font-size:12px;transition:all .2s;white-space:nowrap}
+.nav-search-btn:hover{border-color:var(--gold);color:var(--gold)}
+.nav-burger{display:none;flex-direction:column;gap:5px;background:transparent;border:none;padding:4px}
+.nav-burger span{display:block;width:22px;height:2px;background:var(--text2);border-radius:2px}
+.mobile-menu{display:none;position:fixed;top:60px;left:0;right:0;background:rgba(10,12,15,.98);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);z-index:999;padding:12px 0}
+.mobile-menu.open{display:block}
+.mobile-menu a{display:flex;align-items:center;gap:10px;padding:12px 24px;font-size:14px;color:var(--text2);text-decoration:none;border-bottom:1px solid rgba(255,255,255,.03)}
+.mobile-menu a:hover{color:var(--gold);background:rgba(200,169,110,.05)}
+.search-ov{position:fixed;inset:0;background:rgba(0,0,0,.88);backdrop-filter:blur(8px);z-index:9999;display:flex;align-items:flex-start;justify-content:center;padding:80px 20px 20px;opacity:0;visibility:hidden;transition:all .25s}
+.search-ov.on{opacity:1;visibility:visible}
+.search-box{width:100%;max-width:640px}
+.sm-wrap{position:relative;margin-bottom:14px}
+.sm-icon{position:absolute;left:16px;top:50%;transform:translateY(-50%);font-size:20px;color:var(--gold);pointer-events:none}
+.sm-input{width:100%;background:var(--bg3);border:2px solid var(--gold);border-radius:var(--r2);padding:16px 52px;font-size:16px;color:var(--text1);outline:none;font-family:var(--font);box-shadow:0 0 32px rgba(200,169,110,.15)}
+.sm-input::placeholder{color:var(--text3)}
+.sm-esc{position:absolute;right:14px;top:50%;transform:translateY(-50%);background:var(--bg2);border:1px solid var(--border);color:var(--text2);width:36px;height:28px;border-radius:var(--r);display:flex;align-items:center;justify-content:center;font-size:10px;cursor:pointer;font-family:var(--mono)}
+.search-results{display:flex;flex-direction:column;gap:6px;max-height:300px;overflow-y:auto;margin-top:8px}
+.sr-item{display:flex;align-items:center;gap:12px;padding:10px 14px;background:var(--bg2);border-radius:var(--r);cursor:pointer;transition:all .2s;text-decoration:none;color:inherit}
+.sr-item:hover{background:var(--bg4);border-left:2px solid var(--gold)}
+.sr-icon{font-size:18px;flex-shrink:0}
+.sr-body{flex:1;min-width:0}
+.sr-title{font-size:13px;font-weight:600;color:var(--text1)}
+.sr-cat{font-size:10px;color:var(--text3)}
+.sr-empty{text-align:center;padding:24px;color:var(--text3);font-size:13px}
+.ver{font-size:10px;color:var(--text3);background:var(--bg3);border:1px solid var(--border);padding:2px 6px;border-radius:3px;font-family:var(--mono);margin-left:-4px}
+@media(max-width:900px){.nav-links{display:none}.wrap{grid-template-columns:1fr}.merchants-sidebar{position:static}.page-hero{padding:32px 16px}.wrap{padding:32px 16px}.nav-right{gap:4px}.nav-search-btn span{display:none}.nav-burger{display:flex}.search-ov{padding:60px 12px 12px}}
+@media(max-width:480px){.page-h1{font-size:20px}.page-sub{font-size:14px}.q-card{padding:12px}.q-name{font-size:13px}.q-desc{font-size:11px}.qs-list{gap:8px}}
+</style>
+</head>
+<body>
+<nav class="nav">
+  <a class="nav-logo" href="../index.html">
+    <div class="mark">⚔</div>
+    <span class="logo-name">TARKOV<span>GUIDE</span></span>
+    <span class="ver">v1.5.0</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="../index.html">🏠 首页</a></li>
+    <li><a href="../maps/">🗺️ 地图</a></li>
+    <li><a href="../ammo/">💊 弹药</a></li>
+    <li><a href="../loadouts/">🔫 武器</a></li>
+    <li><a href="../quests/">📋 任务</a></li>
+    <li><a href="../articles/">📰 攻略</a></li>
+  </ul>
+  <div class="nav-right">
+    <button class="nav-search-btn" onclick="openSearch()">🔍 搜索 <kbd>Ctrl+K</kbd></button>
+    <button class="nav-burger" onclick="toggleMenu()" id="burgerBtn"><span></span><span></span><span></span></button>
+    <a class="nav-back" href="../articles/">← 返回</a>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="../index.html">🏠 首页</a>
+  <a href="../maps/">🗺️ 地图攻略</a>
+  <a href="../ammo/">💊 弹药数据</a>
+  <a href="../loadouts/">🔫 武器配装</a>
+  <a href="../quests/">📋 任务攻略</a>
+  <a href="../articles/">📰 全部攻略</a>
+</div>
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <h1>📋 任务<span>攻略</span></h1>
+    <p>全商人任务攻略 · 详细步骤 · 奖励说明 · 点击任务卡片展开详情</p>
+  </div>
+<div class="wrap">
+<div class="merchants-sidebar">
+<div class="sidebar-title">选择商人</div>
+<div id="merchantList"><div class="merchant-item on" onclick="selectMerchant('', '全部任务')"><span class="merchant-icon">📋</span><span class="merchant-name">全部任务</span><span class="merchant-count">18</span></div><div class="merchant-item " onclick="selectMerchant('帕帕', '帕帕')"><span class="merchant-icon">🦔</span><span class="merchant-name">帕帕</span><span class="merchant-count">4</span></div><div class="merchant-item " onclick="selectMerchant('机修工', '机修工')"><span class="merchant-icon">🔧</span><span class="merchant-name">机修工</span><span class="merchant-count">3</span></div><div class="merchant-item " onclick="selectMerchant('治疗者', '治疗者')"><span class="merchant-icon">🩺</span><span class="merchant-name">治疗者</span><span class="merchant-count">3</span></div><div class="merchant-item " onclick="selectMerchant('和平卫士', '和平卫士')"><span class="merchant-icon">🎖️</span><span class="merchant-name">和平卫士</span><span class="merchant-count">3</span></div><div class="merchant-item " onclick="selectMerchant('铁路员', '铁路员')"><span class="merchant-icon">🚂</span><span class="merchant-name">铁路员</span><span class="merchant-count">3</span></div><div class="merchant-item " onclick="selectMerchant('犹大', '犹大')"><span class="merchant-icon">👨‍💼</span><span class="merchant-name">犹大</span><span class="merchant-count">2</span></div></div>
+</div>
+<div class="quests-main">
+<div class="quests-header">
+<h2 id="currentMerchantTitle">全部任务</h2>
+<div class="diff-filter">
+<button class="d-btn on" onclick="filterDiff(this,'')">全部</button>
+<button class="d-btn" onclick="filterDiff(this,'简单')">🟢 简单</button>
+<button class="d-btn" onclick="filterDiff(this,'中等')">🟡 中等</button>
+<button class="d-btn" onclick="filterDiff(this,'困难')">🔴 困难</button>
+<button class="d-btn" onclick="filterDiff(this,'极难')">💀 极难</button>
+</div>
+</div>
+<div class="quest-list" id="questList"><div class="qc" id="qc0">
+<div class="qc-hd" onclick="toggleQ(0)">
+<div class="qc-left">
+<div class="qc-name">肮脏的商业行为</div>
+<div class="qc-desc">在海关地图找到3个台式电脑，带出指定数据存储设备</div></div>
+<div class="qc-right">
+<span class="qc-diff" style="background:rgba(74,140,92,.2);color:#6aaa7a">简单</span>
+<span>🦔 帕帕</span></div>
+<span class="qc-expand">›</span></div>
+<div class="qc-body">
+<div class="qc-rewards">
+<span class="qr qr-exp">⭐ 7800 EXP</span>
+<span class="qr qr-rep">📈 声誉 +0.02</span>
+<span class="qr qr-item">🎁 AK-74N</span>
+</div>
+<div class="qc-guide"><p>前往海关三层宿舍，在办公室和居住区寻找台式电脑。找到后互动获取存储设备，带出即可。从工厂出口撤离最安全。建议轻装进入。</p></div>
+</div></div><div class="qc" id="qc1">
+<div class="qc-hd" onclick="toggleQ(1)">
+<div class="qc-left">
+<div class="qc-name">工厂突袭</div>
+<div class="qc-desc">在工厂地图击杀5名SCAV卫兵，不能死亡才算完成</div></div>
+<div class="qc-right">
+<span class="qc-diff" style="background:rgba(192,112,48,.2);color:#e09050">中等</span>
+<span>🦔 帕帕</span></div>
+<span class="qc-expand">›</span></div>
+<div class="qc-body">
+<div class="qc-rewards">
+<span class="qr qr-exp">⭐ 12400 EXP</span>
+<span class="qr qr-rep">📈 声誉 +0.04</span>
+<span class="qr qr-item">🎁 防弹背心</span>
+</div>
+<div class="qc-guide"><p>进入工厂地图，SCAV分布在各个角落。建议使用冲锋枪近距离作战，注意不要被玩家突袭。完成后从办公楼出口撤离。建议携带止痛药。</p></div>
+</div></div><div class="qc" id="qc2">
+<div class="qc-hd" onclick="toggleQ(2)">
+<div class="qc-left">
+<div class="qc-name">波兰式清扫</div>
+<div class="qc-desc">使用AK系列武器击杀10名SCAV</div></div>
+<div class="qc-right">
+<span class="qc-diff" style="background:rgba(192,112,48,.2);color:#e09050">中等</span>
+<span>🦔 帕帕</span></div>
+<span class="qc-expand">›</span></div>
+<div class="qc-body">
+<div class="qc-rewards">
+<span class="qr qr-exp">⭐ 9600 EXP</span>
+<span class="qr qr-rep">📈 声誉 +0.03</span>
+<span class="qr qr-item">🎁 6B43防弹甲</span>
+</div>
+<div class="qc-guide"><p>建议使用AK-74N，装填BP或BT弹药。在海关或森林地图效率最高，SCAV数量多且分布广。注意不要误伤PMC。</p></div>
+</div></div><div class="qc" id="qc3">
+<div class="qc-hd" onclick="toggleQ(3)">
+<div class="qc-left">
+<div class="qc-name">惩罚者</div>
+<div class="qc-desc">在森林地图使用消音武器击杀5名PMC</div></div>
+<div class="qc-right">
+<span class="qc-diff" style="background:rgba(192,80,80,.2);color:#c05050">困难</span>
+<span>🦔 帕帕</span></div>
+<span class="qc-expand">›</span></div>
+<div class="qc-body">
+<div class="qc-rewards">
+<span class="qr qr-exp">⭐ 22000 EXP</span>
+<span class="qr qr-rep">📈 声誉 +0.06</span>
+<span class="qr qr-item">🎁 Epsilon安全箱</span>
+</div>
+<div class="qc-guide"><p>建议使用VSS或AS VAL自带消音器的武器。森林地图开阔，注意利用地形。建议组队完成，单人难度较高。</p></div>
+</div></div><div class="qc" id="qc4">
+<div class="qc-hd" onclick="toggleQ(4)">
+<div class="qc-left">
+<div class="qc-name">关键情报</div>
+<div class="qc-desc">从储备基地的地下室找到情报文件，需要钥匙RB-AK</div></div>
+<div class="qc-right">
+<span class="qc-diff" style="background:rgba(192,80,80,.2);color:#c05050">困难</span>
+<span>🔧 机修工</span></div>
+<span class="qc-expand">›</span></div>
+<div class="qc-body">
+<div class="qc-rewards">
+<span class="qr qr-exp">⭐ 24800 EXP</span>
+<span class="qr qr-rep">📈 声誉 +0.07</span>
+<span class="qr qr-item">🎁 60发弹匣×4</span>
+</div>
+<div class="qc-guide"><p>先从跳蚤市场获取RB-AK钥匙。进入储备基地后前往地下停机坪附近的储藏室，开锁后在货架上找到情报文件。</p></div>
+</div></div><div class="qc" id="qc5">
+<div class="qc-hd" onclick="toggleQ(5)">
+<div class="qc-left">
+<div class="qc-name">零件收集</div>
+<div class="qc-desc">收集散落在海关地图的机械零件并交给机修工</div></div>
+<div class="qc-right">
+<span class="qc-diff" style="background:rgba(74,140,92,.2);color:#6aaa7a">简单</span>
+<span>🔧 机修工</span></div>
+<span class="qc-expand">›</span></div>
+<div class="qc-body">
+<div class="qc-rewards">
+<span class="qr qr-exp">⭐ 5800 EXP</span>
+<span class="qr qr-rep">📈 声誉 +0.02</span>
+<span class="qr qr-item">🎁 工具箱</span>
+</div>
+<div class="qc-guide"><p>机械零件可以在海关工厂区域、维修车间和停车场找到。总共需要收集5个，注意带足背包容量。</p></div>
+</div></div><div class="qc" id="qc6">
+<div class="qc-hd" onclick="toggleQ(6)">
+<div class="qc-left">
+<div class="qc-name">信号</div>
+<div class="qc-desc">在海岸线安装3个信号干扰器</div></div>
+<div class="qc-right">
+<span class="qc-diff" style="background:rgba(192,112,48,.2);color:#e09050">中等</span>
+<span>🔧 机修工</span></div>
+<span class="qc-expand">›</span></div>
+<div class="qc-body">
+<div class="qc-rewards">
+<span class="qr qr-exp">⭐ 18200 EXP</span>
+<span class="qr qr-rep">📈 声誉 +0.05</span>
+<span class="qr qr-item">🎁 情报文件夹</span>
+</div>
+<div class="qc-guide"><p>信号干扰器安装位置：气象站屋顶、码头仓库、度假村3楼阳台。每安装一个后需等待30秒信号传输。注意Boss桑塔在度假村巡逻。</p></div>
+</div></div><div class="qc" id="qc7">
+<div class="qc-hd" onclick="toggleQ(7)">
+<div class="qc-left">
+<div class="qc-name">医疗物资收集</div>
+<div class="qc-desc">收集5个SALEWA急救包并成功撤离，建议在海岸线医院寻找</div></div>
+<div class="qc-right">
+<span class="qc-diff" style="background:rgba(74,140,92,.2);color:#6aaa7a">简单</span>
+<span>🩺 治疗者</span></div>
+<span class="qc-expand">›</span></div>
+<div class="qc-body">
+<div class="qc-rewards">
+<span class="qr qr-exp">⭐ 5200 EXP</span>
+<span class="qr qr-rep">📈 声誉 +0.02</span>
+<span class="qr qr-item">🎁 医疗箱×3</span>
+</div>
+<div class="qc-guide"><p>前往海岸线度假村的医院区域，SALEWA多在医疗柜和急救箱中。地图较大注意规划撤离路线。建议带足够止痛药。</p></div>
+</div></div><div class="qc" id="qc8">
+<div class="qc-hd" onclick="toggleQ(8)">
+<div class="qc-left">
+<div class="qc-name">私人诊所</div>
+<div class="qc-desc">在实验室找到3个LEDX皮肤传感器</div></div>
+<div class="qc-right">
+<span class="qc-diff" style="background:rgba(192,80,80,.2);color:#c05050">困难</span>
+<span>🩺 治疗者</span></div>
+<span class="qc-expand">›</span></div>
+<div class="qc-body">
+<div class="qc-rewards">
+<span class="qr qr-exp">⭐ 32000 EXP</span>
+<span class="qr qr-rep">📈 声誉 +0.08</span>
+<span class="qr qr-item">🎁 THICC医疗箱</span>
+</div>
+<div class="qc-guide"><p>LEDX在实验室的医疗区和注射器实验室刷新。需要实验室通行证。建议组队进入，狂人Boss威胁很大。成功撤离后收益极高。</p></div>
+</div></div><div class="qc" id="qc9">
+<div class="qc-hd" onclick="toggleQ(9)">
+<div class="qc-left">
+<div class="qc-name">健康生活</div>
+<div class="qc-desc">从各种地图收集指定药品并上交</div></div>
+<div class="qc-right">
+<span class="qc-diff" style="background:rgba(192,112,48,.2);color:#e09050">中等</span>
+<span>🩺 治疗者</span></div>
+<span class="qc-expand">›</span></div>
+<div class="qc-body">
+<div class="qc-rewards">
+<span class="qr qr-exp">⭐ 14500 EXP</span>
+<span class="qr qr-rep">📈 声誉 +0.04</span>
+<span class="qr qr-item">🎁 医疗包×5</span>
+</div>
+<div class="qc-guide"><p>需要收集：吗啡×3、急救包×5、止痛药×3。在海岸线医院和海关宿舍最容易找到。建议一次性收集完成后一并上交。</p></div>
+</div></div><div class="qc" id="qc10">
+<div class="qc-hd" onclick="toggleQ(10)">
+<div class="qc-left">
+<div class="qc-name">最后的边界</div>
+<div class="qc-desc">在实验室击杀狂人Boss并带出其狗牌，生存状态撤离</div></div>
+<div class="qc-right">
+<span class="qc-diff" style="background:rgba(144,48,200,.2);color:#9060d0">极难</span>
+<span>🎖️ 和平卫士</span></div>
+<span class="qc-expand">›</span></div>
+<div class="qc-body">
+<div class="qc-rewards">
+<span class="qr qr-exp">⭐ 68000 EXP</span>
+<span class="qr qr-rep">📈 声誉 +0.15</span>
+<span class="qr qr-item">🎁 顶级装备箱</span>
+</div>
+<div class="qc-guide"><p>需要实验室通行证才能进入。建议组队4人以上，全员高配装备。狂人会在地图随机位置巡逻，击杀后拾取狗牌，从飞机库（需4人激活）撤离。</p></div>
+</div></div><div class="qc" id="qc11">
+<div class="qc-hd" onclick="toggleQ(11)">
+<div class="qc-left">
+<div class="qc-name">和平协议</div>
+<div class="qc-desc">在森林地图找到并消灭沙皇Boss的手下</div></div>
+<div class="qc-right">
+<span class="qc-diff" style="background:rgba(192,112,48,.2);color:#e09050">中等</span>
+<span>🎖️ 和平卫士</span></div>
+<span class="qc-expand">›</span></div>
+<div class="qc-body">
+<div class="qc-rewards">
+<span class="qr qr-exp">⭐ 18000 EXP</span>
+<span class="qr qr-rep">📈 声誉 +0.05</span>
+<span class="qr qr-item">🎁 M4A1改装版</span>
+</div>
+<div class="qc-guide"><p>沙皇Boss率领4-6名手下在森林地图巡逻。建议使用狙击枪远程解决，注意开阔地带的视野优势。击杀后搜刮狗牌作为证明。</p></div>
+</div></div><div class="qc" id="qc12">
+<div class="qc-hd" onclick="toggleQ(12)">
+<div class="qc-left">
+<div class="qc-name">捕鱼行动</div>
+<div class="qc-desc">在海关地图的油罐区消灭5名身着重型护甲的敌人</div></div>
+<div class="qc-right">
+<span class="qc-diff" style="background:rgba(192,80,80,.2);color:#c05050">困难</span>
+<span>🎖️ 和平卫士</span></div>
+<span class="qc-expand">›</span></div>
+<div class="qc-body">
+<div class="qc-rewards">
+<span class="qr qr-exp">⭐ 28000 EXP</span>
+<span class="qr qr-rep">📈 声誉 +0.07</span>
+<span class="qr qr-item">🎁 M995弹药×120发</span>
+</div>
+<div class="qc-guide"><p>油罐区是海关的中心区域，重型护甲敌人通常携带高穿透弹药。建议使用M61或7N39等高穿透弹药。注意屋顶可能有狙击手埋伏。</p></div>
+</div></div><div class="qc" id="qc13">
+<div class="qc-hd" onclick="toggleQ(13)">
+<div class="qc-left">
+<div class="qc-name">铁路巡逻</div>
+<div class="qc-desc">在储备基地标记3个铁路信号点</div></div>
+<div class="qc-right">
+<span class="qc-diff" style="background:rgba(192,112,48,.2);color:#e09050">中等</span>
+<span>🚂 铁路员</span></div>
+<span class="qc-expand">›</span></div>
+<div class="qc-body">
+<div class="qc-rewards">
+<span class="qr qr-exp">⭐ 15600 EXP</span>
+<span class="qr qr-rep">📈 声誉 +0.05</span>
+<span class="qr qr-item">🎁 弹药箱×2</span>
+</div>
+<div class="qc-guide"><p>储备基地内有3个铁路信号点，分别位于地图北侧、中部铁路和南侧站台。每个信号点互动后标记完成。注意格鲁特Boss可能在附近出没。</p></div>
+</div></div><div class="qc" id="qc14">
+<div class="qc-hd" onclick="toggleQ(14)">
+<div class="qc-left">
+<div class="qc-name">车辆调度</div>
+<div class="qc-desc">在灯塔地图激活并护送装甲列车</div></div>
+<div class="qc-right">
+<span class="qc-diff" style="background:rgba(192,80,80,.2);color:#c05050">困难</span>
+<span>🚂 铁路员</span></div>
+<span class="qc-expand">›</span></div>
+<div class="qc-body">
+<div class="qc-rewards">
+<span class="qr qr-exp">⭐ 36000 EXP</span>
+<span class="qr qr-rep">📈 声誉 +0.09</span>
+<span class="qr qr-item">🎁 铁路钥匙串</span>
+</div>
+<div class="qc-guide"><p>灯塔地图地图装甲列车需要信号弹激活。护送过程中会有大量SCAV和教徒Boss的攻击。建议组队4人分工合作，一人开车，三人防守。</p></div>
+</div></div><div class="qc" id="qc15">
+<div class="qc-hd" onclick="toggleQ(15)">
+<div class="qc-left">
+<div class="qc-name">快递服务</div>
+<div class="qc-desc">在工厂地图的保险箱中取出任务包裹</div></div>
+<div class="qc-right">
+<span class="qc-diff" style="background:rgba(74,140,92,.2);color:#6aaa7a">简单</span>
+<span>🚂 铁路员</span></div>
+<span class="qc-expand">›</span></div>
+<div class="qc-body">
+<div class="qc-rewards">
+<span class="qr qr-exp">⭐ 6800 EXP</span>
+<span class="qr qr-rep">📈 声誉 +0.02</span>
+<span class="qr qr-item">🎁 文件袋</span>
+</div>
+<div class="qc-guide"><p>工厂的保险箱在办公楼2楼。需要钥匙Factory Key。取到包裹后直接从最近出口撤离。工厂地图小但要防备PMC。</p></div>
+</div></div><div class="qc" id="qc16">
+<div class="qc-hd" onclick="toggleQ(16)">
+<div class="qc-left">
+<div class="qc-name">服装设计</div>
+<div class="qc-desc">收集5件不同款式的战术背心并上交</div></div>
+<div class="qc-right">
+<span class="qc-diff" style="background:rgba(192,112,48,.2);color:#e09050">中等</span>
+<span>👨‍💼 犹大</span></div>
+<span class="qc-expand">›</span></div>
+<div class="qc-body">
+<div class="qc-rewards">
+<span class="qr qr-exp">⭐ 19000 EXP</span>
+<span class="qr qr-rep">📈 声誉 +0.05</span>
+<span class="qr qr-item">🎁 战术胸挂</span>
+</div>
+<div class="qc-guide"><p>战术背心在海关、储备站等地图的军事区域和Boss身上可以找到。不同款式包括：6B2、6B3、6B5、6B13、6B23。建议击杀玩家PMC获取。</p></div>
+</div></div><div class="qc" id="qc17">
+<div class="qc-hd" onclick="toggleQ(17)">
+<div class="qc-left">
+<div class="qc-name">逃离</div>
+<div class="qc-desc">连续撤离5次不同地图且每次击杀不少于2名敌人</div></div>
+<div class="qc-right">
+<span class="qc-diff" style="background:rgba(144,48,200,.2);color:#9060d0">极难</span>
+<span>👨‍💼 犹大</span></div>
+<span class="qc-expand">›</span></div>
+<div class="qc-body">
+<div class="qc-rewards">
+<span class="qr qr-exp">⭐ 75000 EXP</span>
+<span class="qr qr-rep">📈 声誉 +0.15</span>
+<span class="qr qr-item">🎁 装备箱</span>
+</div>
+<div class="qc-guide"><p>建议选择熟悉的地图轮换：海关 → 森林 → 互换 → 储备站 → 海岸线。每次配装要稳定，不要冒进。建议组队降低难度。</p></div>
+</div></div></div>
+</div>
+</div>
+<div class="search-ov" id="searchOv" onclick="closeSearchOv(event)">
+  <div class="search-box" onclick="event.stopPropagation()">
+    <div class="sm-wrap">
+      <span class="sm-icon">🔍</span>
+      <input class="sm-input" id="smInput" placeholder="搜索地图、武器、弹药、任务..." oninput="doSearch(this.value)">
+      <div class="sm-esc" onclick="closeSearch()">ESC</div>
+<footer class="footer">
+  <div class="footer-inner">
+    <span>© 2024 TarkovGuide · <a href="../index.html">返回首页</a></span>
+    <span><a href="../privacy.html">隐私政策</a> · <a href="../terms.html">服务条款</a> · <a href="../about.html">关于我们</a></span>
+  </div>
+</footer>
+<script>
+
+const searchData=[{"title": "肮脏的商业行为", "icon": "🦔", "url": "../quests/", "cat": "任务"}, {"title": "工厂突袭", "icon": "🦔", "url": "../quests/", "cat": "任务"}, {"title": "波兰式清扫", "icon": "🦔", "url": "../quests/", "cat": "任务"}, {"title": "惩罚者", "icon": "🦔", "url": "../quests/", "cat": "任务"}, {"title": "关键情报", "icon": "🔧", "url": "../quests/", "cat": "任务"}, {"title": "零件收集", "icon": "🔧", "url": "../quests/", "cat": "任务"}, {"title": "信号", "icon": "🔧", "url": "../quests/", "cat": "任务"}, {"title": "医疗物资收集", "icon": "🩺", "url": "../quests/", "cat": "任务"}, {"title": "私人诊所", "icon": "🩺", "url": "../quests/", "cat": "任务"}, {"title": "健康生活", "icon": "🩺", "url": "../quests/", "cat": "任务"}, {"title": "最后的边界", "icon": "🎖️", "url": "../quests/", "cat": "任务"}, {"title": "和平协议", "icon": "🎖️", "url": "../quests/", "cat": "任务"}, {"title": "捕鱼行动", "icon": "🎖️", "url": "../quests/", "cat": "任务"}, {"title": "铁路巡逻", "icon": "🚂", "url": "../quests/", "cat": "任务"}, {"title": "车辆调度", "icon": "🚂", "url": "../quests/", "cat": "任务"}, {"title": "快递服务", "icon": "🚂", "url": "../quests/", "cat": "任务"}, {"title": "服装设计", "icon": "👨‍💼", "url": "../quests/", "cat": "任务"}, {"title": "逃离", "icon": "👨‍💼", "url": "../quests/", "cat": "任务"}];
+function doSearch(kw){
+  kw=kw.trim().toLowerCase();
+  const el=document.getElementById('searchResults');
+  if(!kw){el.style.display='none';return}
+  const results=searchData.filter(s=>s.title.toLowerCase().includes(kw)).slice(0,8);
+  if(!results.length){el.style.display='block';el.innerHTML='<div class="sr-empty">未找到相关内容</div>';return}
+  el.style.display='block';
+  el.innerHTML=results.map(r=>'<a href="'+r.url+'" class="sr-item"><span class="sr-icon">'+r.icon+'</span><div class="sr-body"><div class="sr-title">'+r.title+'</div><span class="sr-cat">'+r.cat+'</span></div></a>').join('');
+}
+initSearch=function(){};
+
+
+function toggleMenu(){document.getElementById('mobileMenu').classList.toggle('open')}
+function openSearch(){document.getElementById('searchOv').classList.add('on');setTimeout(()=>document.getElementById('smInput')?.focus(),100)}
+function closeSearch(){document.getElementById('searchOv').classList.remove('on');document.getElementById('searchResults').style.display='none'}
+function closeSearchOv(e){if(e.target===document.getElementById('searchOv'))closeSearch()}
+document.addEventListener('keydown',function(e){if((e.ctrlKey||e.metaKey)&&e.key==='k'){e.preventDefault();openSearch()}if(e.key==='Escape')closeSearch()});
+
+
+const allQuests = [{"name": "肮脏的商业行为", "difficulty": "easy", "diffLabel": "简单", "merchant": "帕帕", "merchantIcon": "🦔", "description": "在海关地图找到3个台式电脑，带出指定数据存储设备", "exp": "7,800 EXP", "rep": "+0.02", "itemReward": "AK-74N", "guide": "前往海关三层宿舍，在办公室和居住区寻找台式电脑。找到后互动获取存储设备，带出即可。从工厂出口撤离最安全。建议轻装进入。"}, {"name": "工厂突袭", "difficulty": "medium", "diffLabel": "中等", "merchant": "帕帕", "merchantIcon": "🦔", "description": "在工厂地图击杀5名SCAV卫兵，不能死亡才算完成", "exp": "12,400 EXP", "rep": "+0.04", "itemReward": "防弹背心", "guide": "进入工厂地图，SCAV分布在各个角落。建议使用冲锋枪近距离作战，注意不要被玩家突袭。完成后从办公楼出口撤离。建议携带止痛药。"}, {"name": "波兰式清扫", "difficulty": "medium", "diffLabel": "中等", "merchant": "帕帕", "merchantIcon": "🦔", "description": "使用AK系列武器击杀10名SCAV", "exp": "9,600 EXP", "rep": "+0.03", "itemReward": "6B43防弹甲", "guide": "建议使用AK-74N，装填BP或BT弹药。在海关或森林地图效率最高，SCAV数量多且分布广。注意不要误伤PMC。"}, {"name": "惩罚者", "difficulty": "hard", "diffLabel": "困难", "merchant": "帕帕", "merchantIcon": "🦔", "description": "在森林地图使用消音武器击杀5名PMC", "exp": "22,000 EXP", "rep": "+0.06", "itemReward": "Epsilon安全箱", "guide": "建议使用VSS或AS VAL自带消音器的武器。森林地图开阔，注意利用地形。建议组队完成，单人难度较高。"}, {"name": "关键情报", "difficulty": "hard", "diffLabel": "困难", "merchant": "机修工", "merchantIcon": "🔧", "description": "从储备基地的地下室找到情报文件，需要钥匙RB-AK", "exp": "24,800 EXP", "rep": "+0.07", "itemReward": "60发弹匣×4", "guide": "先从跳蚤市场获取RB-AK钥匙。进入储备基地后前往地下停机坪附近的储藏室，开锁后在货架上找到情报文件。"}, {"name": "零件收集", "difficulty": "easy", "diffLabel": "简单", "merchant": "机修工", "merchantIcon": "🔧", "description": "收集散落在海关地图的机械零件并交给机修工", "exp": "5,800 EXP", "rep": "+0.02", "itemReward": "工具箱", "guide": "机械零件可以在海关工厂区域、维修车间和停车场找到。总共需要收集5个，注意带足背包容量。"}, {"name": "信号", "difficulty": "medium", "diffLabel": "中等", "merchant": "机修工", "merchantIcon": "🔧", "description": "在海岸线安装3个信号干扰器", "exp": "18,200 EXP", "rep": "+0.05", "itemReward": "情报文件夹", "guide": "信号干扰器安装位置：气象站屋顶、码头仓库、度假村3楼阳台。每安装一个后需等待30秒信号传输。注意Boss桑塔在度假村巡逻。"}, {"name": "医疗物资收集", "difficulty": "easy", "diffLabel": "简单", "merchant": "治疗者", "merchantIcon": "🩺", "description": "收集5个SALEWA急救包并成功撤离，建议在海岸线医院寻找", "exp": "5,200 EXP", "rep": "+0.02", "itemReward": "医疗箱×3", "guide": "前往海岸线度假村的医院区域，SALEWA多在医疗柜和急救箱中。地图较大注意规划撤离路线。建议带足够止痛药。"}, {"name": "私人诊所", "difficulty": "hard", "diffLabel": "困难", "merchant": "治疗者", "merchantIcon": "🩺", "description": "在实验室找到3个LEDX皮肤传感器", "exp": "32,000 EXP", "rep": "+0.08", "itemReward": "THICC医疗箱", "guide": "LEDX在实验室的医疗区和注射器实验室刷新。需要实验室通行证。建议组队进入，狂人Boss威胁很大。成功撤离后收益极高。"}, {"name": "健康生活", "difficulty": "medium", "diffLabel": "中等", "merchant": "治疗者", "merchantIcon": "🩺", "description": "从各种地图收集指定药品并上交", "exp": "14,500 EXP", "rep": "+0.04", "itemReward": "医疗包×5", "guide": "需要收集：吗啡×3、急救包×5、止痛药×3。在海岸线医院和海关宿舍最容易找到。建议一次性收集完成后一并上交。"}, {"name": "最后的边界", "difficulty": "extreme", "diffLabel": "极难", "merchant": "和平卫士", "merchantIcon": "🎖️", "description": "在实验室击杀狂人Boss并带出其狗牌，生存状态撤离", "exp": "68,000 EXP", "rep": "+0.15", "itemReward": "顶级装备箱", "guide": "需要实验室通行证才能进入。建议组队4人以上，全员高配装备。狂人会在地图随机位置巡逻，击杀后拾取狗牌，从飞机库（需4人激活）撤离。"}, {"name": "和平协议", "difficulty": "medium", "diffLabel": "中等", "merchant": "和平卫士", "merchantIcon": "🎖️", "description": "在森林地图找到并消灭沙皇Boss的手下", "exp": "18,000 EXP", "rep": "+0.05", "itemReward": "M4A1改装版", "guide": "沙皇Boss率领4-6名手下在森林地图巡逻。建议使用狙击枪远程解决，注意开阔地带的视野优势。击杀后搜刮狗牌作为证明。"}, {"name": "捕鱼行动", "difficulty": "hard", "diffLabel": "困难", "merchant": "和平卫士", "merchantIcon": "🎖️", "description": "在海关地图的油罐区消灭5名身着重型护甲的敌人", "exp": "28,000 EXP", "rep": "+0.07", "itemReward": "M995弹药×120发", "guide": "油罐区是海关的中心区域，重型护甲敌人通常携带高穿透弹药。建议使用M61或7N39等高穿透弹药。注意屋顶可能有狙击手埋伏。"}, {"name": "铁路巡逻", "difficulty": "medium", "diffLabel": "中等", "merchant": "铁路员", "merchantIcon": "🚂", "description": "在储备基地标记3个铁路信号点", "exp": "15,600 EXP", "rep": "+0.05", "itemReward": "弹药箱×2", "guide": "储备基地内有3个铁路信号点，分别位于地图北侧、中部铁路和南侧站台。每个信号点互动后标记完成。注意格鲁特Boss可能在附近出没。"}, {"name": "车辆调度", "difficulty": "hard", "diffLabel": "困难", "merchant": "铁路员", "merchantIcon": "🚂", "description": "在灯塔地图激活并护送装甲列车", "exp": "36,000 EXP", "rep": "+0.09", "itemReward": "铁路钥匙串", "guide": "灯塔地图地图装甲列车需要信号弹激活。护送过程中会有大量SCAV和教徒Boss的攻击。建议组队4人分工合作，一人开车，三人防守。"}, {"name": "快递服务", "difficulty": "easy", "diffLabel": "简单", "merchant": "铁路员", "merchantIcon": "🚂", "description": "在工厂地图的保险箱中取出任务包裹", "exp": "6,800 EXP", "rep": "+0.02", "itemReward": "文件袋", "guide": "工厂的保险箱在办公楼2楼。需要钥匙Factory Key。取到包裹后直接从最近出口撤离。工厂地图小但要防备PMC。"}, {"name": "服装设计", "difficulty": "medium", "diffLabel": "中等", "merchant": "犹大", "merchantIcon": "👨‍💼", "description": "收集5件不同款式的战术背心并上交", "exp": "19,000 EXP", "rep": "+0.05", "itemReward": "战术胸挂", "guide": "战术背心在海关、储备站等地图的军事区域和Boss身上可以找到。不同款式包括：6B2、6B3、6B5、6B13、6B23。建议击杀玩家PMC获取。"}, {"name": "逃离", "difficulty": "extreme", "diffLabel": "极难", "merchant": "犹大", "merchantIcon": "👨‍💼", "description": "连续撤离5次不同地图且每次击杀不少于2名敌人", "exp": "75,000 EXP", "rep": "+0.15", "itemReward": "装备箱", "guide": "建议选择熟悉的地图轮换：海关 → 森林 → 互换 → 储备站 → 海岸线。每次配装要稳定，不要冒进。建议组队降低难度。"}];
+const MERCHANTS = [{"name": "全部任务", "icon": "📋", "key": ""}, {"name": "帕帕", "icon": "🦔", "key": "帕帕"}, {"name": "机修工", "icon": "🔧", "key": "机修工"}, {"name": "治疗者", "icon": "🩺", "key": "治疗者"}, {"name": "和平卫士", "icon": "🎖️", "key": "和平卫士"}, {"name": "铁路员", "icon": "🚂", "key": "铁路员"}, {"name": "犹大", "icon": "👨‍💼", "key": "犹大"}];
+const diffStyle = {"简单": "background:rgba(74,140,92,.2);color:#6aaa7a", "中等": "background:rgba(192,112,48,.2);color:#e09050", "困难": "background:rgba(192,80,80,.2);color:#c05050", "极难": "background:rgba(144,48,200,.2);color:#9060d0", "easy": "background:rgba(74,140,92,.2);color:#6aaa7a", "medium": "background:rgba(192,112,48,.2);color:#e09050", "hard": "background:rgba(192,80,80,.2);color:#c05050", "extreme": "background:rgba(144,48,200,.2);color:#9060d0"};
+let merchantFilter='',diffFilter='';
+
+function renderMerchants(){
+  document.getElementById('merchantList').innerHTML=MERCHANTS.map(m=>{
+    const count=m.key?allQuests.filter(q=>(q.merchant||'').includes(m.key)).length:allQuests.length;
+    return '<div class="merchant-item '+(merchantFilter===m.key?'on':'')+'" onclick="selectMerchant(\''+m.key+'\',\''+m.name+'\')"><span class="merchant-icon">'+m.icon+'</span><span class="merchant-name">'+m.name+'</span><span class="merchant-count">'+count+'</span></div>';
+  }).join('');
+}
+function selectMerchant(key,name){merchantFilter=key;document.getElementById('currentMerchantTitle').textContent=name==='全部任务'?'全部任务':name+' 的任务';renderMerchants();renderQuests()}
+
+function renderQuests(){
+  let data=[...allQuests];
+  if(merchantFilter) data=data.filter(q=>(q.merchant||'').includes(merchantFilter));
+  if(diffFilter) data=data.filter(q=>q.difficulty===diffFilter||q.diffLabel===diffFilter);
+  if(!data.length){document.getElementById('questList').innerHTML='<div class="empty">暂无相关任务数据</div>';return;}
+  document.getElementById('questList').innerHTML=data.map((q,i)=>{
+    const diff=q.diffLabel||q.difficulty||'';
+    const desc=q.description||q.desc||'';
+    const reward=q.itemReward||q.rewardItem||'';
+    const exp=q.exp?String(parseInt((q.exp+'').replace(/[^\d]/g,''))||0):'';
+    const rep=q.rep||'';
+    const guide=q.guide||'暂无详细攻略';
+    return '<div class="qc" id="qc'+i+'"><div class="qc-hd" onclick="toggleQ('+i+')"><div class="qc-left"><div class="qc-name">'+q.name+'</div><div class="qc-desc">'+desc+'</div></div><div class="qc-right"><span class="qc-diff" style="'+(diffStyle[diff]||'')+'">'+diff+'</span><span>'+(q.merchantIcon||'')+' '+(q.merchant||'')+'</span></div><span class="qc-expand">›</span></div><div class="qc-body"><div class="qc-rewards">'+(exp?'<span class="qr qr-exp">⭐ '+exp+' EXP</span>':'')+(rep?'<span class="qr qr-rep">📈 声誉 '+rep+'</span>':'')+(reward?'<span class="qr qr-item">🎁 '+reward+'</span>':'')+'</div><div class="qc-guide">'+guide.split(String.fromCharCode(10)).map(l=>l.trim()?'<p>'+l+'</p>':'').join('')+'</div></div></div>';
+  }).join('');
+}
+function toggleQ(i){var el=document.getElementById('qc'+i);el.classList.toggle('open')}
+function filterDiff(btn,d){diffFilter=d;document.querySelectorAll('.d-btn').forEach(b=>b.classList.remove('on'));btn.classList.add('on');renderQuests()}
+initSearch();
+
+</script>
+</body>
+</html>

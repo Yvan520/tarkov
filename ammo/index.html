@@ -1,0 +1,869 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="逃离塔科夫弹药数据库，穿透力、伤害、护甲穿透完整数据">
+<title>弹药数据 | 塔科夫攻略站</title>
+<meta name="baidu-site-verification" content="codeva-E78NFWmiO9" />
+<!-- Google Analytics placeholder -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-XXXXXXXXXX');
+</script>
+<style>
+:root{--bg1:#0a0c0f;--bg2:#111418;--bg3:#161b21;--bg4:#1c232b;--border:#2a3540;--gold:#c8a96e;--gold3:#a07840;--text1:#eae0cc;--text2:#9aabb8;--text3:#5a7080;--green2:#6aaa7a;--red2:#c05050;--orange2:#e09050;--font:'Segoe UI','Microsoft YaHei',sans-serif;--mono:'Courier New',monospace;--r:4px;--r2:8px}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg1);color:var(--text1);font-family:var(--font);line-height:1.6}
+::-webkit-scrollbar{width:5px}::-webkit-scrollbar-track{background:var(--bg2)}::-webkit-scrollbar-thumb{background:var(--gold3);border-radius:3px}
+a{text-decoration:none;color:inherit;transition:all .2s}
+button{font-family:var(--font);cursor:pointer}
+.nav{position:sticky;top:0;z-index:1000;height:60px;background:rgba(10,12,15,.97);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 32px;gap:16px}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:inherit}
+.mark{width:32px;height:32px;background:linear-gradient(135deg,var(--gold),var(--gold3));border-radius:var(--r);display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:900;color:#07090b}
+.logo-name{font-size:17px;font-weight:800;letter-spacing:2px;color:var(--text1)}.logo-name span{color:var(--gold)}
+.ver{font-size:10px;color:var(--text3);background:var(--bg3);border:1px solid var(--border);padding:2px 6px;border-radius:3px;font-family:var(--mono);margin-left:-4px}
+.nav-links{display:flex;gap:2px;list-style:none;flex:1;justify-content:center}
+.nav-links a{padding:7px 12px;border-radius:var(--r);font-size:13px;color:var(--text2);white-space:nowrap;text-decoration:none}
+.nav-links a:hover{color:var(--text1);background:var(--bg3)}
+.nav-links a.active{color:var(--gold);background:rgba(200,169,110,.07)}
+.nav-right{display:flex;gap:8px;align-items:center;flex-shrink:0}
+.nav-search-btn{display:flex;align-items:center;gap:8px;background:var(--bg3);border:1px solid var(--border);color:var(--text2);padding:7px 14px;border-radius:var(--r);font-size:12px;transition:all .2s;white-space:nowrap}
+.nav-search-btn:hover{border-color:var(--gold);color:var(--gold)}
+.nav-burger{display:none;flex-direction:column;gap:5px;background:transparent;border:none;padding:4px}
+.nav-burger span{display:block;width:22px;height:2px;background:var(--text2);border-radius:2px}
+.mobile-menu{display:none;position:fixed;top:60px;left:0;right:0;background:rgba(10,12,15,.98);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);z-index:999;padding:12px 0}
+.mobile-menu.open{display:block}
+.mobile-menu a{display:flex;align-items:center;gap:10px;padding:12px 24px;font-size:14px;color:var(--text2);text-decoration:none;border-bottom:1px solid rgba(255,255,255,.03)}
+.mobile-menu a:hover{color:var(--gold);background:rgba(200,169,110,.05)}
+/* 搜索弹窗 */
+.search-ov{position:fixed;inset:0;background:rgba(0,0,0,.88);backdrop-filter:blur(8px);z-index:9999;display:flex;align-items:flex-start;justify-content:center;padding:80px 20px 20px;opacity:0;visibility:hidden;transition:all .25s}
+.search-ov.on{opacity:1;visibility:visible}
+.search-box{width:100%;max-width:640px}
+.sm-wrap{position:relative;margin-bottom:14px}
+.sm-icon{position:absolute;left:16px;top:50%;transform:translateY(-50%);font-size:20px;color:var(--gold);pointer-events:none}
+.sm-input{width:100%;background:var(--bg3);border:2px solid var(--gold);border-radius:var(--r2);padding:16px 52px;font-size:16px;color:var(--text1);outline:none;font-family:var(--font);box-shadow:0 0 32px rgba(200,169,110,.15)}
+.sm-input::placeholder{color:var(--text3)}
+.sm-esc{position:absolute;right:14px;top:50%;transform:translateY(-50%);background:var(--bg2);border:1px solid var(--border);color:var(--text2);width:36px;height:28px;border-radius:var(--r);display:flex;align-items:center;justify-content:center;font-size:10px;cursor:pointer;font-family:var(--mono)}
+.search-results{display:flex;flex-direction:column;gap:6px;max-height:300px;overflow-y:auto;margin-top:8px}
+.sr-item{display:flex;align-items:center;gap:12px;padding:10px 14px;background:var(--bg2);border-radius:var(--r);cursor:pointer;transition:all .2s;text-decoration:none;color:inherit}
+.sr-item:hover{background:var(--bg4);border-left:2px solid var(--gold)}
+.sr-icon{font-size:18px;flex-shrink:0}
+.sr-body{flex:1;min-width:0}
+.sr-title{font-size:13px;font-weight:600;color:var(--text1)}
+.sr-cat{font-size:10px;color:var(--text3)}
+.sr-empty{text-align:center;padding:24px;color:var(--text3);font-size:13px}
+.page-hero{background:linear-gradient(135deg,rgba(42,80,112,.15),rgba(22,27,33,.9));border-bottom:1px solid var(--border);padding:48px 32px}
+.page-hero-inner{max-width:1300px;margin:0 auto}
+.page-hero h1{font-size:32px;font-weight:900;margin-bottom:8px}.page-hero h1 span{color:var(--gold)}
+.page-hero p{font-size:14px;color:var(--text2)}
+.wrap{max-width:1300px;margin:0 auto;padding:40px 32px}
+/* 弹药推荐卡片 */
+.recommend-section{margin-bottom:32px}
+.rec-title{font-size:16px;font-weight:700;margin-bottom:14px;display:flex;align-items:center;gap:8px}
+.rec-title::before{content:'';width:4px;height:20px;background:linear-gradient(180deg,var(--gold),transparent);border-radius:2px}
+.rec-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.rec-card{background:var(--bg3);border:1px solid var(--border);border-radius:var(--r2);padding:14px;text-align:center;transition:all .2s}
+.rec-card:hover{border-color:var(--gold)}
+.rec-armor{font-size:11px;color:var(--text3);margin-bottom:6px}
+.rec-name{font-size:14px;font-weight:700;color:var(--text1);margin-bottom:4px}
+.rec-pen{font-size:12px;color:var(--green2);font-family:var(--mono)}
+.rec-price{font-size:11px;color:var(--gold);font-family:var(--mono);margin-top:4px}
+/* 筛选 */
+.filter-section{display:flex;gap:10px;margin-bottom:20px;flex-wrap:wrap;align-items:center}
+.f-btn{background:var(--bg3);border:1px solid var(--border);color:var(--text2);padding:6px 14px;border-radius:16px;font-size:12px;cursor:pointer;transition:all .2s}
+.f-btn:hover,.f-btn.on{background:rgba(200,169,110,.08);border-color:var(--gold);color:var(--gold)}
+.sort-info{margin-left:auto;font-size:12px;color:var(--text3)}
+/* 表格 */
+.table-wrap{background:var(--bg3);border:1px solid var(--border);border-radius:var(--r2);overflow:hidden;overflow-x:auto}
+table{width:100%;min-width:720px;border-collapse:collapse;font-size:13px}
+thead{background:var(--bg2);border-bottom:1px solid var(--border)}
+th{padding:12px 14px;text-align:left;font-size:10px;font-weight:700;color:var(--text3);letter-spacing:1px;text-transform:uppercase;white-space:nowrap;cursor:pointer;user-select:none;transition:color .2s}
+th:hover{color:var(--gold)}
+th.sort-desc::after{content:' ↓';color:var(--gold)}
+th.sort-asc::after{content:' ↑';color:var(--gold)}
+th.sortable::after{content:' ↕';opacity:.3}
+tbody tr{border-bottom:1px solid rgba(255,255,255,.03);transition:background .15s}
+tbody tr:hover{background:rgba(200,169,110,.03)}
+tbody tr:last-child{border-bottom:none}
+td{padding:11px 14px;color:var(--text2);white-space:nowrap}
+.td-name{font-weight:600;color:var(--text1)!important;display:flex;align-items:center;gap:7px}
+.cal-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.v-hi{color:var(--green2)!important;font-weight:700}
+.v-md{color:var(--orange2)!important;font-weight:700}
+.v-lo{color:var(--red2)!important;font-weight:700}
+.pen-wrap{display:flex;align-items:center;gap:7px}
+.pen-track{width:72px;height:5px;background:rgba(255,255,255,.06);border-radius:3px;overflow:hidden;flex-shrink:0}
+.pen-fill{height:100%;border-radius:3px;background:linear-gradient(90deg,var(--green2),var(--gold))}
+.armc-wrap{display:flex;gap:2px}
+.armc{width:17px;height:17px;border-radius:3px;display:flex;align-items:center;justify-content:center;font-size:8px;font-weight:800}
+.armc-y{background:rgba(74,140,92,.25);color:var(--green2);border:1px solid rgba(74,140,92,.3)}
+.armc-n{background:rgba(192,80,80,.10);color:var(--red2);border:1px solid rgba(192,80,80,.15)}
+.armc-m{background:rgba(192,112,48,.20);color:var(--orange2);border:1px solid rgba(192,112,48,.25)}
+.footer{background:var(--bg2);border-top:1px solid var(--border);padding:24px 32px;margin-top:60px}
+.footer-inner{max-width:1300px;margin:0 auto;display:flex;justify-content:space-between;font-size:12px;color:var(--text3);flex-wrap:wrap;gap:8px}
+.footer-inner a:hover{color:var(--gold)}
+@media(max-width:900px){.nav-links{display:none}.nav-burger{display:flex}.rec-grid{grid-template-columns:repeat(2,1fr)}.wrap{padding:32px 16px}.page-hero{padding:32px 16px}.nav-search-btn span{display:none}}
+@media(max-width:480px){.page-h1{font-size:20px}.page-sub{font-size:14px}.table-wrap{margin:0 -8px;border-radius:0;border-left:none;border-right:none}.rec-grid{grid-template-columns:1fr}.filter-row{gap:4px}.f-btn{padding:4px 10px;font-size:10px}}
+</style>
+</head>
+<body>
+<nav class="nav">
+  <a class="nav-logo" href="../index.html">
+    <div class="mark">⚔</div>
+    <span class="logo-name">TARKOV<span>GUIDE</span></span>
+    <span class="ver">v1.5.0</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="../index.html">🏠 首页</a></li>
+    <li><a href="../maps/">🗺️ 地图</a></li>
+    <li><a href="../ammo/">💊 弹药</a></li>
+    <li><a href="../loadouts/">🔫 武器</a></li>
+    <li><a href="../quests/">📋 任务</a></li>
+    <li><a href="../articles/">📰 攻略</a></li>
+  </ul>
+  <div class="nav-right">
+    <button class="nav-search-btn" onclick="openSearch()">🔍 搜索 <kbd>Ctrl+K</kbd></button>
+    <button class="nav-burger" onclick="toggleMenu()" id="burgerBtn"><span></span><span></span><span></span></button>
+    <a class="nav-back" href="../articles/">← 返回</a>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="../index.html">🏠 首页</a>
+  <a href="../maps/">🗺️ 地图攻略</a>
+  <a href="../ammo/">💊 弹药数据</a>
+  <a href="../loadouts/">🔫 武器配装</a>
+  <a href="../quests/">📋 任务攻略</a>
+  <a href="../articles/">📰 全部攻略</a>
+</div>
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <h1>💊 弹药<span>数据库</span></h1>
+    <p>完整弹药穿透/伤害数据 · 点击表头排序 · 按口径筛选 · 实时更新</p>
+  </div>
+<div class="wrap">
+<div class="recommend-section">
+<div class="rec-title">⚡ 各护甲等级推荐弹药</div>
+<div class="rec-grid"><div class="rec-card"><div class="rec-armor">1-2级甲</div><div class="rec-name">RIP (.45 ACP)</div><div class="rec-pen">穿透：22</div><div class="rec-price">420₽</div></div><div class="rec-card"><div class="rec-armor">3-4级甲</div><div class="rec-name">BP (7.62×39)</div><div class="rec-pen">穿透：46</div><div class="rec-price">380₽</div></div><div class="rec-card"><div class="rec-armor">5级甲</div><div class="rec-name">7N40 (5.45×39)</div><div class="rec-pen">穿透：58</div><div class="rec-price">960₽</div></div><div class="rec-card"><div class="rec-armor">6级甲</div><div class="rec-name">M61 (7.62×51)</div><div class="rec-pen">穿透：61</div><div class="rec-price">3,200₽</div></div></div>
+</div>
+<div class="filter-section">
+<button class="f-btn on" onclick="filterCal(this, '')">全部口径</button><button class="f-btn" onclick="filterCal(this, '5.45×39')">5.45×39</button><button class="f-btn" onclick="filterCal(this, '5.56×45')">5.56×45</button><button class="f-btn" onclick="filterCal(this, '7.62×39')">7.62×39</button><button class="f-btn" onclick="filterCal(this, '7.62×51')">7.62×51</button><button class="f-btn" onclick="filterCal(this, '9×19')">9×19</button><button class="f-btn" onclick="filterCal(this, '.45 ACP')">.45 ACP</button>
+<span class="sort-info">共 <b style="color:var(--gold)">70</b> 条数据 · 点击表头排序</span>
+</div>
+<div class="table-wrap">
+<table>
+<thead><tr>
+<th class="sortable" onclick="doSort('name')">弹药名称</th>
+<th>口径</th>
+<th class="sort-desc" onclick="doSort('pen')">穿透力</th>
+<th class="sortable" onclick="doSort('damage')">伤害</th>
+<th class="sortable" onclick="doSort('armorDmg')">护甲伤害</th>
+<th>可穿甲级</th>
+<th class="sortable" onclick="doSort('priceNum')">参考价格</th>
+<th>获取方式</th>
+</tr></thead>
+<tbody id="ammoTbody"><tr>
+<td><div class="td-name"><span class="cal-dot" style="background:#ff3322"></span>7N39 Igolnik</div></td>
+<td><span style="font-size:10px;background:var(--bg2);border:1px solid var(--border);padding:2px 7px;border-radius:3px;color:var(--text2)">5.45×39</span></td>
+<td><div class="pen-wrap"><div class="pen-track"><div class="pen-fill" style="width:89%"></div></div><span class="v-hi">62</span></div></td>
+<td class="v-lo">37</td>
+<td>58%</td>
+<td><div class="armc-wrap"><span class="armc armc-y">1</span><span class="armc armc-y">2</span><span class="armc armc-y">3</span><span class="armc armc-y">4</span><span class="armc armc-y">5</span><span class="armc armc-y">6</span></div></td>
+<td style="color:var(--gold);font-family:var(--mono)">2,800₽</td>
+<td style="font-size:11px;color:var(--text3)">跳蚤市场</td>
+</tr><tr>
+<td><div class="td-name"><span class="cal-dot" style="background:#ff4488"></span>SNB</div></td>
+<td><span style="font-size:10px;background:var(--bg2);border:1px solid var(--border);padding:2px 7px;border-radius:3px;color:var(--text2)">7.62×54R</span></td>
+<td><div class="pen-wrap"><div class="pen-track"><div class="pen-fill" style="width:89%"></div></div><span class="v-hi">62</span></div></td>
+<td class="v-hi">75</td>
+<td>60%</td>
+<td><div class="armc-wrap"><span class="armc armc-y">1</span><span class="armc armc-y">2</span><span class="armc armc-y">3</span><span class="armc armc-y">4</span><span class="armc armc-y">5</span><span class="armc armc-y">6</span></div></td>
+<td style="color:var(--gold);font-family:var(--mono)">2,400₽</td>
+<td style="font-size:11px;color:var(--text3)">跳蚤市场</td>
+</tr><tr>
+<td><div class="td-name"><span class="cal-dot" style="background:#ff6644"></span>7N40</div></td>
+<td><span style="font-size:10px;background:var(--bg2);border:1px solid var(--border);padding:2px 7px;border-radius:3px;color:var(--text2)">5.45×39</span></td>
+<td><div class="pen-wrap"><div class="pen-track"><div class="pen-fill" style="width:83%"></div></div><span class="v-hi">58</span></div></td>
+<td class="v-lo">47</td>
+<td>54%</td>
+<td><div class="armc-wrap"><span class="armc armc-y">1</span><span class="armc armc-y">2</span><span class="armc armc-y">3</span><span class="armc armc-y">4</span><span class="armc armc-y">5</span><span class="armc armc-m">6</span></div></td>
+<td style="color:var(--gold);font-family:var(--mono)">960₽</td>
+<td style="font-size:11px;color:var(--text3)">跳蚤/商人</td>
+</tr><tr>
+<td><div class="td-name"><span class="cal-dot" style="background:#aa44ff"></span>M61</div></td>
+<td><span style="font-size:10px;background:var(--bg2);border:1px solid var(--border);padding:2px 7px;border-radius:3px;color:var(--text2)">7.62×51</span></td>
+<td><div class="pen-wrap"><div class="pen-track"><div class="pen-fill" style="width:79%"></div></div><span class="v-hi">55</span></div></td>
+<td class="v-hi">75</td>
+<td>66%</td>
+<td><div class="armc-wrap"><span class="armc armc-y">1</span><span class="armc armc-y">2</span><span class="armc armc-y">3</span><span class="armc armc-y">4</span><span class="armc armc-y">5</span><span class="armc armc-y">6</span></div></td>
+<td style="color:var(--gold);font-family:var(--mono)">3,200₽</td>
+<td style="font-size:11px;color:var(--text3)">跳蚤/任务</td>
+</tr><tr>
+<td><div class="td-name"><span class="cal-dot" style="background:#aa44ff"></span>M61</div></td>
+<td><span style="font-size:10px;background:var(--bg2);border:1px solid var(--border);padding:2px 7px;border-radius:3px;color:var(--text2)">.308</span></td>
+<td><div class="pen-wrap"><div class="pen-track"><div class="pen-fill" style="width:79%"></div></div><span class="v-hi">55</span></div></td>
+<td class="v-hi">75</td>
+<td>66%</td>
+<td><div class="armc-wrap"><span class="armc armc-y">1</span><span class="armc armc-y">2</span><span class="armc armc-y">3</span><span class="armc armc-y">4</span><span class="armc armc-y">5</span><span class="armc armc-y">6</span></div></td>
+<td style="color:var(--gold);font-family:var(--mono)">3,200₽</td>
+<td style="font-size:11px;color:var(--text3)">跳蚤市场</td>
+</tr><tr>
+<td><div class="td-name"><span class="cal-dot" style="background:#ff8844"></span>BS</div></td>
+<td><span style="font-size:10px;background:var(--bg2);border:1px solid var(--border);padding:2px 7px;border-radius:3px;color:var(--text2)">5.45×39</span></td>
+<td><div class="pen-wrap"><div class="pen-track"><div class="pen-fill" style="width:77%"></div></div><span class="v-hi">54</span></div></td>
+<td class="v-lo">45</td>
+<td>50%</td>
+<td><div class="armc-wrap"><span class="armc armc-y">1</span><span class="armc armc-y">2</span><span class="armc armc-y">3</span><span class="armc armc-y">4</span><span class="armc armc-y">5</span><span class="armc armc-n">6</span></div></td>
+<td style="color:var(--gold);font-family:var(--mono)">1,200₽</td>
+<td style="font-size:11px;color:var(--text3)">跳蚤市场</td>
+</tr><tr>
+<td><div class="td-name"><span class="cal-dot" style="background:#44ddff"></span>7N12 BP</div></td>
+<td><span style="font-size:10px;background:var(--bg2);border:1px solid var(--border);padding:2px 7px;border-radius:3px;color:var(--text2)">9×39</span></td>
+<td><div class="pen-wrap"><div class="pen-track"><div class="pen-fill" style="width:77%"></div></div><span class="v-hi">54</span></div></td>
+<td class="v-md">58</td>
+<td>50%</td>
+<td><div class="armc-wrap"><span class="armc armc-y">1</span><span class="armc armc-y">2</span><span class="armc armc-y">3</span><span class="armc armc-y">4</span><span class="armc armc-y">5</span><span class="armc armc-n">6</span></div></td>
+<td style="color:var(--gold);font-family:var(--mono)">1,500₽</td>
+<td style="font-size:11px;color:var(--text3)">跳蚤市场</td>
+</tr><tr>
+<td><div class="td-name"><span class="cal-dot" style="background:#44aaff"></span>M995</div></td>
+<td><span style="font-size:10px;background:var(--bg2);border:1px solid var(--border);padding:2px 7px;border-radius:3px;color:var(--text2)">5.56×45</span></td>
+<td><div class="pen-wrap"><div class="pen-track"><div class="pen-fill" style="width:76%"></div></div><span class="v-hi">53</span></div></td>
+<td class="v-lo">42</td>
+<td>57%</td>
+<td><div class="armc-wrap"><span class="armc armc-y">1</span><span class="armc armc-y">2</span><span class="armc armc-y">3</span><span class="armc armc-y">4</span><span class="armc armc-y">5</span><span class="armc armc-n">6</span></div></td>
+<td style="color:var(--gold);font-family:var(--mono)">1,850₽</td>
+<td style="font-size:11px;color:var(--text3)">跳蚤市场</td>
+</tr><tr>
+<td><div class="td-name"><span class="cal-dot" style="background:#44ff88"></span>AP SX</div></td>
+<td><span style="font-size:10px;background:var(--bg2);border:1px solid var(--border);padding:2px 7px;border-radius:3px;color:var(--text2)">4.6×30</span></td>
+<td><div class="pen-wrap"><div class="pen-track"><div class="pen-fill" style="width:76%"></div></div><span class="v-hi">53</span></div></td>
+<td class="v-lo">35</td>
+<td>55%</td>
+<td><div class="armc-wrap"><span class="armc armc-y">1</span><span class="armc armc-y">2</span><span class="armc armc-y">3</span><span class="armc armc-y">4</span><span class="armc armc-y">5</span><span class="armc armc-n">6</span></div></td>
+<td style="color:var(--gold);font-family:var(--mono)">1,600₽</td>
+<td style="font-size:11px;color:var(--text3)">跳蚤市场</td>
+</tr><tr>
+<td><div class="td-name"><span class="cal-dot" style="background:#66eeff"></span>SP-6</div></td>
+<td><span style="font-size:10px;background:var(--bg2);border:1px solid var(--border);padding:2px 7px;border-radius:3px;color:var(--text2)">9×39</span></td>
+<td><div class="pen-wrap"><div class="pen-track"><div class="pen-fill" style="width:69%"></div></div><span class="v-md">48</span></div></td>
+<td class="v-md">60</td>
+<td>45%</td>
+<td><div class="armc-wrap"><span class="armc armc-y">1</span><span class="armc armc-y">2</span><span class="armc armc-y">3</span><span class="armc armc-y">4</span><span class="armc armc-m">5</span><span class="armc armc-n">6</span></div></td>
+<td style="color:var(--gold);font-family:var(--mono)">1,100₽</td>
+<td style="font-size:11px;color:var(--text3)">机修工Lv3</td>
+</tr><tr>
+<td><div class="td-name"><span class="cal-dot" style="background:#ffaa44"></span>BP</div></td>
+<td><span style="font-size:10px;background:var(--bg2);border:1px solid var(--border);padding:2px 7px;border-radius:3px;color:var(--text2)">7.62×39</span></td>
+<td><div class="pen-wrap"><div class="pen-track"><div class="pen-fill" style="width:67%"></div></div><span class="v-md">47</span></div></td>
+<td class="v-md">58</td>
+<td>43%</td>
+<td><div class="armc-wrap"><span class="armc armc-y">1</span><span class="armc armc-y">2</span><span class="armc armc-y">3</span><span class="armc armc-y">4</span><span class="armc armc-m">5</span><span class="armc armc-n">6</span></div></td>
+<td style="color:var(--gold);font-family:var(--mono)">480₽</td>
+<td style="font-size:11px;color:var(--text3)">帕帕Lv3</td>
+</tr><tr>
+<td><div class="td-name"><span class="cal-dot" style="background:#aa44ff"></span>PS12B</div></td>
+<td><span style="font-size:10px;background:var(--bg2);border:1px solid var(--border);padding:2px 7px;border-radius:3px;color:var(--text2)">12.7×55</span></td>
+<td><div class="pen-wrap"><div class="pen-track"><div class="pen-fill" style="width:66%"></div></div><span class="v-md">46</span></div></td>
+<td class="v-hi">102</td>
+<td>48%</td>
+<td><div class="armc-wrap"><span class="armc armc-y">1</span><span class="armc armc-y">2</span><span class="armc armc-y">3</span><span class="armc armc-y">4</span><span class="armc armc-m">5</span><span class="armc armc-n">6</span></div></td>
+<td style="color:var(--gold);font-family:var(--mono)">2,400₽</td>
+<td style="font-size:11px;color:var(--text3)">跳蚤市场</td>
+</tr><tr>
+<td><div class="td-name"><span class="cal-dot" style="background:#ffaa44"></span>BP</div></td>
+<td><span style="font-size:10px;background:var(--bg2);border:1px solid var(--border);padding:2px 7px;border-radius:3px;color:var(--text2)">5.45×39</span></td>
+<td><div class="pen-wrap"><div class="pen-track"><div class="pen-fill" style="width:64%"></div></div><span class="v-md">45</span></div></td>
+<td class="v-lo">48</td>
+<td>43%</td>
+<td><div class="armc-wrap"><span class="armc armc-y">1</span><span class="armc armc-y">2</span><span class="armc armc-y">3</span><span class="armc armc-y">4</span><span class="armc armc-m">5</span><span class="armc armc-n">6</span></div></td>
+<td style="color:var(--gold);font-family:var(--mono)">380₽</td>
+<td style="font-size:11px;color:var(--text3)">帕帕商人</td>
+</tr><tr>
+<td><div class="td-name"><span class="cal-dot" style="background:#ff66cc"></span>7N1 狙击弹</div></td>
+<td><span style="font-size:10px;background:var(--bg2);border:1px solid var(--border);padding:2px 7px;border-radius:3px;color:var(--text2)">7.62×54R</span></td>
+<td><div class="pen-wrap"><div class="pen-track"><div class="pen-fill" style="width:64%"></div></div><span class="v-md">45</span></div></td>
+<td class="v-hi">84</td>
+<td>48%</td>
+<td><div class="armc-wrap"><span class="armc armc-y">1</span><span class="armc armc-y">2</span><span class="armc armc-y">3</span><span class="armc armc-y">4</span><span class="armc armc-m">5</span><span class="armc armc-n">6</span></div></td>
+<td style="color:var(--gold);font-family:var(--mono)">1,800₽</td>
+<td style="font-size:11px;color:var(--text3)">机修工Lv3</td>
+</tr><tr>
+<td><div class="td-name"><span class="cal-dot" style="background:#66bbff"></span>M855A1</div></td>
+<td><span style="font-size:10px;background:var(--bg2);border:1px solid var(--border);padding:2px 7px;border-radius:3px;color:var(--text2)">5.56×45</span></td>
+<td><div class="pen-wrap"><div class="pen-track"><div class="pen-fill" style="width:63%"></div></div><span class="v-md">44</span></div></td>
+<td class="v-lo">49</td>
+<td>50%</td>
+<td><div class="armc-wrap"><span class="armc armc-y">1</span><span class="armc armc-y">2</span><span class="armc armc-y">3</span><span class="armc armc-y">4</span><span class="armc armc-m">5</span><span class="armc armc-n">6</span></div></td>
+<td style="color:var(--gold);font-family:var(--mono)">980₽</td>
+<td style="font-size:11px;color:var(--text3)">和平卫士Lv3</td>
+</tr><tr>
+<td><div class="td-name"><span class="cal-dot" style="background:#bb66ff"></span>M80</div></td>
+<td><span style="font-size:10px;background:var(--bg2);border:1px solid var(--border);padding:2px 7px;border-radius:3px;color:var(--text2)">7.62×51</span></td>
+<td><div class="pen-wrap"><div class="pen-track"><div class="pen-fill" style="width:61%"></div></div><span class="v-md">43</span></div></td>
+<td class="v-hi">80</td>
+<td>45%</td>
+<td><div class="armc-wrap"><span class="armc armc-y">1</span><span class="armc armc-y">2</span><span class="armc armc-y">3</span><span class="armc armc-y">4</span><span class="armc armc-m">5</span><span class="armc armc-n">6</span></div></td>
+<td style="color:var(--gold);font-family:var(--mono)">1,200₽</td>
+<td style="font-size:11px;color:var(--text3)">和平卫士Lv2</td>
+</tr><tr>
+<td><div class="td-name"><span class="cal-dot" style="background:#bb66ff"></span>M80</div></td>
+<td><span style="font-size:10px;background:var(--bg2);border:1px solid var(--border);padding:2px 7px;border-radius:3px;color:var(--text2)">.308</span></td>
+<td><div class="pen-wrap"><div class="pen-track"><div class="pen-fill" style="width:61%"></div></div><span class="v-md">43</span></div></td>
+<td class="v-hi">80</td>
+<td>45%</td>
+<td><div class="armc-wrap"><span class="armc armc-y">1</span><span class="armc armc-y">2</span><span class="armc armc-y">3</span><span class="armc armc-y">4</span><span class="armc armc-m">5</span><span class="armc armc-n">6</span></div></td>
+<td style="color:var(--gold);font-family:var(--mono)">1,200₽</td>
+<td style="font-size:11px;color:var(--text3)">和平卫士Lv3</td>
+</tr><tr>
+<td><div class="td-name"><span class="cal-dot" style="background:#cc66ff"></span>M62</div></td>
+<td><span style="font-size:10px;background:var(--bg2);border:1px solid var(--border);padding:2px 7px;border-radius:3px;color:var(--text2)">7.62×51</span></td>
+<td><div class="pen-wrap"><div class="pen-track"><div class="pen-fill" style="width:60%"></div></div><span class="v-md">42</span></div></td>
+<td class="v-hi">82</td>
+<td>58%</td>
+<td><div class="armc-wrap"><span class="armc armc-y">1</span><span class="armc armc-y">2</span><span class="armc armc-y">3</span><span class="armc armc-y">4</span><span class="armc armc-m">5</span><span class="armc armc-n">6</span></div></td>
+<td style="color:var(--gold);font-family:var(--mono)">1,400₽</td>
+<td style="font-size:11px;color:var(--text3)">跳蚤市场</td>
+</tr><tr>
+<td><div class="td-name"><span class="cal-dot" style="background:#ff6699"></span>LPS Gzh</div></td>
+<td><span style="font-size:10px;background:var(--bg2);border:1px solid var(--border);padding:2px 7px;border-radius:3px;color:var(--text2)">7.62×54R</span></td>
+<td><div class="pen-wrap"><div class="pen-track"><div class="pen-fill" style="width:60%"></div></div><span class="v-md">42</span></div></td>
+<td class="v-hi">81</td>
+<td>42%</td>
+<td><div class="armc-wrap"><span class="armc armc-y">1</span><span class="armc armc-y">2</span><span class="armc armc-y">3</span><span class="armc armc-y">4</span><span class="armc armc-m">5</span><span class="armc armc-n">6</span></div></td>
+<td style="color:var(--gold);font-family:var(--mono)">800₽</td>
+<td style="font-size:11px;color:var(--text3)">机修工Lv1</td>
+</tr><tr>
+<td><div class="td-name"><span class="cal-dot" style="background:#66ffaa"></span>FMJ SX</div></td>
+<td><span style="font-size:10px;background:var(--bg2);border:1px solid var(--border);padding:2px 7px;border-radius:3px;color:var(--text2)">4.6×30</span></td>
+<td><div class="pen-wrap"><div class="pen-track"><div class="pen-fill" style="width:57%"></div></div><span class="v-md">40</span></div></td>
+<td class="v-lo">43</td>
+<td>40%</td>
+<td><div class="armc-wrap"><span class="armc armc-y">1</span><span class="armc armc-y">2</span><span class="armc armc-y">3</span><span class="armc armc-m">4</span><span class="armc armc-n">5</span><span class="armc armc-n">6</span></div></td>
+<td style="color:var(--gold);font-family:var(--mono)">800₽</td>
+<td style="font-size:11px;color:var(--text3)">机修工Lv2</td>
+</tr><tr>
+<td><div class="td-name"><span class="cal-dot" style="background:#88ccff"></span>M856A1</div></td>
+<td><span style="font-size:10px;background:var(--bg2);border:1px solid var(--border);padding:2px 7px;border-radius:3px;color:var(--text2)">5.56×45</span></td>
+<td><div class="pen-wrap"><div class="pen-track"><div class="pen-fill" style="width:54%"></div></div><span class="v-md">38</span></div></td>
+<td class="v-md">52</td>
+<td>40%</td>
+<td><div class="armc-wrap"><span class="armc armc-y">1</span><span class="armc armc-y">2</span><span class="armc armc-y">3</span><span class="armc armc-m">4</span><span class="armc armc-n">5</span><span class="armc armc-n">6</span></div></td>
+<td style="color:var(--gold);font-family:var(--mono)">650₽</td>
+<td style="font-size:11px;color:var(--text3)">和平卫士Lv2</td>
+</tr><tr>
+<td><div class="td-name"><span class="cal-dot" style="background:#44ffaa"></span>PBP</div></td>
+<td><span style="font-size:10px;background:var(--bg2);border:1px solid var(--border);padding:2px 7px;border-radius:3px;color:var(--text2)">9×19</span></td>
+<td><div class="pen-wrap"><div class="pen-track"><div class="pen-fill" style="width:54%"></div></div><span class="v-md">38</span></div></td>
+<td class="v-md">52</td>
+<td>38%</td>
+<td><div class="armc-wrap"><span class="armc armc-y">1</span><span class="armc armc-y">2</span><span class="armc armc-y">3</span><span class="armc armc-m">4</span><span class="armc armc-n">5</span><span class="armc armc-n">6</span></div></td>
+<td style="color:var(--gold);font-family:var(--mono)">580₽</td>
+<td style="font-size:11px;color:var(--text3)">机修工/跳蚤</td>
+</tr><tr>
+<td><div class="td-name"><span class="cal-dot" style="background:#ffcc44"></span>BT</div></td>
+<td><span style="font-size:10px;background:var(--bg2);border:1px solid var(--border);padding:2px 7px;border-radius:3px;color:var(--text2)">5.45×39</span></td>
+<td><div class="pen-wrap"><div class="pen-track"><div class="pen-fill" style="width:53%"></div></div><span class="v-md">37</span></div></td>
+<td class="v-md">54</td>
+<td>37%</td>
+<td><div class="armc-wrap"><span class="armc armc-y">1</span><span class="armc armc-y">2</span><span class="armc armc-y">3</span><span class="armc armc-m">4</span><span class="armc armc-n">5</span><span class="armc armc-n">6</span></div></td>
+<td style="color:var(--gold);font-family:var(--mono)">280₽</td>
+<td style="font-size:11px;color:var(--text3)">帕帕Lv2</td>
+</tr><tr>
+<td><div class="td-name"><span class="cal-dot" style="background:#44ffdd"></span>SS190</div></td>
+<td><span style="font-size:10px;background:var(--bg2);border:1px solid var(--border);padding:2px 7px;border-radius:3px;color:var(--text2)">5.7×28</span></td>
+<td><div class="pen-wrap"><div class="pen-track"><div class="pen-fill" style="width:53%"></div></div><span class="v-md">37</span></div></td>
+<td class="v-lo">49</td>
+<td>38%</td>
+<td><div class="armc-wrap"><span class="armc armc-y">1</span><span class="armc armc-y">2</span><span class="armc armc-y">3</span><span class="armc armc-m">4</span><span class="armc armc-n">5</span><span class="armc armc-n">6</span></div></td>
+<td style="color:var(--gold);font-family:var(--mono)">680₽</td>
+<td style="font-size:11px;color:var(--text3)">跳蚤市场</td>
+</tr><tr>
+<td><div class="td-name"><span class="cal-dot" style="background:#ffaa22"></span>AP-20 独头弹</div></td>
+<td><span style="font-size:10px;background:var(--bg2);border:1px solid var(--border);padding:2px 7px;border-radius:3px;color:var(--text2)">12号径</span></td>
+<td><div class="pen-wrap"><div class="pen-track"><div class="pen-fill" style="width:53%"></div></div><span class="v-md">37</span></div></td>
+<td class="v-hi">164</td>
+<td>40%</td>
+<td><div class="armc-wrap"><span class="armc armc-y">1</span><span class="armc armc-y">2</span><span class="armc armc-y">3</span><span class="armc armc-m">4</span><span class="armc armc-n">5</span><span class="armc armc-n">6</span></div></td>
+<td style="color:var(--gold);font-family:var(--mono)">1,200₽</td>
+<td style="font-size:11px;color:var(--text3)">跳蚤市场</td>
+</tr><tr>
+<td><div class="td-name"><span class="cal-dot" style="background:#ffcc66"></span>PS</div></td>
+<td><span style="font-size:10px;background:var(--bg2);border:1px solid var(--border);padding:2px 7px;border-radius:3px;color:var(--text2)">7.62×39</span></td>
+<td><div class="pen-wrap"><div class="pen-track"><div class="pen-fill" style="width:50%"></div></div><span class="v-md">35</span></div></td>
+<td class="v-md">61</td>
+<td>36%</td>
+<td><div class="armc-wrap"><span class="armc armc-y">1</span><span class="armc armc-y">2</span><span class="armc armc-y">3</span><span class="armc armc-m">4</span><span class="armc armc-n">5</span><span class="armc armc-n">6</span></div></td>
+<td style="color:var(--gold);font-family:var(--mono)">180₽</td>
+<td style="font-size:11px;color:var(--text3)">帕帕Lv2</td>
+</tr><tr>
+<td><div class="td-name"><span class="cal-dot" style="background:#88ffff"></span>SPP</div></td>
+<td><span style="font-size:10px;background:var(--bg2);border:1px solid var(--border);padding:2px 7px;border-radius:3px;color:var(--text2)">9×39</span></td>
+<td><div class="pen-wrap"><div class="pen-track"><div class="pen-fill" style="width:50%"></div></div><span class="v-md">35</span></div></td>
+<td class="v-md">68</td>
+<td>35%</td>
+<td><div class="armc-wrap"><span class="armc armc-y">1</span><span class="armc armc-y">2</span><span class="armc armc-y">3</span><span class="armc armc-m">4</span><span class="armc armc-n">5</span><span class="armc armc-n">6</span></div></td>
+<td style="color:var(--gold);font-family:var(--mono)">750₽</td>
+<td style="font-size:11px;color:var(--text3)">机修工Lv2</td>
+</tr><tr>
+<td><div class="td-name"><span class="cal-dot" style="background:#ffdd66"></span>PP</div></td>
+<td><span style="font-size:10px;background:var(--bg2);border:1px solid var(--border);padding:2px 7px;border-radius:3px;color:var(--text2)">5.45×39</span></td>
+<td><div class="pen-wrap"><div class="pen-track"><div class="pen-fill" style="width:49%"></div></div><span class="v-lo">34</span></div></td>
+<td class="v-md">51</td>
+<td>34%</td>
+<td><div class="armc-wrap"><span class="armc armc-y">1</span><span class="armc armc-y">2</span><span class="armc armc-y">3</span><span class="armc armc-m">4</span><span class="armc armc-n">5</span><span class="armc armc-n">6</span></div></td>
+<td style="color:var(--gold);font-family:var(--mono)">220₽</td>
+<td style="font-size:11px;color:var(--text3)">帕帕Lv1</td>
+</tr><tr>
+<td><div class="td-name"><span class="cal-dot" style="background:#66ffee"></span>L191</div></td>
+<td><span style="font-size:10px;background:var(--bg2);border:1px solid var(--border);padding:2px 7px;border-radius:3px;color:var(--text2)">5.7×28</span></td>
+<td><div class="pen-wrap"><div class="pen-track"><div class="pen-fill" style="width:47%"></div></div><span class="v-lo">33</span></div></td>
+<td class="v-md">53</td>
+<td>34%</td>
+<td><div class="armc-wrap"><span class="armc armc-y">1</span><span class="armc armc-y">2</span><span class="armc armc-y">3</span><span class="armc armc-m">4</span><span class="armc armc-n">5</span><span class="armc armc-n">6</span></div></td>
+<td style="color:var(--gold);font-family:var(--mono)">520₽</td>
+<td style="font-size:11px;color:var(--text3)">跳蚤市场</td>
+</tr><tr>
+<td><div class="td-name"><span class="cal-dot" style="background:#ff4488"></span>AP</div></td>
+<td><span style="font-size:10px;background:var(--bg2);border:1px solid var(--border);padding:2px 7px;border-radius:3px;color:var(--text2)">.45 ACP</span></td>
+<td><div class="pen-wrap"><div class="pen-track"><div class="pen-fill" style="width:46%"></div></div><span class="v-lo">32</span></div></td>
+<td class="v-md">55</td>
+<td>34%</td>
+<td><div class="armc-wrap"><span class="armc armc-y">1</span><span class="armc armc-y">2</span><span class="armc armc-y">3</span><span class="armc armc-m">4</span><span class="armc armc-n">5</span><span class="armc armc-n">6</span></div></td>
+<td style="color:var(--gold);font-family:var(--mono)">650₽</td>
+<td style="font-size:11px;color:var(--text3)">跳蚤市场</td>
+</tr><tr>
+<td><div class="td-name"><span class="cal-dot" style="background:#88ff88"></span>SP13</div></td>
+<td><span style="font-size:10px;background:var(--bg2);border:1px solid var(--border);padding:2px 7px;border-radius:3px;color:var(--text2)">9×21</span></td>
+<td><div class="pen-wrap"><div class="pen-track"><div class="pen-fill" style="width:46%"></div></div><span class="v-lo">32</span></div></td>
+<td class="v-md">52</td>
+<td>34%</td>
+<td><div class="armc-wrap"><span class="armc armc-y">1</span><span class="armc armc-y">2</span><span class="armc armc-y">3</span><span class="armc armc-m">4</span><span class="armc armc-n">5</span><span class="armc armc-n">6</span></div></td>
+<td style="color:var(--gold);font-family:var(--mono)">480₽</td>
+<td style="font-size:11px;color:var(--text3)">跳蚤市场</td>
+</tr><tr>
+<td><div class="td-name"><span class="cal-dot" style="background:#aaddff"></span>M855</div></td>
+<td><span style="font-size:10px;background:var(--bg2);border:1px solid var(--border);padding:2px 7px;border-radius:3px;color:var(--text2)">5.56×45</span></td>
+<td><div class="pen-wrap"><div class="pen-track"><div class="pen-fill" style="width:44%"></div></div><span class="v-lo">31</span></div></td>
+<td class="v-md">54</td>
+<td>33%</td>
+<td><div class="armc-wrap"><span class="armc armc-y">1</span><span class="armc armc-y">2</span><span class="armc armc-y">3</span><span class="armc armc-m">4</span><span class="armc armc-n">5</span><span class="armc armc-n">6</span></div></td>
+<td style="color:var(--gold);font-family:var(--mono)">350₽</td>
+<td style="font-size:11px;color:var(--text3)">和平卫士Lv1</td>
+</tr><tr>
+<td><div class="td-name"><span class="cal-dot" style="background:#ffcc88"></span>T45M</div></td>
+<td><span style="font-size:10px;background:var(--bg2);border:1px solid var(--border);padding:2px 7px;border-radius:3px;color:var(--text2)">7.62×39</span></td>
+<td><div class="pen-wrap"><div class="pen-track"><div class="pen-fill" style="width:43%"></div></div><span class="v-lo">30</span></div></td>
+<td class="v-md">65</td>
+<td>30%</td>
+<td><div class="armc-wrap"><span class="armc armc-y">1</span><span class="armc armc-y">2</span><span class="armc armc-m">3</span><span class="armc armc-n">4</span><span class="armc armc-n">5</span><span class="armc armc-n">6</span></div></td>
+<td style="color:var(--gold);font-family:var(--mono)">160₽</td>
+<td style="font-size:11px;color:var(--text3)">帕帕Lv1</td>
+</tr><tr>
+<td><div class="td-name"><span class="cal-dot" style="background:#44ffaa"></span>AP 6.3</div></td>
+<td><span style="font-size:10px;background:var(--bg2);border:1px solid var(--border);padding:2px 7px;border-radius:3px;color:var(--text2)">9×19</span></td>
+<td><div class="pen-wrap"><div class="pen-track"><div class="pen-fill" style="width:43%"></div></div><span class="v-lo">30</span></div></td>
+<td class="v-md">52</td>
+<td>32%</td>
+<td><div class="armc-wrap"><span class="armc armc-y">1</span><span class="armc armc-y">2</span><span class="armc armc-m">3</span><span class="armc armc-n">4</span><span class="armc armc-n">5</span><span class="armc armc-n">6</span></div></td>
+<td style="color:var(--gold);font-family:var(--mono)">480₽</td>
+<td style="font-size:11px;color:var(--text3)">跳蚤市场</td>
+</tr><tr>
+<td><div class="td-name"><span class="cal-dot" style="background:#88dd44"></span>EKO</div></td>
+<td><span style="font-size:10px;background:var(--bg2);border:1px solid var(--border);padding:2px 7px;border-radius:3px;color:var(--text2)">.366 TKM</span></td>
+<td><div class="pen-wrap"><div class="pen-track"><div class="pen-fill" style="width:43%"></div></div><span class="v-lo">30</span></div></td>
+<td class="v-hi">73</td>
+<td>30%</td>
+<td><div class="armc-wrap"><span class="armc armc-y">1</span><span class="armc armc-y">2</span><span class="armc armc-m">3</span><span class="armc armc-n">4</span><span class="armc armc-n">5</span><span class="armc armc-n">6</span></div></td>
+<td style="color:var(--gold);font-family:var(--mono)">280₽</td>
+<td style="font-size:11px;color:var(--text3)">跳蚤市场</td>
+</tr><tr>
+<td><div class="td-name"><span class="cal-dot" style="background:#ffcc88"></span>PS</div></td>
+<td><span style="font-size:10px;background:var(--bg2);border:1px solid var(--border);padding:2px 7px;border-radius:3px;color:var(--text2)">5.45×39</span></td>
+<td><div class="pen-wrap"><div class="pen-track"><div class="pen-fill" style="width:40%"></div></div><span class="v-lo">28</span></div></td>
+<td class="v-md">56</td>
+<td>28%</td>
+<td><div class="armc-wrap"><span class="armc armc-y">1</span><span class="armc armc-y">2</span><span class="armc armc-y">3</span><span class="armc armc-m">4</span><span class="armc armc-n">5</span><span class="armc armc-n">6</span></div></td>
+<td style="color:var(--gold);font-family:var(--mono)">150₽</td>
+<td style="font-size:11px;color:var(--text3)">帕帕Lv1</td>
+</tr><tr>
+<td><div class="td-name"><span class="cal-dot" style="background:#aaffff"></span>SP-5</div></td>
+<td><span style="font-size:10px;background:var(--bg2);border:1px solid var(--border);padding:2px 7px;border-radius:3px;color:var(--text2)">9×39</span></td>
+<td><div class="pen-wrap"><div class="pen-track"><div class="pen-fill" style="width:40%"></div></div><span class="v-lo">28</span></div></td>
+<td class="v-hi">71</td>
+<td>28%</td>
+<td><div class="armc-wrap"><span class="armc armc-y">1</span><span class="armc armc-y">2</span><span class="armc armc-m">3</span><span class="armc armc-n">4</span><span class="armc armc-n">5</span><span class="armc armc-n">6</span></div></td>
+<td style="color:var(--gold);font-family:var(--mono)">480₽</td>
+<td style="font-size:11px;color:var(--text3)">机修工Lv1</td>
+</tr><tr>
+<td><div class="td-name"><span class="cal-dot" style="background:#88ff88"></span>PBM</div></td>
+<td><span style="font-size:10px;background:var(--bg2);border:1px solid var(--border);padding:2px 7px;border-radius:3px;color:var(--text2)">9×18</span></td>
+<td><div class="pen-wrap"><div class="pen-track"><div class="pen-fill" style="width:40%"></div></div><span class="v-lo">28</span></div></td>
+<td class="v-lo">40</td>
+<td>28%</td>
+<td><div class="armc-wrap"><span class="armc armc-y">1</span><span class="armc armc-y">2</span><span class="armc armc-m">3</span><span class="armc armc-n">4</span><span class="armc armc-n">5</span><span class="armc armc-n">6</span></div></td>
+<td style="color:var(--gold);font-family:var(--mono)">380₽</td>
+<td style="font-size:11px;color:var(--text3)">跳蚤市场</td>
+</tr><tr>
+<td><div class="td-name"><span class="cal-dot" style="background:#bb55ff"></span>PS12</div></td>
+<td><span style="font-size:10px;background:var(--bg2);border:1px solid var(--border);padding:2px 7px;border-radius:3px;color:var(--text2)">12.7×55</span></td>
+<td><div class="pen-wrap"><div class="pen-track"><div class="pen-fill" style="width:40%"></div></div><span class="v-lo">28</span></div></td>
+<td class="v-hi">115</td>
+<td>28%</td>
+<td><div class="armc-wrap"><span class="armc armc-y">1</span><span class="armc armc-y">2</span><span class="armc armc-m">3</span><span class="armc armc-n">4</span><span class="armc armc-n">5</span><span class="armc armc-n">6</span></div></td>
+<td style="color:var(--gold);font-family:var(--mono)">1,800₽</td>
+<td style="font-size:11px;color:var(--text3)">跳蚤市场</td>
+</tr><tr>
+<td><div class="td-name"><span class="cal-dot" style="background:#88ffff"></span>SB193</div></td>
+<td><span style="font-size:10px;background:var(--bg2);border:1px solid var(--border);padding:2px 7px;border-radius:3px;color:var(--text2)">5.7×28</span></td>
+<td><div class="pen-wrap"><div class="pen-track"><div class="pen-fill" style="width:39%"></div></div><span class="v-lo">27</span></div></td>
+<td class="v-md">59</td>
+<td>28%</td>
+<td><div class="armc-wrap"><span class="armc armc-y">1</span><span class="armc armc-y">2</span><span class="armc armc-m">3</span><span class="armc armc-n">4</span><span class="armc armc-n">5</span><span class="armc armc-n">6</span></div></td>
+<td style="color:var(--gold);font-family:var(--mono)">420₽</td>
+<td style="font-size:11px;color:var(--text3)">跳蚤市场</td>
+</tr><tr>
+<td><div class="td-name"><span class="cal-dot" style="background:#aaffff"></span>SS197SR</div></td>
+<td><span style="font-size:10px;background:var(--bg2);border:1px solid var(--border);padding:2px 7px;border-radius:3px;color:var(--text2)">5.7×28</span></td>
+<td><div class="pen-wrap"><div class="pen-track"><div class="pen-fill" style="width:36%"></div></div><span class="v-lo">25</span></div></td>
+<td class="v-md">62</td>
+<td>25%</td>
+<td><div class="armc-wrap"><span class="armc armc-y">1</span><span class="armc armc-y">2</span><span class="armc armc-m">3</span><span class="armc armc-n">4</span><span class="armc armc-n">5</span><span class="armc armc-n">6</span></div></td>
+<td style="color:var(--gold);font-family:var(--mono)">360₽</td>
+<td style="font-size:11px;color:var(--text3)">跳蚤市场</td>
+</tr><tr>
+<td><div class="td-name"><span class="cal-dot" style="background:#ff88aa"></span>Pst gzh</div></td>
+<td><span style="font-size:10px;background:var(--bg2);border:1px solid var(--border);padding:2px 7px;border-radius:3px;color:var(--text2)">7.62×25</span></td>
+<td><div class="pen-wrap"><div class="pen-track"><div class="pen-fill" style="width:36%"></div></div><span class="v-lo">25</span></div></td>
+<td class="v-md">50</td>
+<td>25%</td>
+<td><div class="armc-wrap"><span class="armc armc-y">1</span><span class="armc armc-y">2</span><span class="armc armc-m">3</span><span class="armc armc-n">4</span><span class="armc armc-n">5</span><span class="armc armc-n">6</span></div></td>
+<td style="color:var(--gold);font-family:var(--mono)">150₽</td>
+<td style="font-size:11px;color:var(--text3)">跳蚤市场</td>
+</tr><tr>
+<td><div class="td-name"><span class="cal-dot" style="background:#ffdd99"></span>FMJ</div></td>
+<td><span style="font-size:10px;background:var(--bg2);border:1px solid var(--border);padding:2px 7px;border-radius:3px;color:var(--text2)">5.45×39</span></td>
+<td><div class="pen-wrap"><div class="pen-track"><div class="pen-fill" style="width:34%"></div></div><span class="v-lo">24</span></div></td>
+<td class="v-md">55</td>
+<td>24%</td>
+<td><div class="armc-wrap"><span class="armc armc-y">1</span><span class="armc armc-y">2</span><span class="armc armc-m">3</span><span class="armc armc-n">4</span><span class="armc armc-n">5</span><span class="armc armc-n">6</span></div></td>
+<td style="color:var(--gold);font-family:var(--mono)">120₽</td>
+<td style="font-size:11px;color:var(--text3)">帕帕Lv1</td>
+</tr><tr>
+<td><div class="td-name"><span class="cal-dot" style="background:#aaffaa"></span>PMM</div></td>
+<td><span style="font-size:10px;background:var(--bg2);border:1px solid var(--border);padding:2px 7px;border-radius:3px;color:var(--text2)">9×18</span></td>
+<td><div class="pen-wrap"><div class="pen-track"><div class="pen-fill" style="width:34%"></div></div><span class="v-lo">24</span></div></td>
+<td class="v-md">58</td>
+<td>24%</td>
+<td><div class="armc-wrap"><span class="armc armc-y">1</span><span class="armc armc-y">2</span><span class="armc armc-m">3</span><span class="armc armc-n">4</span><span class="armc armc-n">5</span><span class="armc armc-n">6</span></div></td>
+<td style="color:var(--gold);font-family:var(--mono)">250₽</td>
+<td style="font-size:11px;color:var(--text3)">机修工Lv2</td>
+</tr><tr>
+<td><div class="td-name"><span class="cal-dot" style="background:#cceeFF"></span>55 FMJ</div></td>
+<td><span style="font-size:10px;background:var(--bg2);border:1px solid var(--border);padding:2px 7px;border-radius:3px;color:var(--text2)">5.56×45</span></td>
+<td><div class="pen-wrap"><div class="pen-track"><div class="pen-fill" style="width:33%"></div></div><span class="v-lo">23</span></div></td>
+<td class="v-md">57</td>
+<td>23%</td>
+<td><div class="armc-wrap"><span class="armc armc-y">1</span><span class="armc armc-y">2</span><span class="armc armc-m">3</span><span class="armc armc-n">4</span><span class="armc armc-n">5</span><span class="armc armc-n">6</span></div></td>
+<td style="color:var(--gold);font-family:var(--mono)">200₽</td>
+<td style="font-size:11px;color:var(--text3)">跳蚤市场</td>
+</tr><tr>
+<td><div class="td-name"><span class="cal-dot" style="background:#88ffcc"></span>Subsonic SX</div></td>
+<td><span style="font-size:10px;background:var(--bg2);border:1px solid var(--border);padding:2px 7px;border-radius:3px;color:var(--text2)">4.6×30</span></td>
+<td><div class="pen-wrap"><div class="pen-track"><div class="pen-fill" style="width:33%"></div></div><span class="v-lo">23</span></div></td>
+<td class="v-md">52</td>
+<td>23%</td>
+<td><div class="armc-wrap"><span class="armc armc-y">1</span><span class="armc armc-y">2</span><span class="armc armc-m">3</span><span class="armc armc-n">4</span><span class="armc armc-n">5</span><span class="armc armc-n">6</span></div></td>
+<td style="color:var(--gold);font-family:var(--mono)">500₽</td>
+<td style="font-size:11px;color:var(--text3)">跳蚤市场</td>
+</tr><tr>
+<td><div class="td-name"><span class="cal-dot" style="background:#aadd66"></span>FMJ</div></td>
+<td><span style="font-size:10px;background:var(--bg2);border:1px solid var(--border);padding:2px 7px;border-radius:3px;color:var(--text2)">.366 TKM</span></td>
+<td><div class="pen-wrap"><div class="pen-track"><div class="pen-fill" style="width:33%"></div></div><span class="v-lo">23</span></div></td>
+<td class="v-hi">98</td>
+<td>23%</td>
+<td><div class="armc-wrap"><span class="armc armc-y">1</span><span class="armc armc-y">2</span><span class="armc armc-m">3</span><span class="armc armc-n">4</span><span class="armc armc-n">5</span><span class="armc armc-n">6</span></div></td>
+<td style="color:var(--gold);font-family:var(--mono)">200₽</td>
+<td style="font-size:11px;color:var(--text3)">跳蚤市场</td>
+</tr><tr>
+<td><div class="td-name"><span class="cal-dot" style="background:#ff4488"></span>RIP</div></td>
+<td><span style="font-size:10px;background:var(--bg2);border:1px solid var(--border);padding:2px 7px;border-radius:3px;color:var(--text2)">.45 ACP</span></td>
+<td><div class="pen-wrap"><div class="pen-track"><div class="pen-fill" style="width:31%"></div></div><span class="v-lo">22</span></div></td>
+<td class="v-hi">79</td>
+<td>25%</td>
+<td><div class="armc-wrap"><span class="armc armc-y">1</span><span class="armc armc-y">2</span><span class="armc armc-n">3</span><span class="armc armc-n">4</span><span class="armc armc-n">5</span><span class="armc armc-n">6</span></div></td>
+<td style="color:var(--gold);font-family:var(--mono)">420₽</td>
+<td style="font-size:11px;color:var(--text3)">跳蚤市场</td>
+</tr><tr>
+<td><div class="td-name"><span class="cal-dot" style="background:#aaffaa"></span>SP10</div></td>
+<td><span style="font-size:10px;background:var(--bg2);border:1px solid var(--border);padding:2px 7px;border-radius:3px;color:var(--text2)">9×21</span></td>
+<td><div class="pen-wrap"><div class="pen-track"><div class="pen-fill" style="width:31%"></div></div><span class="v-lo">22</span></div></td>
+<td class="v-md">59</td>
+<td>22%</td>
+<td><div class="armc-wrap"><span class="armc armc-y">1</span><span class="armc armc-y">2</span><span class="armc armc-m">3</span><span class="armc armc-n">4</span><span class="armc armc-n">5</span><span class="armc armc-n">6</span></div></td>
+<td style="color:var(--gold);font-family:var(--mono)">320₽</td>
+<td style="font-size:11px;color:var(--text3)">跳蚤市场</td>
+</tr><tr>
+<td><div class="td-name"><span class="cal-dot" style="background:#ffccaa"></span>T</div></td>
+<td><span style="font-size:10px;background:var(--bg2);border:1px solid var(--border);padding:2px 7px;border-radius:3px;color:var(--text2)">5.45×39</span></td>
+<td><div class="pen-wrap"><div class="pen-track"><div class="pen-fill" style="width:29%"></div></div><span class="v-lo">20</span></div></td>
+<td class="v-md">59</td>
+<td>20%</td>
+<td><div class="armc-wrap"><span class="armc armc-y">1</span><span class="armc armc-y">2</span><span class="armc armc-m">3</span><span class="armc armc-n">4</span><span class="armc armc-n">5</span><span class="armc armc-n">6</span></div></td>
+<td style="color:var(--gold);font-family:var(--mono)">100₽</td>
+<td style="font-size:11px;color:var(--text3)">帕帕Lv1</td>
+</tr><tr>
+<td><div class="td-name"><span class="cal-dot" style="background:#66ffbb"></span>Pst gzh</div></td>
+<td><span style="font-size:10px;background:var(--bg2);border:1px solid var(--border);padding:2px 7px;border-radius:3px;color:var(--text2)">9×19</span></td>
+<td><div class="pen-wrap"><div class="pen-track"><div class="pen-fill" style="width:29%"></div></div><span class="v-lo">20</span></div></td>
+<td class="v-md">54</td>
+<td>20%</td>
+<td><div class="armc-wrap"><span class="armc armc-y">1</span><span class="armc armc-m">2</span><span class="armc armc-n">3</span><span class="armc armc-n">4</span><span class="armc armc-n">5</span><span class="armc armc-n">6</span></div></td>
+<td style="color:var(--gold);font-family:var(--mono)">120₽</td>
+<td style="font-size:11px;color:var(--text3)">机修工Lv1</td>
+</tr><tr>
+<td><div class="td-name"><span class="cal-dot" style="background:#ddeeff"></span>M856</div></td>
+<td><span style="font-size:10px;background:var(--bg2);border:1px solid var(--border);padding:2px 7px;border-radius:3px;color:var(--text2)">5.56×45</span></td>
+<td><div class="pen-wrap"><div class="pen-track"><div class="pen-fill" style="width:26%"></div></div><span class="v-lo">18</span></div></td>
+<td class="v-md">60</td>
+<td>18%</td>
+<td><div class="armc-wrap"><span class="armc armc-y">1</span><span class="armc armc-m">2</span><span class="armc armc-n">3</span><span class="armc armc-n">4</span><span class="armc armc-n">5</span><span class="armc armc-n">6</span></div></td>
+<td style="color:var(--gold);font-family:var(--mono)">150₽</td>
+<td style="font-size:11px;color:var(--text3)">和平卫士Lv1</td>
+</tr><tr>
+<td><div class="td-name"><span class="cal-dot" style="background:#aaffdd"></span>Action SX</div></td>
+<td><span style="font-size:10px;background:var(--bg2);border:1px solid var(--border);padding:2px 7px;border-radius:3px;color:var(--text2)">4.6×30</span></td>
+<td><div class="pen-wrap"><div class="pen-track"><div class="pen-fill" style="width:26%"></div></div><span class="v-lo">18</span></div></td>
+<td class="v-md">65</td>
+<td>18%</td>
+<td><div class="armc-wrap"><span class="armc armc-y">1</span><span class="armc armc-m">2</span><span class="armc armc-n">3</span><span class="armc armc-n">4</span><span class="armc armc-n">5</span><span class="armc armc-n">6</span></div></td>
+<td style="color:var(--gold);font-family:var(--mono)">350₽</td>
+<td style="font-size:11px;color:var(--text3)">跳蚤市场</td>
+</tr><tr>
+<td><div class="td-name"><span class="cal-dot" style="background:#ccffcc"></span>SP11</div></td>
+<td><span style="font-size:10px;background:var(--bg2);border:1px solid var(--border);padding:2px 7px;border-radius:3px;color:var(--text2)">9×21</span></td>
+<td><div class="pen-wrap"><div class="pen-track"><div class="pen-fill" style="width:26%"></div></div><span class="v-lo">18</span></div></td>
+<td class="v-md">65</td>
+<td>18%</td>
+<td><div class="armc-wrap"><span class="armc armc-y">1</span><span class="armc armc-m">2</span><span class="armc armc-n">3</span><span class="armc armc-n">4</span><span class="armc armc-n">5</span><span class="armc armc-n">6</span></div></td>
+<td style="color:var(--gold);font-family:var(--mono)">250₽</td>
+<td style="font-size:11px;color:var(--text3)">跳蚤市场</td>
+</tr><tr>
+<td><div class="td-name"><span class="cal-dot" style="background:#ffdd99"></span>Dual Sabot</div></td>
+<td><span style="font-size:10px;background:var(--bg2);border:1px solid var(--border);padding:2px 7px;border-radius:3px;color:var(--text2)">12号径</span></td>
+<td><div class="pen-wrap"><div class="pen-track"><div class="pen-fill" style="width:24%"></div></div><span class="v-lo">17</span></div></td>
+<td class="v-hi">85</td>
+<td>17%</td>
+<td><div class="armc-wrap"><span class="armc armc-y">1</span><span class="armc armc-m">2</span><span class="armc armc-n">3</span><span class="armc armc-n">4</span><span class="armc armc-n">5</span><span class="armc armc-n">6</span></div></td>
+<td style="color:var(--gold);font-family:var(--mono)">550₽</td>
+<td style="font-size:11px;color:var(--text3)">跳蚤市场</td>
+</tr><tr>
+<td><div class="td-name"><span class="cal-dot" style="background:#ffddaa"></span>SP</div></td>
+<td><span style="font-size:10px;background:var(--bg2);border:1px solid var(--border);padding:2px 7px;border-radius:3px;color:var(--text2)">5.45×39</span></td>
+<td><div class="pen-wrap"><div class="pen-track"><div class="pen-fill" style="width:21%"></div></div><span class="v-lo">15</span></div></td>
+<td class="v-md">67</td>
+<td>15%</td>
+<td><div class="armc-wrap"><span class="armc armc-y">1</span><span class="armc armc-m">2</span><span class="armc armc-n">3</span><span class="armc armc-n">4</span><span class="armc armc-n">5</span><span class="armc armc-n">6</span></div></td>
+<td style="color:var(--gold);font-family:var(--mono)">90₽</td>
+<td style="font-size:11px;color:var(--text3)">帕帕Lv1</td>
+</tr><tr>
+<td><div class="td-name"><span class="cal-dot" style="background:#ffddbb"></span>HP</div></td>
+<td><span style="font-size:10px;background:var(--bg2);border:1px solid var(--border);padding:2px 7px;border-radius:3px;color:var(--text2)">7.62×39</span></td>
+<td><div class="pen-wrap"><div class="pen-track"><div class="pen-fill" style="width:21%"></div></div><span class="v-lo">15</span></div></td>
+<td class="v-hi">80</td>
+<td>15%</td>
+<td><div class="armc-wrap"><span class="armc armc-y">1</span><span class="armc armc-m">2</span><span class="armc armc-n">3</span><span class="armc armc-n">4</span><span class="armc armc-n">5</span><span class="armc armc-n">6</span></div></td>
+<td style="color:var(--gold);font-family:var(--mono)">120₽</td>
+<td style="font-size:11px;color:var(--text3)">帕帕Lv1</td>
+</tr><tr>
+<td><div class="td-name"><span class="cal-dot" style="background:#88ffcc"></span>绿色曳光弹</div></td>
+<td><span style="font-size:10px;background:var(--bg2);border:1px solid var(--border);padding:2px 7px;border-radius:3px;color:var(--text2)">9×19</span></td>
+<td><div class="pen-wrap"><div class="pen-track"><div class="pen-fill" style="width:20%"></div></div><span class="v-lo">14</span></div></td>
+<td class="v-md">58</td>
+<td>14%</td>
+<td><div class="armc-wrap"><span class="armc armc-y">1</span><span class="armc armc-m">2</span><span class="armc armc-n">3</span><span class="armc armc-n">4</span><span class="armc armc-n">5</span><span class="armc armc-n">6</span></div></td>
+<td style="color:var(--gold);font-family:var(--mono)">180₽</td>
+<td style="font-size:11px;color:var(--text3)">跳蚤市场</td>
+</tr><tr>
+<td><div class="td-name"><span class="cal-dot" style="background:#ccee88"></span>Geksa</div></td>
+<td><span style="font-size:10px;background:var(--bg2);border:1px solid var(--border);padding:2px 7px;border-radius:3px;color:var(--text2)">.366 TKM</span></td>
+<td><div class="pen-wrap"><div class="pen-track"><div class="pen-fill" style="width:20%"></div></div><span class="v-lo">14</span></div></td>
+<td class="v-hi">110</td>
+<td>14%</td>
+<td><div class="armc-wrap"><span class="armc armc-y">1</span><span class="armc armc-m">2</span><span class="armc armc-n">3</span><span class="armc armc-n">4</span><span class="armc armc-n">5</span><span class="armc armc-n">6</span></div></td>
+<td style="color:var(--gold);font-family:var(--mono)">150₽</td>
+<td style="font-size:11px;color:var(--text3)">跳蚤市场</td>
+</tr><tr>
+<td><div class="td-name"><span class="cal-dot" style="background:#ccffcc"></span>Pst gzh</div></td>
+<td><span style="font-size:10px;background:var(--bg2);border:1px solid var(--border);padding:2px 7px;border-radius:3px;color:var(--text2)">9×18</span></td>
+<td><div class="pen-wrap"><div class="pen-track"><div class="pen-fill" style="width:17%"></div></div><span class="v-lo">12</span></div></td>
+<td class="v-md">50</td>
+<td>12%</td>
+<td><div class="armc-wrap"><span class="armc armc-y">1</span><span class="armc armc-m">2</span><span class="armc armc-n">3</span><span class="armc armc-n">4</span><span class="armc armc-n">5</span><span class="armc armc-n">6</span></div></td>
+<td style="color:var(--gold);font-family:var(--mono)">80₽</td>
+<td style="font-size:11px;color:var(--text3)">机修工Lv1</td>
+</tr><tr>
+<td><div class="td-name"><span class="cal-dot" style="background:#aaffdd"></span>Luger CCI</div></td>
+<td><span style="font-size:10px;background:var(--bg2);border:1px solid var(--border);padding:2px 7px;border-radius:3px;color:var(--text2)">9×19</span></td>
+<td><div class="pen-wrap"><div class="pen-track"><div class="pen-fill" style="width:14%"></div></div><span class="v-lo">10</span></div></td>
+<td class="v-hi">70</td>
+<td>10%</td>
+<td><div class="armc-wrap"><span class="armc armc-m">1</span><span class="armc armc-n">2</span><span class="armc armc-n">3</span><span class="armc armc-n">4</span><span class="armc armc-n">5</span><span class="armc armc-n">6</span></div></td>
+<td style="color:var(--gold);font-family:var(--mono)">280₽</td>
+<td style="font-size:11px;color:var(--text3)">跳蚤市场</td>
+</tr><tr>
+<td><div class="td-name"><span class="cal-dot" style="background:#ffdd88"></span>FTX Custom Lite</div></td>
+<td><span style="font-size:10px;background:var(--bg2);border:1px solid var(--border);padding:2px 7px;border-radius:3px;color:var(--text2)">12号径</span></td>
+<td><div class="pen-wrap"><div class="pen-track"><div class="pen-fill" style="width:14%"></div></div><span class="v-lo">10</span></div></td>
+<td class="v-hi">130</td>
+<td>10%</td>
+<td><div class="armc-wrap"><span class="armc armc-m">1</span><span class="armc armc-n">2</span><span class="armc armc-n">3</span><span class="armc armc-n">4</span><span class="armc armc-n">5</span><span class="armc armc-n">6</span></div></td>
+<td style="color:var(--gold);font-family:var(--mono)">680₽</td>
+<td style="font-size:11px;color:var(--text3)">跳蚤市场</td>
+</tr><tr>
+<td><div class="td-name"><span class="cal-dot" style="background:#cc66ff"></span>PS12A</div></td>
+<td><span style="font-size:10px;background:var(--bg2);border:1px solid var(--border);padding:2px 7px;border-radius:3px;color:var(--text2)">12.7×55</span></td>
+<td><div class="pen-wrap"><div class="pen-track"><div class="pen-fill" style="width:14%"></div></div><span class="v-lo">10</span></div></td>
+<td class="v-hi">165</td>
+<td>10%</td>
+<td><div class="armc-wrap"><span class="armc armc-m">1</span><span class="armc armc-n">2</span><span class="armc armc-n">3</span><span class="armc armc-n">4</span><span class="armc armc-n">5</span><span class="armc armc-n">6</span></div></td>
+<td style="color:var(--gold);font-family:var(--mono)">1,200₽</td>
+<td style="font-size:11px;color:var(--text3)">跳蚤市场</td>
+</tr><tr>
+<td><div class="td-name"><span class="cal-dot" style="background:#ffddbb"></span>HP</div></td>
+<td><span style="font-size:10px;background:var(--bg2);border:1px solid var(--border);padding:2px 7px;border-radius:3px;color:var(--text2)">5.45×39</span></td>
+<td><div class="pen-wrap"><div class="pen-track"><div class="pen-fill" style="width:13%"></div></div><span class="v-lo">9</span></div></td>
+<td class="v-hi">76</td>
+<td>9%</td>
+<td><div class="armc-wrap"><span class="armc armc-m">1</span><span class="armc armc-n">2</span><span class="armc armc-n">3</span><span class="armc armc-n">4</span><span class="armc armc-n">5</span><span class="armc armc-n">6</span></div></td>
+<td style="color:var(--gold);font-family:var(--mono)">80₽</td>
+<td style="font-size:11px;color:var(--text3)">帕帕Lv1</td>
+</tr><tr>
+<td><div class="td-name"><span class="cal-dot" style="background:#ffaacc"></span>LRN</div></td>
+<td><span style="font-size:10px;background:var(--bg2);border:1px solid var(--border);padding:2px 7px;border-radius:3px;color:var(--text2)">7.62×25</span></td>
+<td><div class="pen-wrap"><div class="pen-track"><div class="pen-fill" style="width:11%"></div></div><span class="v-lo">8</span></div></td>
+<td class="v-md">64</td>
+<td>8%</td>
+<td><div class="armc-wrap"><span class="armc armc-m">1</span><span class="armc armc-n">2</span><span class="armc armc-n">3</span><span class="armc armc-n">4</span><span class="armc armc-n">5</span><span class="armc armc-n">6</span></div></td>
+<td style="color:var(--gold);font-family:var(--mono)">80₽</td>
+<td style="font-size:11px;color:var(--text3)">跳蚤市场</td>
+</tr><tr>
+<td><div class="td-name"><span class="cal-dot" style="background:#eeffff"></span>55 HP</div></td>
+<td><span style="font-size:10px;background:var(--bg2);border:1px solid var(--border);padding:2px 7px;border-radius:3px;color:var(--text2)">5.56×45</span></td>
+<td><div class="pen-wrap"><div class="pen-track"><div class="pen-fill" style="width:10%"></div></div><span class="v-lo">7</span></div></td>
+<td class="v-hi">79</td>
+<td>7%</td>
+<td><div class="armc-wrap"><span class="armc armc-m">1</span><span class="armc armc-n">2</span><span class="armc armc-n">3</span><span class="armc armc-n">4</span><span class="armc armc-n">5</span><span class="armc armc-n">6</span></div></td>
+<td style="color:var(--gold);font-family:var(--mono)">130₽</td>
+<td style="font-size:11px;color:var(--text3)">跳蚤市场</td>
+</tr><tr>
+<td><div class="td-name"><span class="cal-dot" style="background:#ddffdd"></span>PS gs PPO</div></td>
+<td><span style="font-size:10px;background:var(--bg2);border:1px solid var(--border);padding:2px 7px;border-radius:3px;color:var(--text2)">9×18</span></td>
+<td><div class="pen-wrap"><div class="pen-track"><div class="pen-fill" style="width:9%"></div></div><span class="v-lo">6</span></div></td>
+<td class="v-md">55</td>
+<td>6%</td>
+<td><div class="armc-wrap"><span class="armc armc-m">1</span><span class="armc armc-n">2</span><span class="armc armc-n">3</span><span class="armc armc-n">4</span><span class="armc armc-n">5</span><span class="armc armc-n">6</span></div></td>
+<td style="color:var(--gold);font-family:var(--mono)">50₽</td>
+<td style="font-size:11px;color:var(--text3)">机修工Lv1</td>
+</tr><tr>
+<td><div class="td-name"><span class="cal-dot" style="background:#ffcc44"></span>7毫米鹿弹</div></td>
+<td><span style="font-size:10px;background:var(--bg2);border:1px solid var(--border);padding:2px 7px;border-radius:3px;color:var(--text2)">12号径</span></td>
+<td><div class="pen-wrap"><div class="pen-track"><div class="pen-fill" style="width:4%"></div></div><span class="v-lo">3</span></div></td>
+<td class="v-lo">39</td>
+<td>3%</td>
+<td><div class="armc-wrap"><span class="armc armc-n">1</span><span class="armc armc-n">2</span><span class="armc armc-n">3</span><span class="armc armc-n">4</span><span class="armc armc-n">5</span><span class="armc armc-n">6</span></div></td>
+<td style="color:var(--gold);font-family:var(--mono)">180₽</td>
+<td style="font-size:11px;color:var(--text3)">机修工Lv1</td>
+</tr><tr>
+<td><div class="td-name"><span class="cal-dot" style="background:#ccffee"></span>RIP</div></td>
+<td><span style="font-size:10px;background:var(--bg2);border:1px solid var(--border);padding:2px 7px;border-radius:3px;color:var(--text2)">9×19</span></td>
+<td><div class="pen-wrap"><div class="pen-track"><div class="pen-fill" style="width:3%"></div></div><span class="v-lo">2</span></div></td>
+<td class="v-hi">102</td>
+<td>2%</td>
+<td><div class="armc-wrap"><span class="armc armc-n">1</span><span class="armc armc-n">2</span><span class="armc armc-n">3</span><span class="armc armc-n">4</span><span class="armc armc-n">5</span><span class="armc armc-n">6</span></div></td>
+<td style="color:var(--gold);font-family:var(--mono)">550₽</td>
+<td style="font-size:11px;color:var(--text3)">跳蚤市场</td>
+</tr><tr>
+<td><div class="td-name"><span class="cal-dot" style="background:#ffcc66"></span>8.5毫米鹿弹</div></td>
+<td><span style="font-size:10px;background:var(--bg2);border:1px solid var(--border);padding:2px 7px;border-radius:3px;color:var(--text2)">12号径</span></td>
+<td><div class="pen-wrap"><div class="pen-track"><div class="pen-fill" style="width:3%"></div></div><span class="v-lo">2</span></div></td>
+<td class="v-md">50</td>
+<td>2%</td>
+<td><div class="armc-wrap"><span class="armc armc-n">1</span><span class="armc armc-n">2</span><span class="armc armc-n">3</span><span class="armc armc-n">4</span><span class="armc armc-n">5</span><span class="armc armc-n">6</span></div></td>
+<td style="color:var(--gold);font-family:var(--mono)">220₽</td>
+<td style="font-size:11px;color:var(--text3)">跳蚤市场</td>
+</tr></tbody>
+</table>
+</div>
+</div>
+<div class="search-ov" id="searchOv" onclick="closeSearchOv(event)">
+  <div class="search-box" onclick="event.stopPropagation()">
+    <div class="sm-wrap">
+      <span class="sm-icon">🔍</span>
+      <input class="sm-input" id="smInput" placeholder="搜索地图、武器、弹药、任务..." oninput="doSearch(this.value)">
+      <div class="sm-esc" onclick="closeSearch()">ESC</div>
+<footer class="footer">
+  <div class="footer-inner">
+    <span>© 2024 TarkovGuide · <a href="../index.html">返回首页</a></span>
+    <span><a href="../privacy.html">隐私政策</a> · <a href="../terms.html">服务条款</a> · <a href="../about.html">关于我们</a></span>
+  </div>
+</footer>
+<script>
+
+const searchData=[{"title": "7N39 Igolnik (5.45×39)", "icon": "💊", "url": "../ammo/", "cat": "弹药"}, {"title": "7N40 (5.45×39)", "icon": "💊", "url": "../ammo/", "cat": "弹药"}, {"title": "BS (5.45×39)", "icon": "💊", "url": "../ammo/", "cat": "弹药"}, {"title": "BP (5.45×39)", "icon": "💊", "url": "../ammo/", "cat": "弹药"}, {"title": "BT (5.45×39)", "icon": "💊", "url": "../ammo/", "cat": "弹药"}, {"title": "PP (5.45×39)", "icon": "💊", "url": "../ammo/", "cat": "弹药"}, {"title": "PS (5.45×39)", "icon": "💊", "url": "../ammo/", "cat": "弹药"}, {"title": "FMJ (5.45×39)", "icon": "💊", "url": "../ammo/", "cat": "弹药"}, {"title": "T (5.45×39)", "icon": "💊", "url": "../ammo/", "cat": "弹药"}, {"title": "SP (5.45×39)", "icon": "💊", "url": "../ammo/", "cat": "弹药"}, {"title": "HP (5.45×39)", "icon": "💊", "url": "../ammo/", "cat": "弹药"}, {"title": "M995 (5.56×45)", "icon": "💊", "url": "../ammo/", "cat": "弹药"}, {"title": "M855A1 (5.56×45)", "icon": "💊", "url": "../ammo/", "cat": "弹药"}, {"title": "M856A1 (5.56×45)", "icon": "💊", "url": "../ammo/", "cat": "弹药"}, {"title": "M855 (5.56×45)", "icon": "💊", "url": "../ammo/", "cat": "弹药"}, {"title": "55 FMJ (5.56×45)", "icon": "💊", "url": "../ammo/", "cat": "弹药"}, {"title": "M856 (5.56×45)", "icon": "💊", "url": "../ammo/", "cat": "弹药"}, {"title": "55 HP (5.56×45)", "icon": "💊", "url": "../ammo/", "cat": "弹药"}, {"title": "BP (7.62×39)", "icon": "💊", "url": "../ammo/", "cat": "弹药"}, {"title": "PS (7.62×39)", "icon": "💊", "url": "../ammo/", "cat": "弹药"}, {"title": "T45M (7.62×39)", "icon": "💊", "url": "../ammo/", "cat": "弹药"}, {"title": "HP (7.62×39)", "icon": "💊", "url": "../ammo/", "cat": "弹药"}, {"title": "M61 (7.62×51)", "icon": "💊", "url": "../ammo/", "cat": "弹药"}, {"title": "M80 (7.62×51)", "icon": "💊", "url": "../ammo/", "cat": "弹药"}, {"title": "M62 (7.62×51)", "icon": "💊", "url": "../ammo/", "cat": "弹药"}, {"title": "7N1 狙击弹 (7.62×54R)", "icon": "💊", "url": "../ammo/", "cat": "弹药"}, {"title": "SNB (7.62×54R)", "icon": "💊", "url": "../ammo/", "cat": "弹药"}, {"title": "LPS Gzh (7.62×54R)", "icon": "💊", "url": "../ammo/", "cat": "弹药"}, {"title": "AP SX (4.6×30)", "icon": "💊", "url": "../ammo/", "cat": "弹药"}, {"title": "FMJ SX (4.6×30)", "icon": "💊", "url": "../ammo/", "cat": "弹药"}, {"title": "Subsonic SX (4.6×30)", "icon": "💊", "url": "../ammo/", "cat": "弹药"}, {"title": "Action SX (4.6×30)", "icon": "💊", "url": "../ammo/", "cat": "弹药"}, {"title": "7N12 BP (9×39)", "icon": "💊", "url": "../ammo/", "cat": "弹药"}, {"title": "SP-6 (9×39)", "icon": "💊", "url": "../ammo/", "cat": "弹药"}, {"title": "SPP (9×39)", "icon": "💊", "url": "../ammo/", "cat": "弹药"}, {"title": "SP-5 (9×39)", "icon": "💊", "url": "../ammo/", "cat": "弹药"}, {"title": "AP 6.3 (9×19)", "icon": "💊", "url": "../ammo/", "cat": "弹药"}, {"title": "PBP (9×19)", "icon": "💊", "url": "../ammo/", "cat": "弹药"}, {"title": "Pst gzh (9×19)", "icon": "💊", "url": "../ammo/", "cat": "弹药"}, {"title": "绿色曳光弹 (9×19)", "icon": "💊", "url": "../ammo/", "cat": "弹药"}, {"title": "Luger CCI (9×19)", "icon": "💊", "url": "../ammo/", "cat": "弹药"}, {"title": "RIP (9×19)", "icon": "💊", "url": "../ammo/", "cat": "弹药"}, {"title": "AP (.45 ACP)", "icon": "💊", "url": "../ammo/", "cat": "弹药"}, {"title": "RIP (.45 ACP)", "icon": "💊", "url": "../ammo/", "cat": "弹药"}, {"title": "SS190 (5.7×28)", "icon": "💊", "url": "../ammo/", "cat": "弹药"}, {"title": "L191 (5.7×28)", "icon": "💊", "url": "../ammo/", "cat": "弹药"}, {"title": "SB193 (5.7×28)", "icon": "💊", "url": "../ammo/", "cat": "弹药"}, {"title": "SS197SR (5.7×28)", "icon": "💊", "url": "../ammo/", "cat": "弹药"}, {"title": "SP13 (9×21)", "icon": "💊", "url": "../ammo/", "cat": "弹药"}, {"title": "SP10 (9×21)", "icon": "💊", "url": "../ammo/", "cat": "弹药"}, {"title": "SP11 (9×21)", "icon": "💊", "url": "../ammo/", "cat": "弹药"}, {"title": "AP-20 独头弹 (12号径)", "icon": "💊", "url": "../ammo/", "cat": "弹药"}, {"title": "7毫米鹿弹 (12号径)", "icon": "💊", "url": "../ammo/", "cat": "弹药"}, {"title": "8.5毫米鹿弹 (12号径)", "icon": "💊", "url": "../ammo/", "cat": "弹药"}, {"title": "FTX Custom Lite (12号径)", "icon": "💊", "url": "../ammo/", "cat": "弹药"}, {"title": "Dual Sabot (12号径)", "icon": "💊", "url": "../ammo/", "cat": "弹药"}, {"title": "PBM (9×18)", "icon": "💊", "url": "../ammo/", "cat": "弹药"}, {"title": "PMM (9×18)", "icon": "💊", "url": "../ammo/", "cat": "弹药"}, {"title": "Pst gzh (9×18)", "icon": "💊", "url": "../ammo/", "cat": "弹药"}, {"title": "PS gs PPO (9×18)", "icon": "💊", "url": "../ammo/", "cat": "弹药"}, {"title": "PS12B (12.7×55)", "icon": "💊", "url": "../ammo/", "cat": "弹药"}, {"title": "PS12A (12.7×55)", "icon": "💊", "url": "../ammo/", "cat": "弹药"}, {"title": "PS12 (12.7×55)", "icon": "💊", "url": "../ammo/", "cat": "弹药"}, {"title": "Pst gzh (7.62×25)", "icon": "💊", "url": "../ammo/", "cat": "弹药"}, {"title": "LRN (7.62×25)", "icon": "💊", "url": "../ammo/", "cat": "弹药"}, {"title": "EKO (.366 TKM)", "icon": "💊", "url": "../ammo/", "cat": "弹药"}, {"title": "FMJ (.366 TKM)", "icon": "💊", "url": "../ammo/", "cat": "弹药"}, {"title": "Geksa (.366 TKM)", "icon": "💊", "url": "../ammo/", "cat": "弹药"}, {"title": "M80 (.308)", "icon": "💊", "url": "../ammo/", "cat": "弹药"}, {"title": "M61 (.308)", "icon": "💊", "url": "../ammo/", "cat": "弹药"}];
+function doSearch(kw){
+  kw=kw.trim().toLowerCase();
+  const el=document.getElementById('searchResults');
+  if(!kw){el.style.display='none';return}
+  const results=searchData.filter(s=>s.title.toLowerCase().includes(kw)).slice(0,8);
+  if(!results.length){el.style.display='block';el.innerHTML='<div class="sr-empty">未找到相关内容</div>';return}
+  el.style.display='block';
+  el.innerHTML=results.map(r=>'<a href="'+r.url+'" class="sr-item"><span class="sr-icon">'+r.icon+'</span><div class="sr-body"><div class="sr-title">'+r.title+'</div><span class="sr-cat">'+r.cat+'</span></div></a>').join('');
+}
+initSearch=function(){};
+
+
+function toggleMenu(){document.getElementById('mobileMenu').classList.toggle('open')}
+function openSearch(){document.getElementById('searchOv').classList.add('on');setTimeout(()=>document.getElementById('smInput')?.focus(),100)}
+function closeSearch(){document.getElementById('searchOv').classList.remove('on');document.getElementById('searchResults').style.display='none'}
+function closeSearchOv(e){if(e.target===document.getElementById('searchOv'))closeSearch()}
+document.addEventListener('keydown',function(e){if((e.ctrlKey||e.metaKey)&&e.key==='k'){e.preventDefault();openSearch()}if(e.key==='Escape')closeSearch()});
+
+
+const allAmmo = [{"name": "7N39 Igolnik", "caliber": "5.45×39", "pen": 62, "damage": 37, "armorDmg": 58, "priceNum": 2800, "price": "2,800₽", "source": "跳蚤市场", "armorClass": ["yes", "yes", "yes", "yes", "yes", "yes"], "color": "#ff3322"}, {"name": "SNB", "caliber": "7.62×54R", "pen": 62, "damage": 75, "armorDmg": 60, "priceNum": 2400, "price": "2,400₽", "source": "跳蚤市场", "armorClass": ["yes", "yes", "yes", "yes", "yes", "yes"], "color": "#ff4488"}, {"name": "7N40", "caliber": "5.45×39", "pen": 58, "damage": 47, "armorDmg": 54, "priceNum": 960, "price": "960₽", "source": "跳蚤/商人", "armorClass": ["yes", "yes", "yes", "yes", "yes", "maybe"], "color": "#ff6644"}, {"name": "M61", "caliber": "7.62×51", "pen": 55, "damage": 75, "armorDmg": 66, "priceNum": 3200, "price": "3,200₽", "source": "跳蚤/任务", "armorClass": ["yes", "yes", "yes", "yes", "yes", "yes"], "color": "#aa44ff"}, {"name": "M61", "caliber": ".308", "pen": 55, "damage": 75, "armorDmg": 66, "priceNum": 3200, "price": "3,200₽", "source": "跳蚤市场", "armorClass": ["yes", "yes", "yes", "yes", "yes", "yes"], "color": "#aa44ff"}, {"name": "BS", "caliber": "5.45×39", "pen": 54, "damage": 45, "armorDmg": 50, "priceNum": 1200, "price": "1,200₽", "source": "跳蚤市场", "armorClass": ["yes", "yes", "yes", "yes", "yes", "no"], "color": "#ff8844"}, {"name": "7N12 BP", "caliber": "9×39", "pen": 54, "damage": 58, "armorDmg": 50, "priceNum": 1500, "price": "1,500₽", "source": "跳蚤市场", "armorClass": ["yes", "yes", "yes", "yes", "yes", "no"], "color": "#44ddff"}, {"name": "M995", "caliber": "5.56×45", "pen": 53, "damage": 42, "armorDmg": 57, "priceNum": 1850, "price": "1,850₽", "source": "跳蚤市场", "armorClass": ["yes", "yes", "yes", "yes", "yes", "no"], "color": "#44aaff"}, {"name": "AP SX", "caliber": "4.6×30", "pen": 53, "damage": 35, "armorDmg": 55, "priceNum": 1600, "price": "1,600₽", "source": "跳蚤市场", "armorClass": ["yes", "yes", "yes", "yes", "yes", "no"], "color": "#44ff88"}, {"name": "SP-6", "caliber": "9×39", "pen": 48, "damage": 60, "armorDmg": 45, "priceNum": 1100, "price": "1,100₽", "source": "机修工Lv3", "armorClass": ["yes", "yes", "yes", "yes", "maybe", "no"], "color": "#66eeff"}, {"name": "BP", "caliber": "7.62×39", "pen": 47, "damage": 58, "armorDmg": 43, "priceNum": 480, "price": "480₽", "source": "帕帕Lv3", "armorClass": ["yes", "yes", "yes", "yes", "maybe", "no"], "color": "#ffaa44"}, {"name": "PS12B", "caliber": "12.7×55", "pen": 46, "damage": 102, "armorDmg": 48, "priceNum": 2400, "price": "2,400₽", "source": "跳蚤市场", "armorClass": ["yes", "yes", "yes", "yes", "maybe", "no"], "color": "#aa44ff"}, {"name": "BP", "caliber": "5.45×39", "pen": 45, "damage": 48, "armorDmg": 43, "priceNum": 380, "price": "380₽", "source": "帕帕商人", "armorClass": ["yes", "yes", "yes", "yes", "maybe", "no"], "color": "#ffaa44"}, {"name": "7N1 狙击弹", "caliber": "7.62×54R", "pen": 45, "damage": 84, "armorDmg": 48, "priceNum": 1800, "price": "1,800₽", "source": "机修工Lv3", "armorClass": ["yes", "yes", "yes", "yes", "maybe", "no"], "color": "#ff66cc"}, {"name": "M855A1", "caliber": "5.56×45", "pen": 44, "damage": 49, "armorDmg": 50, "priceNum": 980, "price": "980₽", "source": "和平卫士Lv3", "armorClass": ["yes", "yes", "yes", "yes", "maybe", "no"], "color": "#66bbff"}, {"name": "M80", "caliber": "7.62×51", "pen": 43, "damage": 80, "armorDmg": 45, "priceNum": 1200, "price": "1,200₽", "source": "和平卫士Lv2", "armorClass": ["yes", "yes", "yes", "yes", "maybe", "no"], "color": "#bb66ff"}, {"name": "M80", "caliber": ".308", "pen": 43, "damage": 80, "armorDmg": 45, "priceNum": 1200, "price": "1,200₽", "source": "和平卫士Lv3", "armorClass": ["yes", "yes", "yes", "yes", "maybe", "no"], "color": "#bb66ff"}, {"name": "M62", "caliber": "7.62×51", "pen": 42, "damage": 82, "armorDmg": 58, "priceNum": 1400, "price": "1,400₽", "source": "跳蚤市场", "armorClass": ["yes", "yes", "yes", "yes", "maybe", "no"], "color": "#cc66ff"}, {"name": "LPS Gzh", "caliber": "7.62×54R", "pen": 42, "damage": 81, "armorDmg": 42, "priceNum": 800, "price": "800₽", "source": "机修工Lv1", "armorClass": ["yes", "yes", "yes", "yes", "maybe", "no"], "color": "#ff6699"}, {"name": "FMJ SX", "caliber": "4.6×30", "pen": 40, "damage": 43, "armorDmg": 40, "priceNum": 800, "price": "800₽", "source": "机修工Lv2", "armorClass": ["yes", "yes", "yes", "maybe", "no", "no"], "color": "#66ffaa"}, {"name": "M856A1", "caliber": "5.56×45", "pen": 38, "damage": 52, "armorDmg": 40, "priceNum": 650, "price": "650₽", "source": "和平卫士Lv2", "armorClass": ["yes", "yes", "yes", "maybe", "no", "no"], "color": "#88ccff"}, {"name": "PBP", "caliber": "9×19", "pen": 38, "damage": 52, "armorDmg": 38, "priceNum": 580, "price": "580₽", "source": "机修工/跳蚤", "armorClass": ["yes", "yes", "yes", "maybe", "no", "no"], "color": "#44ffaa"}, {"name": "BT", "caliber": "5.45×39", "pen": 37, "damage": 54, "armorDmg": 37, "priceNum": 280, "price": "280₽", "source": "帕帕Lv2", "armorClass": ["yes", "yes", "yes", "maybe", "no", "no"], "color": "#ffcc44"}, {"name": "SS190", "caliber": "5.7×28", "pen": 37, "damage": 49, "armorDmg": 38, "priceNum": 680, "price": "680₽", "source": "跳蚤市场", "armorClass": ["yes", "yes", "yes", "maybe", "no", "no"], "color": "#44ffdd"}, {"name": "AP-20 独头弹", "caliber": "12号径", "pen": 37, "damage": 164, "armorDmg": 40, "priceNum": 1200, "price": "1,200₽", "source": "跳蚤市场", "armorClass": ["yes", "yes", "yes", "maybe", "no", "no"], "color": "#ffaa22"}, {"name": "PS", "caliber": "7.62×39", "pen": 35, "damage": 61, "armorDmg": 36, "priceNum": 180, "price": "180₽", "source": "帕帕Lv2", "armorClass": ["yes", "yes", "yes", "maybe", "no", "no"], "color": "#ffcc66"}, {"name": "SPP", "caliber": "9×39", "pen": 35, "damage": 68, "armorDmg": 35, "priceNum": 750, "price": "750₽", "source": "机修工Lv2", "armorClass": ["yes", "yes", "yes", "maybe", "no", "no"], "color": "#88ffff"}, {"name": "PP", "caliber": "5.45×39", "pen": 34, "damage": 51, "armorDmg": 34, "priceNum": 220, "price": "220₽", "source": "帕帕Lv1", "armorClass": ["yes", "yes", "yes", "maybe", "no", "no"], "color": "#ffdd66"}, {"name": "L191", "caliber": "5.7×28", "pen": 33, "damage": 53, "armorDmg": 34, "priceNum": 520, "price": "520₽", "source": "跳蚤市场", "armorClass": ["yes", "yes", "yes", "maybe", "no", "no"], "color": "#66ffee"}, {"name": "AP", "caliber": ".45 ACP", "pen": 32, "damage": 55, "armorDmg": 34, "priceNum": 650, "price": "650₽", "source": "跳蚤市场", "armorClass": ["yes", "yes", "yes", "maybe", "no", "no"], "color": "#ff4488"}, {"name": "SP13", "caliber": "9×21", "pen": 32, "damage": 52, "armorDmg": 34, "priceNum": 480, "price": "480₽", "source": "跳蚤市场", "armorClass": ["yes", "yes", "yes", "maybe", "no", "no"], "color": "#88ff88"}, {"name": "M855", "caliber": "5.56×45", "pen": 31, "damage": 54, "armorDmg": 33, "priceNum": 350, "price": "350₽", "source": "和平卫士Lv1", "armorClass": ["yes", "yes", "yes", "maybe", "no", "no"], "color": "#aaddff"}, {"name": "T45M", "caliber": "7.62×39", "pen": 30, "damage": 65, "armorDmg": 30, "priceNum": 160, "price": "160₽", "source": "帕帕Lv1", "armorClass": ["yes", "yes", "maybe", "no", "no", "no"], "color": "#ffcc88"}, {"name": "AP 6.3", "caliber": "9×19", "pen": 30, "damage": 52, "armorDmg": 32, "priceNum": 480, "price": "480₽", "source": "跳蚤市场", "armorClass": ["yes", "yes", "maybe", "no", "no", "no"], "color": "#44ffaa"}, {"name": "EKO", "caliber": ".366 TKM", "pen": 30, "damage": 73, "armorDmg": 30, "priceNum": 280, "price": "280₽", "source": "跳蚤市场", "armorClass": ["yes", "yes", "maybe", "no", "no", "no"], "color": "#88dd44"}, {"name": "PS", "caliber": "5.45×39", "pen": 28, "damage": 56, "armorDmg": 28, "priceNum": 150, "price": "150₽", "source": "帕帕Lv1", "armorClass": ["yes", "yes", "yes", "maybe", "no", "no"], "color": "#ffcc88"}, {"name": "SP-5", "caliber": "9×39", "pen": 28, "damage": 71, "armorDmg": 28, "priceNum": 480, "price": "480₽", "source": "机修工Lv1", "armorClass": ["yes", "yes", "maybe", "no", "no", "no"], "color": "#aaffff"}, {"name": "PBM", "caliber": "9×18", "pen": 28, "damage": 40, "armorDmg": 28, "priceNum": 380, "price": "380₽", "source": "跳蚤市场", "armorClass": ["yes", "yes", "maybe", "no", "no", "no"], "color": "#88ff88"}, {"name": "PS12", "caliber": "12.7×55", "pen": 28, "damage": 115, "armorDmg": 28, "priceNum": 1800, "price": "1,800₽", "source": "跳蚤市场", "armorClass": ["yes", "yes", "maybe", "no", "no", "no"], "color": "#bb55ff"}, {"name": "SB193", "caliber": "5.7×28", "pen": 27, "damage": 59, "armorDmg": 28, "priceNum": 420, "price": "420₽", "source": "跳蚤市场", "armorClass": ["yes", "yes", "maybe", "no", "no", "no"], "color": "#88ffff"}, {"name": "SS197SR", "caliber": "5.7×28", "pen": 25, "damage": 62, "armorDmg": 25, "priceNum": 360, "price": "360₽", "source": "跳蚤市场", "armorClass": ["yes", "yes", "maybe", "no", "no", "no"], "color": "#aaffff"}, {"name": "Pst gzh", "caliber": "7.62×25", "pen": 25, "damage": 50, "armorDmg": 25, "priceNum": 150, "price": "150₽", "source": "跳蚤市场", "armorClass": ["yes", "yes", "maybe", "no", "no", "no"], "color": "#ff88aa"}, {"name": "FMJ", "caliber": "5.45×39", "pen": 24, "damage": 55, "armorDmg": 24, "priceNum": 120, "price": "120₽", "source": "帕帕Lv1", "armorClass": ["yes", "yes", "maybe", "no", "no", "no"], "color": "#ffdd99"}, {"name": "PMM", "caliber": "9×18", "pen": 24, "damage": 58, "armorDmg": 24, "priceNum": 250, "price": "250₽", "source": "机修工Lv2", "armorClass": ["yes", "yes", "maybe", "no", "no", "no"], "color": "#aaffaa"}, {"name": "55 FMJ", "caliber": "5.56×45", "pen": 23, "damage": 57, "armorDmg": 23, "priceNum": 200, "price": "200₽", "source": "跳蚤市场", "armorClass": ["yes", "yes", "maybe", "no", "no", "no"], "color": "#cceeFF"}, {"name": "Subsonic SX", "caliber": "4.6×30", "pen": 23, "damage": 52, "armorDmg": 23, "priceNum": 500, "price": "500₽", "source": "跳蚤市场", "armorClass": ["yes", "yes", "maybe", "no", "no", "no"], "color": "#88ffcc"}, {"name": "FMJ", "caliber": ".366 TKM", "pen": 23, "damage": 98, "armorDmg": 23, "priceNum": 200, "price": "200₽", "source": "跳蚤市场", "armorClass": ["yes", "yes", "maybe", "no", "no", "no"], "color": "#aadd66"}, {"name": "RIP", "caliber": ".45 ACP", "pen": 22, "damage": 79, "armorDmg": 25, "priceNum": 420, "price": "420₽", "source": "跳蚤市场", "armorClass": ["yes", "yes", "no", "no", "no", "no"], "color": "#ff4488"}, {"name": "SP10", "caliber": "9×21", "pen": 22, "damage": 59, "armorDmg": 22, "priceNum": 320, "price": "320₽", "source": "跳蚤市场", "armorClass": ["yes", "yes", "maybe", "no", "no", "no"], "color": "#aaffaa"}, {"name": "T", "caliber": "5.45×39", "pen": 20, "damage": 59, "armorDmg": 20, "priceNum": 100, "price": "100₽", "source": "帕帕Lv1", "armorClass": ["yes", "yes", "maybe", "no", "no", "no"], "color": "#ffccaa"}, {"name": "Pst gzh", "caliber": "9×19", "pen": 20, "damage": 54, "armorDmg": 20, "priceNum": 120, "price": "120₽", "source": "机修工Lv1", "armorClass": ["yes", "maybe", "no", "no", "no", "no"], "color": "#66ffbb"}, {"name": "M856", "caliber": "5.56×45", "pen": 18, "damage": 60, "armorDmg": 18, "priceNum": 150, "price": "150₽", "source": "和平卫士Lv1", "armorClass": ["yes", "maybe", "no", "no", "no", "no"], "color": "#ddeeff"}, {"name": "Action SX", "caliber": "4.6×30", "pen": 18, "damage": 65, "armorDmg": 18, "priceNum": 350, "price": "350₽", "source": "跳蚤市场", "armorClass": ["yes", "maybe", "no", "no", "no", "no"], "color": "#aaffdd"}, {"name": "SP11", "caliber": "9×21", "pen": 18, "damage": 65, "armorDmg": 18, "priceNum": 250, "price": "250₽", "source": "跳蚤市场", "armorClass": ["yes", "maybe", "no", "no", "no", "no"], "color": "#ccffcc"}, {"name": "Dual Sabot", "caliber": "12号径", "pen": 17, "damage": 85, "armorDmg": 17, "priceNum": 550, "price": "550₽", "source": "跳蚤市场", "armorClass": ["yes", "maybe", "no", "no", "no", "no"], "color": "#ffdd99"}, {"name": "SP", "caliber": "5.45×39", "pen": 15, "damage": 67, "armorDmg": 15, "priceNum": 90, "price": "90₽", "source": "帕帕Lv1", "armorClass": ["yes", "maybe", "no", "no", "no", "no"], "color": "#ffddaa"}, {"name": "HP", "caliber": "7.62×39", "pen": 15, "damage": 80, "armorDmg": 15, "priceNum": 120, "price": "120₽", "source": "帕帕Lv1", "armorClass": ["yes", "maybe", "no", "no", "no", "no"], "color": "#ffddbb"}, {"name": "绿色曳光弹", "caliber": "9×19", "pen": 14, "damage": 58, "armorDmg": 14, "priceNum": 180, "price": "180₽", "source": "跳蚤市场", "armorClass": ["yes", "maybe", "no", "no", "no", "no"], "color": "#88ffcc"}, {"name": "Geksa", "caliber": ".366 TKM", "pen": 14, "damage": 110, "armorDmg": 14, "priceNum": 150, "price": "150₽", "source": "跳蚤市场", "armorClass": ["yes", "maybe", "no", "no", "no", "no"], "color": "#ccee88"}, {"name": "Pst gzh", "caliber": "9×18", "pen": 12, "damage": 50, "armorDmg": 12, "priceNum": 80, "price": "80₽", "source": "机修工Lv1", "armorClass": ["yes", "maybe", "no", "no", "no", "no"], "color": "#ccffcc"}, {"name": "Luger CCI", "caliber": "9×19", "pen": 10, "damage": 70, "armorDmg": 10, "priceNum": 280, "price": "280₽", "source": "跳蚤市场", "armorClass": ["maybe", "no", "no", "no", "no", "no"], "color": "#aaffdd"}, {"name": "FTX Custom Lite", "caliber": "12号径", "pen": 10, "damage": 130, "armorDmg": 10, "priceNum": 680, "price": "680₽", "source": "跳蚤市场", "armorClass": ["maybe", "no", "no", "no", "no", "no"], "color": "#ffdd88"}, {"name": "PS12A", "caliber": "12.7×55", "pen": 10, "damage": 165, "armorDmg": 10, "priceNum": 1200, "price": "1,200₽", "source": "跳蚤市场", "armorClass": ["maybe", "no", "no", "no", "no", "no"], "color": "#cc66ff"}, {"name": "HP", "caliber": "5.45×39", "pen": 9, "damage": 76, "armorDmg": 9, "priceNum": 80, "price": "80₽", "source": "帕帕Lv1", "armorClass": ["maybe", "no", "no", "no", "no", "no"], "color": "#ffddbb"}, {"name": "LRN", "caliber": "7.62×25", "pen": 8, "damage": 64, "armorDmg": 8, "priceNum": 80, "price": "80₽", "source": "跳蚤市场", "armorClass": ["maybe", "no", "no", "no", "no", "no"], "color": "#ffaacc"}, {"name": "55 HP", "caliber": "5.56×45", "pen": 7, "damage": 79, "armorDmg": 7, "priceNum": 130, "price": "130₽", "source": "跳蚤市场", "armorClass": ["maybe", "no", "no", "no", "no", "no"], "color": "#eeffff"}, {"name": "PS gs PPO", "caliber": "9×18", "pen": 6, "damage": 55, "armorDmg": 6, "priceNum": 50, "price": "50₽", "source": "机修工Lv1", "armorClass": ["maybe", "no", "no", "no", "no", "no"], "color": "#ddffdd"}, {"name": "7毫米鹿弹", "caliber": "12号径", "pen": 3, "damage": 39, "armorDmg": 3, "priceNum": 180, "price": "180₽", "source": "机修工Lv1", "armorClass": ["no", "no", "no", "no", "no", "no"], "color": "#ffcc44"}, {"name": "RIP", "caliber": "9×19", "pen": 2, "damage": 102, "armorDmg": 2, "priceNum": 550, "price": "550₽", "source": "跳蚤市场", "armorClass": ["no", "no", "no", "no", "no", "no"], "color": "#ccffee"}, {"name": "8.5毫米鹿弹", "caliber": "12号径", "pen": 2, "damage": 50, "armorDmg": 2, "priceNum": 220, "price": "220₽", "source": "跳蚤市场", "armorClass": ["no", "no", "no", "no", "no", "no"], "color": "#ffcc66"}];
+let calFilter='',sortKey='pen',sortDir=-1;
+
+function render(){
+  let data=[...allAmmo];
+  if(calFilter) data=data.filter(a=>a.caliber===calFilter);
+  data.sort((a,b)=>{
+    const av=a[sortKey],bv=b[sortKey];
+    if(typeof av==='string') return sortDir*av.localeCompare(bv,'zh');
+    return sortDir*((av||0)-(bv||0));
+  });
+  const colors=['#ff6644','#44aaff','#ffaa44','#aa44ff','#44ffaa','#ff4488','#ffcc44','#44ccff','#ff88aa','#88ff44'];
+  document.getElementById('sortInfo').innerHTML='共 <b style="color:var(--gold)">'+data.length+'</b> 条数据 · 点击表头排序';
+  document.getElementById('ammoTbody').innerHTML=data.length?data.map((a,i)=>{
+    const pct=Math.min(100,Math.round((a.pen/70)*100));
+    const pc=a.pen>=50?'v-hi':a.pen>=35?'v-md':'v-lo';
+    const dc=a.damage>=70?'v-hi':a.damage>=50?'v-md':'v-lo';
+    const ac=a.armorClass||[];
+    const acs='<div class="armc-wrap">'+[1,2,3,4,5,6].map(n=>{const cls=n<=ac.length&&(ac[n-1]==='yes')?'armc-y':n<=ac.length&&(ac[n-1]==='maybe')?'armc-m':'armc-n';return '<span class="armc '+cls+'">'+n+'</span>';}).join('')+'</div>';
+    const pr=a.price||'-';
+    return '<tr><td><div class="td-name"><span class="cal-dot" style="background:'+(a.color||colors[i%colors.length])+'"></span>'+a.name+'</div></td><td><span style="font-size:10px;background:var(--bg2);border:1px solid var(--border);padding:2px 7px;border-radius:3px;color:var(--text2)">'+a.caliber+'</span></td><td><div class="pen-wrap"><div class="pen-track"><div class="pen-fill" style="width:'+pct+'%"></div></div><span class="'+pc+'">'+a.pen+'</span></div></td><td class="'+dc+'">'+a.damage+'</td><td>'+a.armorDmg+'%</td><td>'+acs+'</td><td style="color:var(--gold);font-family:var(--mono)">'+pr+'</td><td style="font-size:11px;color:var(--text3)">'+(a.source||'-')+'</td></tr>';
+  }).join(''):'<tr><td colspan="8" style="text-align:center;padding:24px;color:var(--text3)">暂无该口径弹药数据</td></tr>';
+}
+function filterCal(btn,cal){calFilter=cal;document.querySelectorAll('.f-btn').forEach(b=>b.classList.remove('on'));btn.classList.add('on');render()}
+function doSort(key){
+  sortDir=sortKey===key?sortDir*-1:-1;sortKey=key;
+  document.querySelectorAll('th').forEach(th=>{th.classList.remove('sort-asc','sort-desc','sortable');const oc=th.getAttribute('onclick')||'';if(oc.includes(key))th.classList.add(sortDir===-1?'sort-desc':'sort-asc');else if(oc.includes('doSort'))th.classList.add('sortable')});
+  render();
+}
+initSearch();render();
+
+</script>
+</body>
+</html>

@@ -372,15 +372,15 @@ gtag('config', 'G-XXXXXXXXXX');
   <a class="nav-logo" href="index.html">
     <div class="mark">⚔</div>
     <span class="logo-name">TARKOV<span>GUIDE</span></span>
-    <span class="ver" id="navVer">v1.4.0</span>
+    <span class="ver" id="navVer">v1.5.0</span>
   </a>
   <ul class="nav-links">
     <li><a href="index.html" class="active">🏠 首页</a></li>
-    <li><a href="maps.html">🗺️ 地图</a></li>
-    <li><a href="ammo.html">💊 弹药</a></li>
-    <li><a href="loadouts.html">🔫 武器</a></li>
-    <li><a href="quests.html">📋 任务</a></li>
-    <li><a href="articles.html">📰 攻略 <span class="nbadge" id="articleCount">0</span></a></li>
+    <li><a href="maps/">🗺️ 地图</a></li>
+    <li><a href="ammo/">💊 弹药</a></li>
+    <li><a href="loadouts/">🔫 武器</a></li>
+    <li><a href="quests/">📋 任务</a></li>
+    <li><a href="articles/">📰 攻略 <span class="nbadge" id="articleCount">0</span></a></li>
   </ul>
   <div class="nav-right">
     <button class="nav-search-btn" onclick="openSearch()">🔍 搜索 <kbd>Ctrl+K</kbd></button>
@@ -392,11 +392,11 @@ gtag('config', 'G-XXXXXXXXXX');
 
 <div class="mobile-menu" id="mobileMenu">
   <a href="index.html">🏠 首页</a>
-  <a href="maps.html">🗺️ 地图攻略</a>
-  <a href="ammo.html">💊 弹药数据</a>
-  <a href="loadouts.html">🔫 武器配装</a>
-  <a href="quests.html">📋 任务攻略</a>
-  <a href="articles.html">📰 全部攻略</a>
+  <a href="maps/">🗺️ 地图攻略</a>
+  <a href="ammo/">💊 弹药数据</a>
+  <a href="loadouts/">🔫 武器配装</a>
+  <a href="quests/">📋 任务攻略</a>
+  <a href="articles/">📰 全部攻略</a>
 </div>
 
 <section class="hero">
@@ -469,20 +469,20 @@ gtag('config', 'G-XXXXXXXXXX');
       <div class="newbie-grid">
         <a href="articles.html?cat=newbie" class="nb-card"><span class="nb-emoji">🎮</span><div class="nb-title">了解基础机制</div><div class="nb-desc">保险、藏匿处、商人、技能——弄懂这些少死一半</div></a>
         <a href="maps.html?id=customs" class="nb-card"><span class="nb-emoji">🗺️</span><div class="nb-title">先玩海关地图</div><div class="nb-desc">新手最友好的地图，资源丰富出口多，地形清晰</div></a>
-        <a href="ammo.html" class="nb-card"><span class="nb-emoji">💊</span><div class="nb-title">学会选弹药</div><div class="nb-desc">用对弹药比换武器更重要，穿透力才是关键</div></a>
+        <a href="ammo/" class="nb-card"><span class="nb-emoji">💊</span><div class="nb-title">学会选弹药</div><div class="nb-desc">用对弹药比换武器更重要，穿透力才是关键</div></a>
         <a href="articles.html?cat=economy" class="nb-card"><span class="nb-emoji">💰</span><div class="nb-title">建立经济循环</div><div class="nb-desc">先做任务升级藏匿处，经济才能真正滚起来</div></a>
       </div>
 
       <div class="sec-hd">
         <h2 class="sec-title">🗺️ 地图攻略 <span class="sec-tag" id="mapCountTag">加载中</span></h2>
-        <a href="maps.html" class="sec-more">全部地图 →</a>
+        <a href="maps/" class="sec-more">全部地图 →</a>
       </div>
       <div class="maps-grid" id="mapsGrid"></div>
 
       <div class="ammo-sec">
         <div class="sec-hd">
           <h2 class="sec-title">💊 弹药速查 <span class="sec-tag">实时数据</span></h2>
-          <a href="ammo.html" class="sec-more">完整数据库 →</a>
+          <a href="ammo/" class="sec-more">完整数据库 →</a>
         </div>
         <div class="filter-row">
           <button class="f-btn on" onclick="filterAmmo(this,'')">全部</button>
@@ -513,7 +513,7 @@ gtag('config', 'G-XXXXXXXXXX');
       <div class="loadout-sec">
         <div class="sec-hd">
           <h2 class="sec-title">🔫 武器配装推荐 <span class="sec-tag">本版本最优</span></h2>
-          <a href="loadouts.html" class="sec-more">全部方案 →</a>
+          <a href="loadouts/" class="sec-more">全部方案 →</a>
         </div>
         <div class="tab-row">
           <div class="ltab on" onclick="switchLoadout(this,'low')">💚 低预算 <span class="bgt bg-low">&lt;50K</span></div>
@@ -528,7 +528,7 @@ gtag('config', 'G-XXXXXXXXXX');
       <div class="quest-sec">
         <div class="sec-hd">
           <h2 class="sec-title">📋 任务攻略 <span class="sec-tag">商人任务</span></h2>
-          <a href="quests.html" class="sec-more">完整数据库 →</a>
+          <a href="quests/" class="sec-more">完整数据库 →</a>
         </div>
         <div class="m-tabs">
           <div class="m-tab on" onclick="filterQuests(this,'')">全部</div>
@@ -553,7 +553,7 @@ gtag('config', 'G-XXXXXXXXXX');
 
       <div class="sec-hd">
         <h2 class="sec-title">📰 最新攻略 <span class="sec-tag">每日更新</span></h2>
-        <a href="articles.html" class="sec-more">全部文章 →</a>
+        <a href="articles/" class="sec-more">全部文章 →</a>
       </div>
       <div class="art-list" id="articleList"></div>
 
@@ -618,19 +618,19 @@ gtag('config', 'G-XXXXXXXXXX');
       <div>
         <div class="fl-title">工具资源</div>
         <ul class="fl">
-          <li><a href="ammo.html">弹药数据库</a></li>
-          <li><a href="loadouts.html">武器配装推荐</a></li>
-          <li><a href="quests.html">任务攻略</a></li>
-          <li><a href="articles.html">攻略文章</a></li>
+          <li><a href="ammo/">弹药数据库</a></li>
+          <li><a href="loadouts/">武器配装推荐</a></li>
+          <li><a href="quests/">任务攻略</a></li>
+          <li><a href="articles/">攻略文章</a></li>
         </ul>
       </div>
       <div>
         <div class="fl-title">新手专区</div>
         <ul class="fl">
           <li><a href="articles.html?cat=newbie">新手完全指南</a></li>
-          <li><a href="quests.html">商人解锁路线</a></li>
+          <li><a href="quests/">商人解锁路线</a></li>
           <li><a href="articles.html?cat=economy">经济入门教程</a></li>
-          <li><a href="articles.html">常见问题FAQ</a></li>
+          <li><a href="articles/">常见问题FAQ</a></li>
         </ul>
       </div>
     </div>

@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="逃离塔科夫武器配装推荐，按预算分类的最优配装方案">
+<title>武器配装 | 塔科夫攻略站</title>
+<meta name="baidu-site-verification" content="codeva-E78NFWmiO9" />
+<!-- Google Analytics placeholder -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-XXXXXXXXXX');
+</script>
+<style>
+:root{--bg1:#0a0c0f;--bg2:#111418;--bg3:#161b21;--border:#2a3540;--gold:#c8a96e;--gold3:#a07840;--text1:#eae0cc;--text2:#9aabb8;--text3:#5a7080;--green2:#6aaa7a;--red2:#c05050;--blue2:#4a80b0;--orange2:#e09050;--font:'Segoe UI','Microsoft YaHei',sans-serif;--mono:'Courier New',monospace;--r:4px;--r2:8px}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg1);color:var(--text1);font-family:var(--font);line-height:1.6}
+::-webkit-scrollbar{width:5px}::-webkit-scrollbar-track{background:var(--bg2)}::-webkit-scrollbar-thumb{background:var(--gold3);border-radius:3px}
+a{text-decoration:none;color:inherit}
+.nav{position:sticky;top:0;z-index:1000;height:60px;background:rgba(10,12,15,.97);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 32px;gap:16px}
+.nav-logo{display:flex;align-items:center;gap:10px}
+.mark{width:32px;height:32px;background:linear-gradient(135deg,var(--gold),var(--gold3));border-radius:var(--r);display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:900;color:#07090b}
+.logo-name{font-size:17px;font-weight:800;letter-spacing:2px}.logo-name span{color:var(--gold)}
+.nav-links{display:flex;gap:2px;list-style:none;flex:1;justify-content:center}
+.nav-links a{padding:7px 12px;border-radius:var(--r);font-size:13px;color:var(--text2);white-space:nowrap}
+.nav-links a:hover{color:var(--text1);background:var(--bg3)}
+.nav-links a.active{color:var(--gold);background:rgba(200,169,110,.07)}
+.page-hero{background:linear-gradient(135deg,rgba(42,80,112,.15),rgba(22,27,33,.9));border-bottom:1px solid var(--border);padding:48px 32px}
+.page-hero-inner{max-width:1200px;margin:0 auto}
+.page-hero h1{font-size:32px;font-weight:900;margin-bottom:8px}.page-hero h1 span{color:var(--gold)}
+.page-hero p{font-size:14px;color:var(--text2)}
+.wrap{max-width:1200px;margin:0 auto;padding:40px 32px}
+/* 筛选 */
+.filter-tabs{display:flex;gap:0;background:var(--bg3);border:1px solid var(--border);border-radius:var(--r2);overflow:hidden;margin-bottom:24px;flex-wrap:nowrap;overflow-x:auto}
+.f-tab{padding:12px 22px;font-size:13px;font-weight:600;cursor:pointer;color:var(--text3);border-right:1px solid var(--border);transition:all .2s;white-space:nowrap;flex-shrink:0;display:flex;align-items:center;gap:8px}
+.f-tab:last-child{border-right:none}
+.f-tab.on{background:rgba(200,169,110,.07);color:var(--gold);box-shadow:inset 0 -2px 0 var(--gold)}
+.f-tab .bg{font-size:10px;padding:2px 6px;border-radius:3px;font-weight:800}
+.bg-low{background:rgba(74,140,92,.2);color:var(--green2)}
+.bg-mid{background:rgba(192,112,48,.2);color:var(--orange2)}
+.bg-hi{background:rgba(200,169,110,.2);color:var(--gold)}
+button{font-family:var(--font);cursor:pointer}
+.nav-right{display:flex;gap:8px;align-items:center;flex-shrink:0}
+.nav-search-btn{display:flex;align-items:center;gap:8px;background:var(--bg3);border:1px solid var(--border);color:var(--text2);padding:7px 14px;border-radius:var(--r);font-size:12px;transition:all .2s;white-space:nowrap}
+.nav-search-btn:hover{border-color:var(--gold);color:var(--gold)}
+.nav-burger{display:none;flex-direction:column;gap:5px;background:transparent;border:none;padding:4px}
+.nav-burger span{display:block;width:22px;height:2px;background:var(--text2);border-radius:2px}
+.mobile-menu{display:none;position:fixed;top:60px;left:0;right:0;background:rgba(10,12,15,.98);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);z-index:999;padding:12px 0}
+.mobile-menu.open{display:block}
+.mobile-menu a{display:flex;align-items:center;gap:10px;padding:12px 24px;font-size:14px;color:var(--text2);text-decoration:none;border-bottom:1px solid rgba(255,255,255,.03)}
+.mobile-menu a:hover{color:var(--gold);background:rgba(200,169,110,.05)}
+.search-ov{position:fixed;inset:0;background:rgba(0,0,0,.88);backdrop-filter:blur(8px);z-index:9999;display:flex;align-items:flex-start;justify-content:center;padding:80px 20px 20px;opacity:0;visibility:hidden;transition:all .25s}
+.search-ov.on{opacity:1;visibility:visible}
+.search-box{width:100%;max-width:640px}
+.sm-wrap{position:relative;margin-bottom:14px}
+.sm-icon{position:absolute;left:16px;top:50%;transform:translateY(-50%);font-size:20px;color:var(--gold);pointer-events:none}
+.sm-input{width:100%;background:var(--bg3);border:2px solid var(--gold);border-radius:var(--r2);padding:16px 52px;font-size:16px;color:var(--text1);outline:none;font-family:var(--font);box-shadow:0 0 32px rgba(200,169,110,.15)}
+.sm-input::placeholder{color:var(--text3)}
+.sm-esc{position:absolute;right:14px;top:50%;transform:translateY(-50%);background:var(--bg2);border:1px solid var(--border);color:var(--text2);width:36px;height:28px;border-radius:var(--r);display:flex;align-items:center;justify-content:center;font-size:10px;cursor:pointer;font-family:var(--mono)}
+.search-results{display:flex;flex-direction:column;gap:6px;max-height:300px;overflow-y:auto;margin-top:8px}
+.sr-item{display:flex;align-items:center;gap:12px;padding:10px 14px;background:var(--bg2);border-radius:var(--r);cursor:pointer;transition:all .2s;text-decoration:none;color:inherit}
+.sr-item:hover{background:var(--bg4);border-left:2px solid var(--gold)}
+.sr-icon{font-size:18px;flex-shrink:0}
+.sr-body{flex:1;min-width:0}
+.sr-title{font-size:13px;font-weight:600;color:var(--text1)}
+.sr-cat{font-size:10px;color:var(--text3)}
+.sr-empty{text-align:center;padding:24px;color:var(--text3);font-size:13px}
+.ver{font-size:10px;color:var(--text3);background:var(--bg3);border:1px solid var(--border);padding:2px 6px;border-radius:3px;font-family:var(--mono);margin-left:-4px}
+/* 网格 */
+.loadouts-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.lc{background:var(--bg3);border:1px solid var(--border);border-radius:var(--r2);overflow:hidden;transition:all .3s;cursor:pointer}
+.lc:hover{border-color:var(--gold);transform:translateY(-3px);box-shadow:0 8px 32px rgba(0,0,0,.5)}
+.lc.selected{border-color:var(--gold);box-shadow:0 0 20px rgba(200,169,110,.2)}
+.lc-header{padding:16px 18px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center}
+.lc-name{font-size:17px;font-weight:800}
+.lc-price{font-size:14px;color:var(--gold);font-family:var(--mono);font-weight:700}
+.lc-img{width:100%;height:80px;background:var(--bg2);display:flex;align-items:center;justify-content:center;font-size:40px}
+.lc-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-bottom:1px solid var(--border)}
+.ls{padding:12px;text-align:center;border-right:1px solid var(--border)}
+.ls:last-child{border-right:none}
+.ls-v{font-size:20px;font-weight:800;color:var(--gold);font-family:var(--mono);display:block}
+.ls-l{font-size:10px;color:var(--text3);letter-spacing:.5px}
+.lc-body{padding:14px 18px}
+.lc-tags{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px}
+.lt{font-size:10px;padding:3px 8px;border-radius:3px;font-weight:700}
+.lt-rec{background:rgba(200,169,110,.12);color:var(--gold);border:1px solid rgba(200,169,110,.2)}
+.lt-pvp{background:rgba(192,80,80,.12);color:var(--red2);border:1px solid rgba(192,80,80,.2)}
+.lt-pve{background:rgba(74,140,92,.12);color:var(--green2);border:1px solid rgba(74,140,92,.2)}
+.lt-bgt{background:rgba(42,80,112,.25);color:var(--blue2);border:1px solid rgba(74,128,176,.2)}
+.lc-ammo{font-size:11px;color:var(--text3);display:flex;align-items:center;gap:5px}
+/* 详情弹窗 */
+.detail-overlay{position:fixed;inset:0;background:rgba(0,0,0,.85);backdrop-filter:blur(8px);z-index:999;display:flex;align-items:center;justify-content:center;padding:20px;opacity:0;visibility:hidden;transition:all .25s}
+.detail-overlay.show{opacity:1;visibility:visible}
+.detail-modal{background:var(--bg3);border:1px solid var(--border);border-radius:var(--r2);max-width:600px;width:100%;max-height:85vh;overflow-y:auto}
+.dm-header{padding:16px 20px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;background:var(--bg3)}
+.dm-title{font-size:18px;font-weight:800}
+.dm-close{width:30px;height:30px;border-radius:var(--r);background:var(--bg2);border:1px solid var(--border);color:var(--text2);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:16px}
+.dm-close:hover{border-color:var(--red2);color:var(--red2)}
+.dm-body{padding:20px}
+.dm-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:20px}
+.dm-stat{background:var(--bg2);border-radius:var(--r);padding:12px;text-align:center}
+.dm-stat-v{font-size:22px;font-weight:800;color:var(--gold);font-family:var(--mono);display:block}
+.dm-stat-l{font-size:10px;color:var(--text3)}
+.dm-section{margin-bottom:16px}
+.dm-sec-title{font-size:12px;font-weight:700;color:var(--gold);margin-bottom:8px;letter-spacing:1px;text-transform:uppercase}
+.dm-parts{list-style:none;display:flex;flex-direction:column;gap:5px}
+.dm-parts li{font-size:12px;color:var(--text2);padding:6px 10px;background:var(--bg2);border-radius:var(--r);display:flex;align-items:center;gap:6px}
+.dm-parts li::before{content:'▸';color:var(--gold)}
+/* 空 */
+.empty{text-align:center;padding:60px;color:var(--text3);grid-column:1/-1}
+.footer{background:var(--bg2);border-top:1px solid var(--border);padding:24px 32px;margin-top:60px}
+.footer-inner{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;font-size:12px;color:var(--text3);flex-wrap:wrap;gap:8px}
+.footer-inner a:hover{color:var(--gold)}
+@media(max-width:900px){.nav-links{display:none}.nav-burger{display:flex}.loadouts-grid{grid-template-columns:repeat(2,1fr)}.wrap{padding:32px 16px}.page-hero{padding:32px 16px}.nav-search-btn span{display:none}}
+@media(max-width:500px){.loadouts-grid{grid-template-columns:1fr}}
+@media(max-width:480px){.page-h1{font-size:20px}.page-sub{font-size:14px}.lo-card{padding:14px}.lo-name{font-size:14px}.lo-price{font-size:11px}.lo-stat-v{font-size:14px}}
+</style>
+</head>
+<body>
+<nav class="nav">
+  <a class="nav-logo" href="../index.html">
+    <div class="mark">⚔</div>
+    <span class="logo-name">TARKOV<span>GUIDE</span></span>
+    <span class="ver">v1.5.0</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="../index.html">🏠 首页</a></li>
+    <li><a href="../maps/">🗺️ 地图</a></li>
+    <li><a href="../ammo/">💊 弹药</a></li>
+    <li><a href="../loadouts/">🔫 武器</a></li>
+    <li><a href="../quests/">📋 任务</a></li>
+    <li><a href="../articles/">📰 攻略</a></li>
+  </ul>
+  <div class="nav-right">
+    <button class="nav-search-btn" onclick="openSearch()">🔍 搜索 <kbd>Ctrl+K</kbd></button>
+    <button class="nav-burger" onclick="toggleMenu()" id="burgerBtn"><span></span><span></span><span></span></button>
+    <a class="nav-back" href="../articles/">← 返回</a>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="../index.html">🏠 首页</a>
+  <a href="../maps/">🗺️ 地图攻略</a>
+  <a href="../ammo/">💊 弹药数据</a>
+  <a href="../loadouts/">🔫 武器配装</a>
+  <a href="../quests/">📋 任务攻略</a>
+  <a href="../articles/">📰 全部攻略</a>
+</div>
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <h1>🔫 武器<span>配装推荐</span></h1>
+    <p>按预算分类 · 本版本最优方案 · 点击配装卡片查看详细配件清单</p>
+  </div>
+<div class="wrap">
+<div class="filter-tabs">
+<div class="f-tab on" onclick="switchBudget(this,'')">📋 全部配装</div>
+<div class="f-tab" onclick="switchBudget(this,'low')">💚 低预算 <span class="bg bg-low">&lt;50K</span></div>
+<div class="f-tab" onclick="switchBudget(this,'mid')">💛 中等 <span class="bg bg-mid">50-150K</span></div>
+<div class="f-tab" onclick="switchBudget(this,'high')">👑 高端 <span class="bg bg-hi">&gt;150K</span></div>
+<div class="f-tab" onclick="switchBudget(this,'pvp')">🎯 PVP专精</div>
+<div class="f-tab" onclick="switchBudget(this,'pve')">🌿 PVE稳定</div>
+</div>
+<div class="loadouts-grid" id="loadoutsGrid"><div class="lc" onclick="showDetail(0)">
+<div class="lc-header"><span class="lc-name">🔫 AK-74N</span><span class="lc-price">～38,000₽</span></div>
+<div class="lc-img">🔫</div>
+<div class="lc-stats">
+<div class="ls"><span class="ls-v">47</span><span class="ls-l">后坐力</span></div>
+<div class="ls"><span class="ls-v">52</span><span class="ls-l">人机</span></div>
+<div class="ls"><span class="ls-v">3.8kg</span><span class="ls-l">重量</span></div>
+</div>
+<div class="lc-body">
+<div class="lc-tags"><span class="lt lt-rec">推荐</span><span class="lt lt-pvp">🔴 PVP</span><span class="lt lt-bgt">低预算</span></div>
+<div class="lc-ammo">💊 推荐弹药：<b style="color:var(--text1)">7N40</b></div>
+<div style="font-size:11px;color:var(--text3);margin-top:6px">性价比最高的低预算配置，适合新手入门</div>
+</div>
+</div><div class="lc" onclick="showDetail(1)">
+<div class="lc-header"><span class="lc-name">🎯 SKS半自动</span><span class="lc-price">～22,000₽</span></div>
+<div class="lc-img">🎯</div>
+<div class="lc-stats">
+<div class="ls"><span class="ls-v">62</span><span class="ls-l">后坐力</span></div>
+<div class="ls"><span class="ls-v">48</span><span class="ls-l">人机</span></div>
+<div class="ls"><span class="ls-v">3.2kg</span><span class="ls-l">重量</span></div>
+</div>
+<div class="lc-body">
+<div class="lc-tags"><span class="lt lt-rec">推荐</span><span class="lt lt-pvp">🟢 PVE</span><span class="lt lt-bgt">低预算</span></div>
+<div class="lc-ammo">💊 推荐弹药：<b style="color:var(--text1)">BP</b></div>
+<div style="font-size:11px;color:var(--text3);margin-top:6px">超低预算首选，PVE表现稳定</div>
+</div>
+</div><div class="lc" onclick="showDetail(2)">
+<div class="lc-header"><span class="lc-name">🔫 MP5冲锋枪</span><span class="lc-price">～65,000₽</span></div>
+<div class="lc-img">🔫</div>
+<div class="lc-stats">
+<div class="ls"><span class="ls-v">38</span><span class="ls-l">后坐力</span></div>
+<div class="ls"><span class="ls-v">74</span><span class="ls-l">人机</span></div>
+<div class="ls"><span class="ls-v">2.8kg</span><span class="ls-l">重量</span></div>
+</div>
+<div class="lc-body">
+<div class="lc-tags"><span class="lt lt-rec">推荐</span><span class="lt lt-pvp">🔴 PVP</span><span class="lt lt-bgt">中等预算</span></div>
+<div class="lc-ammo">💊 推荐弹药：<b style="color:var(--text1)">PBP</b></div>
+<div style="font-size:11px;color:var(--text3);margin-top:6px">近距离PVP神器，人机极佳</div>
+</div>
+</div><div class="lc" onclick="showDetail(3)">
+<div class="lc-header"><span class="lc-name">🎯 SA-58自动步枪</span><span class="lc-price">～120,000₽</span></div>
+<div class="lc-img">🎯</div>
+<div class="lc-stats">
+<div class="ls"><span class="ls-v">42</span><span class="ls-l">后坐力</span></div>
+<div class="ls"><span class="ls-v">55</span><span class="ls-l">人机</span></div>
+<div class="ls"><span class="ls-v">4.0kg</span><span class="ls-l">重量</span></div>
+</div>
+<div class="lc-body">
+<div class="lc-tags"><span class="lt lt-rec">推荐</span><span class="lt lt-pvp">🟢 PVE</span><span class="lt lt-bgt">中等预算</span></div>
+<div class="lc-ammo">💊 推荐弹药：<b style="color:var(--text1)">M61</b></div>
+<div style="font-size:11px;color:var(--text3);margin-top:6px">中端PVE首选，7.62x51穿透强</div>
+</div>
+</div><div class="lc" onclick="showDetail(4)">
+<div class="lc-header"><span class="lc-name">🔫 M4A1改装版</span><span class="lc-price">～180,000₽</span></div>
+<div class="lc-img">🔫</div>
+<div class="lc-stats">
+<div class="ls"><span class="ls-v">32</span><span class="ls-l">后坐力</span></div>
+<div class="ls"><span class="ls-v">68</span><span class="ls-l">人机</span></div>
+<div class="ls"><span class="ls-v">4.2kg</span><span class="ls-l">重量</span></div>
+</div>
+<div class="lc-body">
+<div class="lc-tags"><span class="lt lt-rec">推荐</span><span class="lt lt-pvp">🔴 PVP</span><span class="lt lt-bgt">高端配置</span></div>
+<div class="lc-ammo">💊 推荐弹药：<b style="color:var(--text1)">M995</b></div>
+<div style="font-size:11px;color:var(--text3);margin-top:6px">当前版本PVP性价比之王</div>
+</div>
+</div><div class="lc" onclick="showDetail(5)">
+<div class="lc-header"><span class="lc-name">🎯 RSASS精确步枪</span><span class="lc-price">～220,000₽</span></div>
+<div class="lc-img">🎯</div>
+<div class="lc-stats">
+<div class="ls"><span class="ls-v">28</span><span class="ls-l">后坐力</span></div>
+<div class="ls"><span class="ls-v">72</span><span class="ls-l">人机</span></div>
+<div class="ls"><span class="ls-v">5.1kg</span><span class="ls-l">重量</span></div>
+</div>
+<div class="lc-body">
+<div class="lc-tags"><span class="lt lt-rec">推荐</span><span class="lt lt-pvp">🔴 PVP</span><span class="lt lt-bgt">高端配置</span></div>
+<div class="lc-ammo">💊 推荐弹药：<b style="color:var(--text1)">M61</b></div>
+<div style="font-size:11px;color:var(--text3);margin-top:6px">远程精度极高，适合打狙</div>
+</div>
+</div><div class="lc" onclick="showDetail(6)">
+<div class="lc-header"><span class="lc-name">🔫 AS VAL消音突袭</span><span class="lc-price">～95,000₽</span></div>
+<div class="lc-img">🔫</div>
+<div class="lc-stats">
+<div class="ls"><span class="ls-v">35</span><span class="ls-l">后坐力</span></div>
+<div class="ls"><span class="ls-v">60</span><span class="ls-l">人机</span></div>
+<div class="ls"><span class="ls-v">3.5kg</span><span class="ls-l">重量</span></div>
+</div>
+<div class="lc-body">
+<div class="lc-tags"><span class="lt lt-rec">推荐</span><span class="lt lt-pvp">🔴 PVP</span><span class="lt lt-bgt">中等预算</span></div>
+<div class="lc-ammo">💊 推荐弹药：<b style="color:var(--text1)">SP-6</b></div>
+<div style="font-size:11px;color:var(--text3);margin-top:6px">默认消音+9x39高穿透，夜战神器</div>
+</div>
+</div><div class="lc" onclick="showDetail(7)">
+<div class="lc-header"><span class="lc-name">🔫 MP7A2冲锋枪</span><span class="lc-price">～85,000₽</span></div>
+<div class="lc-img">🔫</div>
+<div class="lc-stats">
+<div class="ls"><span class="ls-v">34</span><span class="ls-l">后坐力</span></div>
+<div class="ls"><span class="ls-v">78</span><span class="ls-l">人机</span></div>
+<div class="ls"><span class="ls-v">2.4kg</span><span class="ls-l">重量</span></div>
+</div>
+<div class="lc-body">
+<div class="lc-tags"><span class="lt lt-rec">推荐</span><span class="lt lt-pvp">🔴 PVP</span><span class="lt lt-bgt">中等预算</span></div>
+<div class="lc-ammo">💊 推荐弹药：<b style="color:var(--text1)">AP SX</b></div>
+<div style="font-size:11px;color:var(--text3);margin-top:6px">射速极快，近距离秒杀一切</div>
+</div>
+</div><div class="lc" onclick="showDetail(8)">
+<div class="lc-header"><span class="lc-name">🔫 HK416A5</span><span class="lc-price">～200,000₽</span></div>
+<div class="lc-img">🔫</div>
+<div class="lc-stats">
+<div class="ls"><span class="ls-v">30</span><span class="ls-l">后坐力</span></div>
+<div class="ls"><span class="ls-v">70</span><span class="ls-l">人机</span></div>
+<div class="ls"><span class="ls-v">4.3kg</span><span class="ls-l">重量</span></div>
+</div>
+<div class="lc-body">
+<div class="lc-tags"><span class="lt lt-rec">推荐</span><span class="lt lt-pvp">🔴 PVP</span><span class="lt lt-bgt">高端配置</span></div>
+<div class="lc-ammo">💊 推荐弹药：<b style="color:var(--text1)">M995</b></div>
+<div style="font-size:11px;color:var(--text3);margin-top:6px">综合性能最强的5.56步枪之一</div>
+</div>
+</div><div class="lc" onclick="showDetail(9)">
+<div class="lc-header"><span class="lc-name">🔫 MK47 Mutant</span><span class="lc-price">～160,000₽</span></div>
+<div class="lc-img">🔫</div>
+<div class="lc-stats">
+<div class="ls"><span class="ls-v">34</span><span class="ls-l">后坐力</span></div>
+<div class="ls"><span class="ls-v">65</span><span class="ls-l">人机</span></div>
+<div class="ls"><span class="ls-v">4.0kg</span><span class="ls-l">重量</span></div>
+</div>
+<div class="lc-body">
+<div class="lc-tags"><span class="lt lt-rec">推荐</span><span class="lt lt-pvp">🔴 PVP</span><span class="lt lt-bgt">高端配置</span></div>
+<div class="lc-ammo">💊 推荐弹药：<b style="color:var(--text1)">BP</b></div>
+<div style="font-size:11px;color:var(--text3);margin-top:6px">7.62x39平台最佳选择，两枪带走</div>
+</div>
+</div><div class="lc" onclick="showDetail(10)">
+<div class="lc-header"><span class="lc-name">🔫 Vector .45 ACP</span><span class="lc-price">～110,000₽</span></div>
+<div class="lc-img">🔫</div>
+<div class="lc-stats">
+<div class="ls"><span class="ls-v">29</span><span class="ls-l">后坐力</span></div>
+<div class="ls"><span class="ls-v">72</span><span class="ls-l">人机</span></div>
+<div class="ls"><span class="ls-v">2.9kg</span><span class="ls-l">重量</span></div>
+</div>
+<div class="lc-body">
+<div class="lc-tags"><span class="lt lt-rec">推荐</span><span class="lt lt-pvp">🔴 PVP</span><span class="lt lt-bgt">中等预算</span></div>
+<div class="lc-ammo">💊 推荐弹药：<b style="color:var(--text1)">AP</b></div>
+<div style="font-size:11px;color:var(--text3);margin-top:6px">极低后坐力+超高射速，腰射王者</div>
+</div>
+</div><div class="lc" onclick="showDetail(11)">
+<div class="lc-header"><span class="lc-name">🔫 UMP .45</span><span class="lc-price">～35,000₽</span></div>
+<div class="lc-img">🔫</div>
+<div class="lc-stats">
+<div class="ls"><span class="ls-v">44</span><span class="ls-l">后坐力</span></div>
+<div class="ls"><span class="ls-v">68</span><span class="ls-l">人机</span></div>
+<div class="ls"><span class="ls-v">2.6kg</span><span class="ls-l">重量</span></div>
+</div>
+<div class="lc-body">
+<div class="lc-tags"><span class="lt lt-rec">推荐</span><span class="lt lt-pvp">🟢 PVE</span><span class="lt lt-bgt">低预算</span></div>
+<div class="lc-ammo">💊 推荐弹药：<b style="color:var(--text1)">AP</b></div>
+<div style="font-size:11px;color:var(--text3);margin-top:6px">经济型冲锋枪，PVE性价比极高</div>
+</div>
+</div><div class="lc" onclick="showDetail(12)">
+<div class="lc-header"><span class="lc-name">👑 SIG MCX SPEAR</span><span class="lc-price">～320,000₽</span></div>
+<div class="lc-img">👑</div>
+<div class="lc-stats">
+<div class="ls"><span class="ls-v">27</span><span class="ls-l">后坐力</span></div>
+<div class="ls"><span class="ls-v">62</span><span class="ls-l">人机</span></div>
+<div class="ls"><span class="ls-v">4.6kg</span><span class="ls-l">重量</span></div>
+</div>
+<div class="lc-body">
+<div class="lc-tags"><span class="lt lt-rec">推荐</span><span class="lt lt-pvp">🔴 PVP</span><span class="lt lt-bgt">高端配置</span></div>
+<div class="lc-ammo">💊 推荐弹药：<b style="color:var(--text1)">6.8x51混合弹</b></div>
+<div style="font-size:11px;color:var(--text3);margin-top:6px">终极猛兽，两发胸射带走任何目标</div>
+</div>
+</div><div class="lc" onclick="showDetail(13)">
+<div class="lc-header"><span class="lc-name">🔫 Saiga-12霰弹枪</span><span class="lc-price">～45,000₽</span></div>
+<div class="lc-img">🔫</div>
+<div class="lc-stats">
+<div class="ls"><span class="ls-v">55</span><span class="ls-l">后坐力</span></div>
+<div class="ls"><span class="ls-v">45</span><span class="ls-l">人机</span></div>
+<div class="ls"><span class="ls-v">4.2kg</span><span class="ls-l">重量</span></div>
+</div>
+<div class="lc-body">
+<div class="lc-tags"><span class="lt lt-rec">推荐</span><span class="lt lt-pvp">🟢 PVE</span><span class="lt lt-bgt">低预算</span></div>
+<div class="lc-ammo">💊 推荐弹药：<b style="color:var(--text1)">AP-20</b></div>
+<div style="font-size:11px;color:var(--text3);margin-top:6px">近战无敌，一发AP-20带走任何敌人</div>
+</div>
+</div><div class="lc" onclick="showDetail(14)">
+<div class="lc-header"><span class="lc-name">🎯 SVDS狙击步枪</span><span class="lc-price">～150,000₽</span></div>
+<div class="lc-img">🎯</div>
+<div class="lc-stats">
+<div class="ls"><span class="ls-v">25</span><span class="ls-l">后坐力</span></div>
+<div class="ls"><span class="ls-v">58</span><span class="ls-l">人机</span></div>
+<div class="ls"><span class="ls-v">4.8kg</span><span class="ls-l">重量</span></div>
+</div>
+<div class="lc-body">
+<div class="lc-tags"><span class="lt lt-rec">推荐</span><span class="lt lt-pvp">🔴 PVP</span><span class="lt lt-bgt">高端配置</span></div>
+<div class="lc-ammo">💊 推荐弹药：<b style="color:var(--text1)">SNB</b></div>
+<div style="font-size:11px;color:var(--text3);margin-top:6px">7.62x54R口径，超远距离一枪爆头</div>
+</div>
+</div><div class="lc" onclick="showDetail(15)">
+<div class="lc-header"><span class="lc-name">🔫 DT MDR .308</span><span class="lc-price">～180,000₽</span></div>
+<div class="lc-img">🔫</div>
+<div class="lc-stats">
+<div class="ls"><span class="ls-v">33</span><span class="ls-l">后坐力</span></div>
+<div class="ls"><span class="ls-v">74</span><span class="ls-l">人机</span></div>
+<div class="ls"><span class="ls-v">3.6kg</span><span class="ls-l">重量</span></div>
+</div>
+<div class="lc-body">
+<div class="lc-tags"><span class="lt lt-rec">推荐</span><span class="lt lt-pvp">🔴 PVP</span><span class="lt lt-bgt">高端配置</span></div>
+<div class="lc-ammo">💊 推荐弹药：<b style="color:var(--text1)">M61</b></div>
+<div style="font-size:11px;color:var(--text3);margin-top:6px">紧凑型308步枪，人机极高无需深度改装</div>
+</div>
+</div></div>
+</div>
+<div class="detail-overlay" id="detailOverlay" onclick="closeDetail(event)">
+<div class="detail-modal" onclick="event.stopPropagation()">
+<div class="dm-header"><span class="dm-title" id="dmTitle">配装详情</span><div class="dm-close" onclick="closeDetail()">✕</div></div>
+<div class="dm-body" id="dmBody"></div>
+</div>
+</div>
+<div class="search-ov" id="searchOv" onclick="closeSearchOv(event)">
+  <div class="search-box" onclick="event.stopPropagation()">
+    <div class="sm-wrap">
+      <span class="sm-icon">🔍</span>
+      <input class="sm-input" id="smInput" placeholder="搜索地图、武器、弹药、任务..." oninput="doSearch(this.value)">
+      <div class="sm-esc" onclick="closeSearch()">ESC</div>
+<footer class="footer">
+  <div class="footer-inner">
+    <span>© 2024 TarkovGuide · <a href="../index.html">返回首页</a></span>
+    <span><a href="../privacy.html">隐私政策</a> · <a href="../terms.html">服务条款</a> · <a href="../about.html">关于我们</a></span>
+  </div>
+</footer>
+<script>
+
+const searchData=[{"title": "AK-74N", "icon": "🔫", "url": "../loadouts/", "cat": "配装"}, {"title": "SKS半自动", "icon": "🎯", "url": "../loadouts/", "cat": "配装"}, {"title": "MP5冲锋枪", "icon": "🔫", "url": "../loadouts/", "cat": "配装"}, {"title": "SA-58自动步枪", "icon": "🎯", "url": "../loadouts/", "cat": "配装"}, {"title": "M4A1改装版", "icon": "🔫", "url": "../loadouts/", "cat": "配装"}, {"title": "RSASS精确步枪", "icon": "🎯", "url": "../loadouts/", "cat": "配装"}, {"title": "AS VAL消音突袭", "icon": "🔫", "url": "../loadouts/", "cat": "配装"}, {"title": "MP7A2冲锋枪", "icon": "🔫", "url": "../loadouts/", "cat": "配装"}, {"title": "HK416A5", "icon": "🔫", "url": "../loadouts/", "cat": "配装"}, {"title": "MK47 Mutant", "icon": "🔫", "url": "../loadouts/", "cat": "配装"}, {"title": "Vector .45 ACP", "icon": "🔫", "url": "../loadouts/", "cat": "配装"}, {"title": "UMP .45", "icon": "🔫", "url": "../loadouts/", "cat": "配装"}, {"title": "SIG MCX SPEAR", "icon": "👑", "url": "../loadouts/", "cat": "配装"}, {"title": "Saiga-12霰弹枪", "icon": "🔫", "url": "../loadouts/", "cat": "配装"}, {"title": "SVDS狙击步枪", "icon": "🎯", "url": "../loadouts/", "cat": "配装"}, {"title": "DT MDR .308", "icon": "🔫", "url": "../loadouts/", "cat": "配装"}];
+function doSearch(kw){
+  kw=kw.trim().toLowerCase();
+  const el=document.getElementById('searchResults');
+  if(!kw){el.style.display='none';return}
+  const results=searchData.filter(s=>s.title.toLowerCase().includes(kw)).slice(0,8);
+  if(!results.length){el.style.display='block';el.innerHTML='<div class="sr-empty">未找到相关内容</div>';return}
+  el.style.display='block';
+  el.innerHTML=results.map(r=>'<a href="'+r.url+'" class="sr-item"><span class="sr-icon">'+r.icon+'</span><div class="sr-body"><div class="sr-title">'+r.title+'</div><span class="sr-cat">'+r.cat+'</span></div></a>').join('');
+}
+initSearch=function(){};
+
+
+function toggleMenu(){document.getElementById('mobileMenu').classList.toggle('open')}
+function openSearch(){document.getElementById('searchOv').classList.add('on');setTimeout(()=>document.getElementById('smInput')?.focus(),100)}
+function closeSearch(){document.getElementById('searchOv').classList.remove('on');document.getElementById('searchResults').style.display='none'}
+function closeSearchOv(e){if(e.target===document.getElementById('searchOv'))closeSearch()}
+document.addEventListener('keydown',function(e){if((e.ctrlKey||e.metaKey)&&e.key==='k'){e.preventDefault();openSearch()}if(e.key==='Escape')closeSearch()});
+
+
+const allLoadouts = [{"name": "AK-74N", "price": "～38,000₽", "icon": "🔫", "budget": "low", "type": "pvp", "recoil": "47", "ergo": "52", "weight": "3.8", "ammo": "7N40", "parts": ["6P20 AK-74N枪托", "AK-74 Magpul制动器", "Zenit RK-3握把", "6P20前护木", "Leupold Mark 6瞄准镜"], "tips": "性价比最高的低预算配置，适合新手入门"}, {"name": "SKS半自动", "price": "～22,000₽", "icon": "🎯", "budget": "low", "type": "pve", "recoil": "62", "ergo": "48", "weight": "3.2", "ammo": "BP", "parts": ["SKS Choate折叠枪托", "SKS DTK补偿器", "SKS标准弹匣×3"], "tips": "超低预算首选，PVE表现稳定"}, {"name": "MP5冲锋枪", "price": "～65,000₽", "icon": "🔫", "budget": "mid", "type": "pvp", "recoil": "38", "ergo": "74", "weight": "2.8", "ammo": "PBP", "parts": ["MP5 B&T消声器", "MP5 Magpul折叠托", "MP5 垂直握把", "Burris FastFire全息"], "tips": "近距离PVP神器，人机极佳"}, {"name": "SA-58自动步枪", "price": "～120,000₽", "icon": "🎯", "budget": "mid", "type": "pve", "recoil": "42", "ergo": "55", "weight": "4.0", "ammo": "M61", "parts": ["SA-58 PARA枪托", "SA-58 DTK制动器", "SA-58 20发弹匣", "SA-58 Magpul握把"], "tips": "中端PVE首选，7.62x51穿透强"}, {"name": "M4A1改装版", "price": "～180,000₽", "icon": "🔫", "budget": "high", "type": "pvp", "recoil": "32", "ergo": "68", "weight": "4.2", "ammo": "M995", "parts": ["M4A1 Geissele枪托", "SLR ION超轻导轨", "Ops Core消声器", "Trijicon ACOG 4x", "AFG握把", "M4 PMAg 30发弹匣"], "tips": "当前版本PVP性价比之王"}, {"name": "RSASS精确步枪", "price": "～220,000₽", "icon": "🎯", "budget": "high", "type": "pvp", "recoil": "28", "ergo": "72", "weight": "5.1", "ammo": "M61", "parts": ["RSASS 18寸枪管", "RSASS消声器", "Leupold Mark 6 3-18x", "RSASS钨合金制动"], "tips": "远程精度极高，适合打狙"}, {"name": "AS VAL消音突袭", "price": "～95,000₽", "icon": "🔫", "budget": "mid", "type": "pvp", "recoil": "35", "ergo": "60", "weight": "3.5", "ammo": "SP-6", "parts": ["AS VAL护木", "AS VAL消音器", "OKP-7反射瞄具", "AS VAL 30发弹匣", "RK-1握把"], "tips": "默认消音+9x39高穿透，夜战神器"}, {"name": "MP7A2冲锋枪", "price": "～85,000₽", "icon": "🔫", "budget": "mid", "type": "pvp", "recoil": "34", "ergo": "78", "weight": "2.4", "ammo": "AP SX", "parts": ["MP7A2消音管", "MP7 ACOG瞄具", "MP7 RAL握把", "MP7 40发弹匣"], "tips": "射速极快，近距离秒杀一切"}, {"name": "HK416A5", "price": "～200,000₽", "icon": "🔫", "budget": "high", "type": "pvp", "recoil": "30", "ergo": "70", "weight": "4.3", "ammo": "M995", "parts": ["HK416A5 14.5寸枪管", "HK E1枪托", "Ops Core消音器", "HK 416垂直握把", "Trijicon ACOG 4x", "HK PMAg 30发"], "tips": "综合性能最强的5.56步枪之一"}, {"name": "MK47 Mutant", "price": "～160,000₽", "icon": "🔫", "budget": "high", "type": "pvp", "recoil": "34", "ergo": "65", "weight": "4.0", "ammo": "BP", "parts": ["MK47 Zenit枪托", "MK47 消音器", "RK-2握把", "EOTech EXPS3全息", "MK47 30发弹匣"], "tips": "7.62x39平台最佳选择，两枪带走"}, {"name": "Vector .45 ACP", "price": "～110,000₽", "icon": "🔫", "budget": "mid", "type": "pvp", "recoil": "29", "ergo": "72", "weight": "2.9", "ammo": "AP", "parts": ["Vector 消音器", "Vector CR-1红点", "AFG握把", "Vector 30发弹匣"], "tips": "极低后坐力+超高射速，腰射王者"}, {"name": "UMP .45", "price": "～35,000₽", "icon": "🔫", "budget": "low", "type": "pve", "recoil": "44", "ergo": "68", "weight": "2.6", "ammo": "AP", "parts": ["UMP 消音器", "UMP 红点瞄具", "UMP 垂直握把"], "tips": "经济型冲锋枪，PVE性价比极高"}, {"name": "SIG MCX SPEAR", "price": "～320,000₽", "icon": "👑", "budget": "high", "type": "pvp", "recoil": "27", "ergo": "62", "weight": "4.6", "ammo": "6.8x51混合弹", "parts": ["MCX SPEAR高端导轨", "MCX消音器", "Schmidt Bender 3-12x", "RK-1垂直握把"], "tips": "终极猛兽，两发胸射带走任何目标"}, {"name": "Saiga-12霰弹枪", "price": "～45,000₽", "icon": "🔫", "budget": "low", "type": "pve", "recoil": "55", "ergo": "45", "weight": "4.2", "ammo": "AP-20", "parts": ["Saiga-12 护木导轨", "Saiga-12 红点", "Saiga-12 8发弹鼓", "Saiga-12补偿器"], "tips": "近战无敌，一发AP-20带走任何敌人"}, {"name": "SVDS狙击步枪", "price": "～150,000₽", "icon": "🎯", "budget": "high", "type": "pvp", "recoil": "25", "ergo": "58", "weight": "4.8", "ammo": "SNB", "parts": ["SVDS导轨", "SVDS 消音器", "Leupold Mark 6 3-18x", "SVDS 10发弹匣"], "tips": "7.62x54R口径，超远距离一枪爆头"}, {"name": "DT MDR .308", "price": "～180,000₽", "icon": "🔫", "budget": "high", "type": "pvp", "recoil": "33", "ergo": "74", "weight": "3.6", "ammo": "M61", "parts": ["MDR消音器", "EOTech EXPS3全息", "RK-2握把", "MDR 25发弹匣"], "tips": "紧凑型308步枪，人机极高无需深度改装"}];
+let budgetFilter='',selectedId=-1;
+
+function render(){
+  let data=[...allLoadouts];
+  if(budgetFilter==='pvp') data=data.filter(l=>l.type==='pvp');
+  else if(budgetFilter==='pve') data=data.filter(l=>l.type==='pve');
+  else if(budgetFilter) data=data.filter(l=>l.budget===budgetFilter);
+  if(!data.length){document.getElementById('loadoutsGrid').innerHTML='<div class="empty">暂无该分类配装方案</div>';return;}
+  const typeL={'pvp':'🔴 PVP','pve':'🟢 PVE','all':'🔵 全能'};
+  const budgetL={'low':'低预算','mid':'中等预算','high':'高端配置'};
+  document.getElementById('loadoutsGrid').innerHTML=data.map((l,i)=>'<div class="lc '+(selectedId===i?'selected':'')+'" onclick="showDetail('+i+')"><div class="lc-header"><span class="lc-name">'+(l.icon||'🔫')+' '+l.name+'</span><span class="lc-price">'+l.price+'</span></div><div class="lc-img">'+(l.icon||'🔫')+'</div><div class="lc-stats"><div class="ls"><span class="ls-v">'+l.recoil+'</span><span class="ls-l">后坐力</span></div><div class="ls"><span class="ls-v">'+l.ergo+'</span><span class="ls-l">人机</span></div><div class="ls"><span class="ls-v">'+l.weight+'kg</span><span class="ls-l">重量</span></div></div><div class="lc-body"><div class="lc-tags"><span class="lt lt-rec">推荐</span><span class="lt lt-pvp">'+(typeL[l.type]||l.type)+'</span>'+(l.budget==='low'?'<span class="lt lt-bgt">低预算</span>':l.budget==='mid'?'<span class="lt lt-bgt">中等预算</span>':l.budget==='high'?'<span class="lt lt-bgt">高端配置</span>':'')+'</div>'+(l.ammo?'<div class="lc-ammo">💊 推荐弹药：<b style="color:var(--text1)">'+l.ammo+'</b></div>':'')+(l.tips?'<div style="font-size:11px;color:var(--text3);margin-top:6px">'+l.tips+'</div>':'')+'</div></div>').join('');
+}
+function showDetail(i){
+  let data=[...allLoadouts];
+  if(budgetFilter==='pvp') data=data.filter(l=>l.type==='pvp');
+  else if(budgetFilter==='pve') data=data.filter(l=>l.type==='pve');
+  else if(budgetFilter) data=data.filter(l=>l.budget===budgetFilter);
+  const l=data[i]; if(!l) return;
+  selectedId=i;
+  document.getElementById('dmTitle').textContent=(l.icon||'🔫')+' '+l.name;
+  const parts=l.parts||[];
+  document.getElementById('dmBody').innerHTML='<div class="dm-stats"><div class="dm-stat"><span class="dm-stat-v">'+l.recoil+'</span><span class="dm-stat-l">后坐力</span></div><div class="dm-stat"><span class="dm-stat-v">'+l.ergo+'</span><span class="dm-stat-l">人机精度</span></div><div class="dm-stat"><span class="dm-stat-v">'+l.weight+'kg</span><span class="dm-stat-l">总重量</span></div></div><div class="dm-section"><div class="dm-sec-title">💰 预算参考</div><div style="font-size:16px;font-weight:700;color:var(--gold);font-family:var(--mono)">'+l.price+'</div></div>'+(l.ammo?'<div class="dm-section"><div class="dm-sec-title">💊 推荐弹药</div><div style="font-size:14px;font-weight:600;color:var(--text1)">'+l.ammo+'</div></div>':'')+(parts.length?'<div class="dm-section"><div class="dm-sec-title">🔧 配件清单</div><ul class="dm-parts">'+parts.map(p=>'<li>'+p+'</li>').join('')+'</ul></div>':'')+(l.tips?'<div class="dm-section"><div class="dm-sec-title">💡 使用建议</div><div style="font-size:13px;color:var(--text2);line-height:1.7">'+l.tips+'</div></div>':'');
+  document.getElementById('detailOverlay').classList.add('show');
+}
+function closeDetail(e){if(!e||e.target===document.getElementById('detailOverlay'))document.getElementById('detailOverlay').classList.remove('show');}
+function switchBudget(btn,b){budgetFilter=b;document.querySelectorAll('.f-tab').forEach(t=>t.classList.remove('on'));btn.classList.add('on');render()}
+document.addEventListener('keydown',function(e){if(e.key==='Escape')closeDetail()});
+initSearch();render();
+
+</script>
+</body>
+</html>
