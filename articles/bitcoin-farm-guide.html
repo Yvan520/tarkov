@@ -100,8 +100,11 @@ button{font-family:var(--font);cursor:pointer}
 .related-title{font-size:16px;font-weight:700;color:var(--text1);margin-bottom:16px;display:flex;align-items:center;gap:8px}
 .related-title::before{content:'';width:4px;height:20px;background:linear-gradient(180deg,var(--gold),transparent);border-radius:2px}
 .related-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
-.related-card{background:var(--bg3);border:1px solid var(--border);border-radius:var(--r2);padding:14px;cursor:pointer;transition:all .25s;text-decoration:none;display:block;color:inherit}
+.related-card{background:var(--bg3);border:1px solid var(--border);border-radius:var(--r2);padding:12px;cursor:pointer;transition:all .25s;text-decoration:none;display:flex;gap:12px;color:inherit}
 .related-card:hover{border-color:var(--gold);transform:translateY(-2px)}
+.rc-cover{width:60px;height:60px;border-radius:var(--r);display:flex;align-items:center;justify-content:center;font-size:26px;flex-shrink:0;position:relative;overflow:hidden}
+.rc-cover::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:var(--gold);opacity:.5}
+.rc-body{flex:1;min-width:0}
 .rc-cat{font-size:10px;font-weight:800;letter-spacing:1px;text-transform:uppercase;margin-bottom:4px}
 .rc-title{font-size:13px;font-weight:600;color:var(--text1);line-height:1.4}
 .rc-meta{font-size:11px;color:var(--text3);margin-top:6px}
@@ -128,32 +131,32 @@ button{font-family:var(--font);cursor:pointer}
 </head>
 <body>
 <nav class="nav">
-  <a class="nav-logo" href="../index.html">
+  <a class="nav-logo" href="index.html">
     <div class="mark">⚔</div>
     <span class="logo-name">TARKOV<span>GUIDE</span></span>
-    <span class="ver">v1.3.0</span>
+    <span class="ver">v1.5.0</span>
   </a>
   <ul class="nav-links">
-    <li><a href="../index.html">🏠 首页</a></li>
-    <li><a href="../maps/">🗺️ 地图</a></li>
-    <li><a href="../ammo/">💊 弹药</a></li>
-    <li><a href="../loadouts/">🔫 武器</a></li>
-    <li><a href="../quests/">📋 任务</a></li>
-    <li><a href="../articles/">📰 攻略</a></li>
+    <li><a href="index.html">🏠 首页</a></li>
+    <li><a href="maps/">🗺️ 地图</a></li>
+    <li><a href="ammo/">💊 弹药</a></li>
+    <li><a href="loadouts/">🔫 武器</a></li>
+    <li><a href="quests/">📋 任务</a></li>
+    <li><a href="articles/">📰 攻略</a></li>
   </ul>
   <div class="nav-right">
     <button class="nav-search-btn" onclick="openSearch()">🔍 搜索 <kbd>Ctrl+K</kbd></button>
     <button class="nav-burger" onclick="toggleMenu()" id="burgerBtn"><span></span><span></span><span></span></button>
-    <a class="nav-back" href="../articles/">← 返回</a>
+    <a class="nav-back" href="articles/">← 返回</a>
   </div>
 </nav>
 <div class="mobile-menu" id="mobileMenu">
-  <a href="../index.html">🏠 首页</a>
-  <a href="../maps/">🗺️ 地图攻略</a>
-  <a href="../ammo/">💊 弹药数据</a>
-  <a href="../loadouts/">🔫 武器配装</a>
-  <a href="../quests/">📋 任务攻略</a>
-  <a href="../articles/">📰 全部攻略</a>
+  <a href="index.html">🏠 首页</a>
+  <a href="maps/">🗺️ 地图攻略</a>
+  <a href="ammo/">💊 弹药数据</a>
+  <a href="loadouts/">🔫 武器配装</a>
+  <a href="quests/">📋 任务攻略</a>
+  <a href="articles/">📰 全部攻略</a>
 </div>
 <div class="search-ov" id="searchOv" onclick="closeSearchOv(event)">
   <div class="search-box" onclick="event.stopPropagation()">
@@ -165,7 +168,7 @@ button{font-family:var(--font);cursor:pointer}
   <div class="breadcrumb">
     <a href="../index.html">首页</a>
     <span class="sep">›</span>
-    <a href="../articles/">攻略文章</a>
+    <a href="../articles.html">攻略文章</a>
     <span class="sep">›</span>
     <span>通用攻略</span>
   </div>
@@ -257,7 +260,7 @@ button{font-family:var(--font);cursor:pointer}
 <blockquote><strong>最终建议</strong>：L1农场投入最小收益最快，适合所有人。L3农场需要50张显卡（约1500-2000万投入），回本周期长，适合不缺钱的终局玩家。</blockquote></div>
 <div class="art-tags"><span class="art-tag"># 比特币</span><span class="art-tag"># 农场</span><span class="art-tag"># 显卡</span><span class="art-tag"># 被动收入</span><span class="art-tag"># 藏匿处</span><span class="art-tag"># 收益</span></div>
 <div class="related"><div class="related-title">📌 相关文章</div><div class="related-grid"><a href="ammo-rank-015.html" class="related-card"><div class="rc-cat cat-guide">通用攻略</div><div class="rc-title">💊 弹道系统重做后弹药重新排行：哪些弹药值得继续用？完整对比</div><div class="rc-meta">👁 15200 · 2026-05-09</div></a><a href="hideout-upgrade-guide.html" class="related-card"><div class="rc-cat cat-guide">通用攻略</div><div class="rc-title">🏠 藏匿处升级全攻略：从L1到L3最优升级路线，材料清单+成本计算</div><div class="rc-meta">👁 29800 · 2026-05-07</div></a><a href="armor-guide.html" class="related-card"><div class="rc-cat cat-guide">通用攻略</div><div class="rc-title">🛡️ 护甲系统深度解析：6级/5级/4级甲怎么选？穿透机制与护甲耐久详解</div><div class="rc-meta">👁 21500 · 2026-05-07</div></a><a href="medical-guide.html" class="related-card"><div class="rc-cat cat-guide">通用攻略</div><div class="rc-title">💉 医疗系统完全教程：全伤势类型处理方案，医疗用品性价比对比</div><div class="rc-meta">👁 28900 · 2026-05-06</div></a></div></div>
-  <a href="../articles/" class="back-btn">← 返回攻略列表</a>
+  <a href="../articles.html" class="back-btn">← 返回攻略列表</a>
 </div>
 <footer class="footer">
   <div class="footer-inner">

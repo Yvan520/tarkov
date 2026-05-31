@@ -25,6 +25,26 @@
     <priority>0.9</priority>
   </url>
   <url>
+    <loc>https://tarkov.gamewayz.com/articles/steam-vs-official-guide.html</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://tarkov.gamewayz.com/articles/twitch-drops-may-2026.html</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://tarkov.gamewayz.com/articles/promo-codes-active.html</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://tarkov.gamewayz.com/articles/pve-vs-pvp-guide.html</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://tarkov.gamewayz.com/articles/bsg-steam-linking-guide.html</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://tarkov.gamewayz.com/articles/newbie-guide-2024.html</loc>
     <priority>0.7</priority>
   </url>
@@ -169,18 +189,6 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://tarkov.gamewayz.com/privacy.html</loc>
-    <priority>0.3</priority>
-  </url>
-  <url>
-    <loc>https://tarkov.gamewayz.com/terms.html</loc>
-    <priority>0.3</priority>
-  </url>
-  <url>
-    <loc>https://tarkov.gamewayz.com/about.html</loc>
-    <priority>0.4</priority>
-  </url>
-  <url>
     <loc>https://tarkov.gamewayz.com/articles/all-traders-guide.html</loc>
     <priority>0.7</priority>
   </url>
@@ -236,7 +244,18 @@
     <loc>https://tarkov.gamewayz.com/articles/throwables-guide.html</loc>
     <priority>0.7</priority>
   </url>
-
+  <url>
+    <loc>https://tarkov.gamewayz.com/privacy.html</loc>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://tarkov.gamewayz.com/terms.html</loc>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://tarkov.gamewayz.com/about.html</loc>
+    <priority>0.4</priority>
+  </url>
   <url>
     <loc>https://tarkov.gamewayz.com/ammo/</loc>
     <priority>0.9</priority>

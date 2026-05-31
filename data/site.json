@@ -1,7 +1,7 @@
 {
-  "version": "1.5.0",
+  "version": "1.6.0",
   "alert": {
-    "text": "本站已更新至 v1.5.0 · 全站已静态化 · 50篇攻略大合集（地图/武器/经济/新手/任务全覆盖）· 持续更新中",
+    "text": "本站已更新至 v1.6.0 · 新增5篇巴哈姆特实时资讯文章（Steam版指南/兑换码/Twitch掉宝/PVEvsPVP/账号绑定）· 持续更新中",
     "active": true
   },
   "hotSearches": [
@@ -88,52 +88,52 @@
   "bahamutNews": [
     {
       "title": "Steam版正式上线！版本差异与购买指南",
-      "url": "https://forum.gamer.com.tw/C.php?bsn=29943&snA=11019",
+      "url": "/articles/steam-vs-official-guide.html",
       "tag": "🔥 热门",
       "tagColor": "#c05050",
-      "date": "2026-05"
+      "date": "最新"
     },
     {
       "title": "Twitch掉宝活动 5/26-5/31 最新情报",
-      "url": "https://forum.gamer.com.tw/C.php?bsn=29943&snA=110181",
+      "url": "/articles/twitch-drops-may-2026.html",
       "tag": "🎁 掉宝",
       "tagColor": "#e09050",
-      "date": "2天前"
+      "date": "最新"
     },
     {
       "title": "可用兑换码汇总：SCAVYBOI / GOONSQUAD 等",
-      "url": "https://forum.gamer.com.tw/C.php?bsn=29943&snA=110150",
+      "url": "/articles/promo-codes-active.html",
       "tag": "🎟️ 兑换",
       "tagColor": "#6aaa7a",
-      "date": "5天前"
+      "date": "最新"
+    },
+    {
+      "title": "PVE vs PVP 该怎么选？模式对比指南",
+      "url": "/articles/pve-vs-pvp-guide.html",
+      "tag": "💬 攻略",
+      "tagColor": "#9060d0",
+      "date": "最新"
+    },
+    {
+      "title": "BSG账号Steam绑定问题与解决方法",
+      "url": "/articles/bsg-steam-linking-guide.html",
+      "tag": "⚠️ 注意",
+      "tagColor": "#c05050",
+      "date": "最新"
     },
     {
       "title": "新地图破冰船：地图机制与打法思路",
       "url": "https://forum.gamer.com.tw/C.php?bsn=29943&snA=110192",
       "tag": "🗺️ 地图",
       "tagColor": "#4a80b0",
-      "date": "1周前"
+      "date": "论坛"
     },
     {
       "title": "N卡AI插帧黑科技：塔科夫FPS暴涨教程",
-      "url": "https://forum.gamer.com.tw/C.php?bsn=29943&snA=110013",
+      "url": "/articles/fps-optimization.html",
       "tag": "⚡ 优化",
       "tagColor": "#9060d0",
-      "date": "2周前"
-    },
-    {
-      "title": "PVE vs PVP 该怎么选？玩家经验分享",
-      "url": "https://forum.gamer.com.tw/C.php?bsn=29943&snA=110122",
-      "tag": "💬 讨论",
-      "tagColor": "#5a7080",
-      "date": "2周前"
-    },
-    {
-      "title": "BSG账号Steam绑定问题与解决方法",
-      "url": "https://forum.gamer.com.tw/C.php?bsn=29943&snA=110177",
-      "tag": "⚠️ 注意",
-      "tagColor": "#c05050",
-      "date": "3周前"
+      "date": "已有"
     }
   ]
 }

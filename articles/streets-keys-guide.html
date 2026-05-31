@@ -100,8 +100,11 @@ button{font-family:var(--font);cursor:pointer}
 .related-title{font-size:16px;font-weight:700;color:var(--text1);margin-bottom:16px;display:flex;align-items:center;gap:8px}
 .related-title::before{content:'';width:4px;height:20px;background:linear-gradient(180deg,var(--gold),transparent);border-radius:2px}
 .related-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
-.related-card{background:var(--bg3);border:1px solid var(--border);border-radius:var(--r2);padding:14px;cursor:pointer;transition:all .25s;text-decoration:none;display:block;color:inherit}
+.related-card{background:var(--bg3);border:1px solid var(--border);border-radius:var(--r2);padding:12px;cursor:pointer;transition:all .25s;text-decoration:none;display:flex;gap:12px;color:inherit}
 .related-card:hover{border-color:var(--gold);transform:translateY(-2px)}
+.rc-cover{width:60px;height:60px;border-radius:var(--r);display:flex;align-items:center;justify-content:center;font-size:26px;flex-shrink:0;position:relative;overflow:hidden}
+.rc-cover::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:var(--gold);opacity:.5}
+.rc-body{flex:1;min-width:0}
 .rc-cat{font-size:10px;font-weight:800;letter-spacing:1px;text-transform:uppercase;margin-bottom:4px}
 .rc-title{font-size:13px;font-weight:600;color:var(--text1);line-height:1.4}
 .rc-meta{font-size:11px;color:var(--text3);margin-top:6px}
@@ -128,32 +131,32 @@ button{font-family:var(--font);cursor:pointer}
 </head>
 <body>
 <nav class="nav">
-  <a class="nav-logo" href="../index.html">
+  <a class="nav-logo" href="index.html">
     <div class="mark">⚔</div>
     <span class="logo-name">TARKOV<span>GUIDE</span></span>
-    <span class="ver">v1.3.0</span>
+    <span class="ver">v1.5.0</span>
   </a>
   <ul class="nav-links">
-    <li><a href="../index.html">🏠 首页</a></li>
-    <li><a href="../maps/">🗺️ 地图</a></li>
-    <li><a href="../ammo/">💊 弹药</a></li>
-    <li><a href="../loadouts/">🔫 武器</a></li>
-    <li><a href="../quests/">📋 任务</a></li>
-    <li><a href="../articles/">📰 攻略</a></li>
+    <li><a href="index.html">🏠 首页</a></li>
+    <li><a href="maps/">🗺️ 地图</a></li>
+    <li><a href="ammo/">💊 弹药</a></li>
+    <li><a href="loadouts/">🔫 武器</a></li>
+    <li><a href="quests/">📋 任务</a></li>
+    <li><a href="articles/">📰 攻略</a></li>
   </ul>
   <div class="nav-right">
     <button class="nav-search-btn" onclick="openSearch()">🔍 搜索 <kbd>Ctrl+K</kbd></button>
     <button class="nav-burger" onclick="toggleMenu()" id="burgerBtn"><span></span><span></span><span></span></button>
-    <a class="nav-back" href="../articles/">← 返回</a>
+    <a class="nav-back" href="articles/">← 返回</a>
   </div>
 </nav>
 <div class="mobile-menu" id="mobileMenu">
-  <a href="../index.html">🏠 首页</a>
-  <a href="../maps/">🗺️ 地图攻略</a>
-  <a href="../ammo/">💊 弹药数据</a>
-  <a href="../loadouts/">🔫 武器配装</a>
-  <a href="../quests/">📋 任务攻略</a>
-  <a href="../articles/">📰 全部攻略</a>
+  <a href="index.html">🏠 首页</a>
+  <a href="maps/">🗺️ 地图攻略</a>
+  <a href="ammo/">💊 弹药数据</a>
+  <a href="loadouts/">🔫 武器配装</a>
+  <a href="quests/">📋 任务攻略</a>
+  <a href="articles/">📰 全部攻略</a>
 </div>
 <div class="search-ov" id="searchOv" onclick="closeSearchOv(event)">
   <div class="search-box" onclick="event.stopPropagation()">
@@ -165,7 +168,7 @@ button{font-family:var(--font);cursor:pointer}
   <div class="breadcrumb">
     <a href="../index.html">首页</a>
     <span class="sep">›</span>
-    <a href="../articles/">攻略文章</a>
+    <a href="../articles.html">攻略文章</a>
     <span class="sep">›</span>
     <span>经济攻略</span>
   </div>
@@ -220,7 +223,7 @@ button{font-family:var(--font);cursor:pointer}
 <blockquote><strong>核心建议</strong>：先买大厦办公室钥匙和TG总部钥匙，这两把回本最快。平均3-5次回本。</blockquote></div>
 <div class="art-tags"><span class="art-tag"># 街区</span><span class="art-tag"># 钥匙</span><span class="art-tag"># 中心区</span><span class="art-tag"># 经济</span><span class="art-tag"># 开房</span></div>
 <div class="related"><div class="related-title">📌 相关文章</div><div class="related-grid"><a href="money-guide-2024.html" class="related-card"><div class="rc-cat cat-economy">经济攻略</div><div class="rc-title">💰 2024最快刷卢布攻略：藏匿处比特币农场+海关资源线路，每小时50W+</div><div class="rc-meta">👁 32100 · 2026-05-09</div></a><a href="interchange-guide.html" class="related-card"><div class="rc-cat cat-economy">经济攻略</div><div class="rc-title">🏬 互换商场最强摸金路线：ULTRA超市/OLI仓库/KIBA枪店，一局50万+</div><div class="rc-meta">👁 19800 · 2026-05-02</div></a><a href="loot-routes-collection.html" class="related-card"><div class="rc-cat cat-economy">经济攻略</div><div class="rc-title">💎 跑刀路线大全：海关/海岸线/互换/储备站/灯塔五大地图高效摸金路线一网打尽</div><div class="rc-meta">👁 39800 · 2026-05-15</div></a><a href="flea-market-flip-guide.html" class="related-card"><div class="rc-cat cat-economy">经济攻略</div><div class="rc-title">📈 跳蚤市场倒卖赚钱全攻略：低买高卖路线/热门商品监控/百万卢布日收益教程</div><div class="rc-meta">👁 42700 · 2026-05-18</div></a></div></div>
-  <a href="../articles/" class="back-btn">← 返回攻略列表</a>
+  <a href="../articles.html" class="back-btn">← 返回攻略列表</a>
 </div>
 <footer class="footer">
   <div class="footer-inner">
