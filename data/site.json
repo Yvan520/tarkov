@@ -5,23 +5,135 @@
     "active": true
   },
   "hotSearches": [
-    "四大结局","武器改装","仓库管理","术语大全","手雷攻略","SCAV Karma","剧情攻略","跳蚤市场","比特币农场","画质设置"
+    "四大结局",
+    "武器改装",
+    "仓库管理",
+    "术语大全",
+    "手雷攻略",
+    "SCAV Karma",
+    "剧情攻略",
+    "跳蚤市场",
+    "比特币农场",
+    "画质设置"
   ],
   "servers": [
-    {"name":"亚洲-香港","status":"online","ping":"28ms · 正常"},
-    {"name":"亚洲-首尔","status":"online","ping":"42ms · 正常"},
-    {"name":"亚洲-东京","status":"busy","ping":"65ms · 繁忙"},
-    {"name":"亚洲-新加坡","status":"online","ping":"52ms · 正常"},
-    {"name":"欧洲-法兰克福","status":"online","ping":"148ms · 正常"},
-    {"name":"北美-华盛顿","status":"online","ping":"198ms · 正常"}
+    {
+      "name": "亚洲-香港",
+      "status": "online",
+      "ping": "28ms · 正常"
+    },
+    {
+      "name": "亚洲-首尔",
+      "status": "online",
+      "ping": "42ms · 正常"
+    },
+    {
+      "name": "亚洲-东京",
+      "status": "busy",
+      "ping": "65ms · 繁忙"
+    },
+    {
+      "name": "亚洲-新加坡",
+      "status": "online",
+      "ping": "52ms · 正常"
+    },
+    {
+      "name": "欧洲-法兰克福",
+      "status": "online",
+      "ping": "148ms · 正常"
+    },
+    {
+      "name": "北美-华盛顿",
+      "status": "online",
+      "ping": "198ms · 正常"
+    }
   ],
   "topItems": [
-    {"name":"GPU显卡","desc":"工作站柜/任务物资","price":"490,000₽"},
-    {"name":"比特币","desc":"藏匿处产出/掉落","price":"285,000₽"},
-    {"name":"红钥匙卡","desc":"实验室专用","price":"180,000₽"},
-    {"name":"LEDX皮肤传感器","desc":"医疗/任务物资","price":"165,000₽"},
-    {"name":"情报文件夹","desc":"情报箱/任务奖励","price":"245,000₽"},
-    {"name":"VPX闪存模块","desc":"军事物资/机箱","price":"320,000₽"},
-    {"name":"SICC公文包","desc":"任务奖励/跳蚤","price":"120,000₽"}
+    {
+      "name": "GPU显卡",
+      "desc": "工作站柜/任务物资",
+      "price": "490,000₽"
+    },
+    {
+      "name": "比特币",
+      "desc": "藏匿处产出/掉落",
+      "price": "285,000₽"
+    },
+    {
+      "name": "红钥匙卡",
+      "desc": "实验室专用",
+      "price": "180,000₽"
+    },
+    {
+      "name": "LEDX皮肤传感器",
+      "desc": "医疗/任务物资",
+      "price": "165,000₽"
+    },
+    {
+      "name": "情报文件夹",
+      "desc": "情报箱/任务奖励",
+      "price": "245,000₽"
+    },
+    {
+      "name": "VPX闪存模块",
+      "desc": "军事物资/机箱",
+      "price": "320,000₽"
+    },
+    {
+      "name": "SICC公文包",
+      "desc": "任务奖励/跳蚤",
+      "price": "120,000₽"
+    }
+  ],
+  "bahamutNews": [
+    {
+      "title": "Steam版正式上线！版本差异与购买指南",
+      "url": "https://forum.gamer.com.tw/C.php?bsn=29943&snA=11019",
+      "tag": "🔥 热门",
+      "tagColor": "#c05050",
+      "date": "2026-05"
+    },
+    {
+      "title": "Twitch掉宝活动 5/26-5/31 最新情报",
+      "url": "https://forum.gamer.com.tw/C.php?bsn=29943&snA=110181",
+      "tag": "🎁 掉宝",
+      "tagColor": "#e09050",
+      "date": "2天前"
+    },
+    {
+      "title": "可用兑换码汇总：SCAVYBOI / GOONSQUAD 等",
+      "url": "https://forum.gamer.com.tw/C.php?bsn=29943&snA=110150",
+      "tag": "🎟️ 兑换",
+      "tagColor": "#6aaa7a",
+      "date": "5天前"
+    },
+    {
+      "title": "新地图破冰船：地图机制与打法思路",
+      "url": "https://forum.gamer.com.tw/C.php?bsn=29943&snA=110192",
+      "tag": "🗺️ 地图",
+      "tagColor": "#4a80b0",
+      "date": "1周前"
+    },
+    {
+      "title": "N卡AI插帧黑科技：塔科夫FPS暴涨教程",
+      "url": "https://forum.gamer.com.tw/C.php?bsn=29943&snA=110013",
+      "tag": "⚡ 优化",
+      "tagColor": "#9060d0",
+      "date": "2周前"
+    },
+    {
+      "title": "PVE vs PVP 该怎么选？玩家经验分享",
+      "url": "https://forum.gamer.com.tw/C.php?bsn=29943&snA=110122",
+      "tag": "💬 讨论",
+      "tagColor": "#5a7080",
+      "date": "2周前"
+    },
+    {
+      "title": "BSG账号Steam绑定问题与解决方法",
+      "url": "https://forum.gamer.com.tw/C.php?bsn=29943&snA=110177",
+      "tag": "⚠️ 注意",
+      "tagColor": "#c05050",
+      "date": "3周前"
+    }
   ]
 }
