@@ -59,9 +59,11 @@ button{font-family:var(--font);cursor:pointer}
 .search-wrap .si{position:absolute;left:10px;top:50%;transform:translateY(-50%);color:var(--text3);font-size:14px;pointer-events:none}
 /* 文章网格 */
 .articles-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
-.art-card{background:var(--bg3);border:1px solid var(--border);border-radius:var(--r2);padding:20px;display:flex;gap:16px;cursor:pointer;transition:all .25s;text-decoration:none;color:inherit}
+.art-card{background:var(--bg3);border:1px solid var(--border);border-radius:var(--r2);padding:12px;display:flex;gap:14px;cursor:pointer;transition:all .25s;text-decoration:none;color:inherit;align-items:center}
 .art-card:hover{border-color:var(--gold);transform:translateY(-2px);box-shadow:0 4px 20px rgba(0,0,0,.4)}
-.art-icon{width:48px;height:48px;border-radius:var(--r);background:var(--bg2);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0}
+.art-cover{width:80px;height:80px;border-radius:var(--r);display:flex;align-items:center;justify-content:center;flex-shrink:0;position:relative;overflow:hidden}
+.art-cover .ac-icon{font-size:32px;line-height:1}
+.art-cover .ac-bar{position:absolute;bottom:0;left:0;right:0;height:3px;opacity:.6}
 .art-body{flex:1;min-width:0}
 .art-cat{font-size:10px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:5px}
 .cat-guide{color:var(--gold)}.cat-weapon{color:var(--blue2)}.cat-map{color:var(--green2)}.cat-economy{color:var(--orange2)}.cat-newbie{color:var(--purple2)}
@@ -784,7 +786,8 @@ function renderArticles(){
   if(!data.length){document.getElementById('articlesGrid').innerHTML='<div class="empty"><div class="empty-icon">📭</div><div>暂无相关文章</div></div>';return;}
   document.getElementById('articlesGrid').innerHTML=data.map(a=>{
     const id=a.id||encodeURIComponent(a.title);
-    return '<a href="'+id+'.html" class="art-card"><div class="art-icon">'+(a.icon||'📄')+'</div><div class="art-body"><div class="art-cat '+(catStyle[a.category]||'cat-guide')+'">'+(a.categoryLabel||a.categoryName||'')+'</div><div class="art-title">'+a.title+'</div><div class="art-summary">'+(a.summary||'')+'</div><div class="art-meta"><span>👁 '+(a.views||0).toLocaleString()+'</span><span>🕐 '+(a.date||a.timeAgo||'')+'</span></div><div class="art-badges">'+(a.hot||a.badge==='hot'?'<span class="badge-hot">🔥 HOT</span>':'')+(a.isNew||a.badge==='new'?'<span class="badge-new">✨ NEW</span>':'')+'</div></div></a>';
+    const cc={'guide':'#c8a96e','weapon':'#4a80b0','map':'#6aaa7a','economy':'#e09050','newbie':'#9060d0','quest':'#c8a96e','news':'#5a7080'};
+    return '<a href="'+id+'.html" class="art-card"><div class="art-cover" style="background:linear-gradient(135deg,'+(cc[a.category]||"#c8a96e")+'15,'+(cc[a.category]||"#c8a96e")+'05)"><span class="ac-icon">'+(a.icon||'📄')+'</span><div class="ac-bar" style="background:'+(cc[a.category]||"#c8a96e")+'"></div></div><div class="art-body"><div class="art-cat '+(catStyle[a.category]||'cat-guide')+'">'+(a.categoryLabel||a.categoryName||'')+'</div><div class="art-title">'+a.title+'</div><div class="art-summary">'+(a.summary||'')+'</div><div class="art-meta"><span>👁 '+(a.views||0).toLocaleString()+'</span><span>🕐 '+(a.date||a.timeAgo||'')+'</span></div><div class="art-badges">'+(a.hot||a.badge==='hot'?'<span class="badge-hot">🔥 HOT</span>':'')+(a.isNew||a.badge==='new'?'<span class="badge-new">✨ NEW</span>':'')+'</div></div></a>';
   }).join('');
 }
 function filterCat(btn,cat){currentCat=cat;document.querySelectorAll('.cat-btn').forEach(b=>b.classList.remove('on'));btn.classList.add('on');renderArticles()}

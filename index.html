@@ -27,6 +27,10 @@ body{background:var(--bg1);color:var(--text1);font-family:var(--font);line-heigh
 a{text-decoration:none;color:inherit;transition:all .2s}
 button{font-family:var(--font);cursor:pointer}
 
+/* 登场动画 */
+.fade-up{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}
+.fade-up.in{opacity:1;transform:translateY(0)}
+
 /* 顶部公告 */
 .top-bar{background:linear-gradient(90deg,#120a00,#1e1200,#120a00);border-bottom:1px solid rgba(200,169,110,.25);padding:7px 20px;text-align:center;font-size:12px;color:var(--gold);position:relative;overflow:hidden}
 .top-bar .dot{display:inline-block;width:7px;height:7px;background:var(--red2);border-radius:50%;margin-right:8px;vertical-align:middle;animation:blink 1.5s infinite}
@@ -234,8 +238,11 @@ button{font-family:var(--font);cursor:pointer}
 
 /* 文章列表 */
 .art-list{display:flex;flex-direction:column;gap:10px;margin-bottom:44px}
-.art-card{background:var(--bg3);border:1px solid var(--border);border-radius:var(--r2);padding:16px;display:flex;gap:14px;cursor:pointer;transition:all .25s;text-decoration:none;color:inherit}
-.art-card:hover{border-color:var(--gold);transform:translateX(3px)}
+.art-card{background:var(--bg3);border:1px solid var(--border);border-radius:var(--r2);padding:12px;display:flex;gap:14px;cursor:pointer;transition:all .25s;text-decoration:none;color:inherit;align-items:center}
+.art-card:hover{border-color:var(--gold);transform:translateX(3px);box-shadow:0 0 20px rgba(200,169,110,.08)}
+.art-cover{width:80px;height:80px;border-radius:var(--r);display:flex;align-items:center;justify-content:center;flex-shrink:0;position:relative;overflow:hidden}
+.art-cover .ac-icon{font-size:32px;line-height:1}
+.art-cover .ac-bar{position:absolute;bottom:0;left:0;right:0;height:3px;opacity:.6}
 .art-icon{width:44px;height:44px;border-radius:var(--r);background:var(--bg2);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
 .art-body{flex:1;min-width:0}
 .art-cat{font-size:10px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:3px}
@@ -462,24 +469,24 @@ gtag('config', 'G-XXXXXXXXXX');
   <div class="layout">
     <div class="main-col">
 
-      <div class="sec-hd">
+      <div class="sec-hd fade-up">
         <h2 class="sec-title">🎯 新手入门路线 <span class="sec-tag">STARTER</span></h2>
         <a href="articles.html?cat=newbie" class="sec-more">完整手册 →</a>
       </div>
-      <div class="newbie-grid">
+      <div class="newbie-grid fade-up">
         <a href="articles.html?cat=newbie" class="nb-card"><span class="nb-emoji">🎮</span><div class="nb-title">了解基础机制</div><div class="nb-desc">保险、藏匿处、商人、技能——弄懂这些少死一半</div></a>
         <a href="maps.html?id=customs" class="nb-card"><span class="nb-emoji">🗺️</span><div class="nb-title">先玩海关地图</div><div class="nb-desc">新手最友好的地图，资源丰富出口多，地形清晰</div></a>
         <a href="ammo/" class="nb-card"><span class="nb-emoji">💊</span><div class="nb-title">学会选弹药</div><div class="nb-desc">用对弹药比换武器更重要，穿透力才是关键</div></a>
         <a href="articles.html?cat=economy" class="nb-card"><span class="nb-emoji">💰</span><div class="nb-title">建立经济循环</div><div class="nb-desc">先做任务升级藏匿处，经济才能真正滚起来</div></a>
       </div>
 
-      <div class="sec-hd">
+      <div class="sec-hd fade-up">
         <h2 class="sec-title">🗺️ 地图攻略 <span class="sec-tag" id="mapCountTag">加载中</span></h2>
         <a href="maps/" class="sec-more">全部地图 →</a>
       </div>
-      <div class="maps-grid" id="mapsGrid"></div>
+      <div class="maps-grid fade-up" id="mapsGrid"></div>
 
-      <div class="ammo-sec">
+      <div class="ammo-sec fade-up">
         <div class="sec-hd">
           <h2 class="sec-title">💊 弹药速查 <span class="sec-tag">实时数据</span></h2>
           <a href="ammo/" class="sec-more">完整数据库 →</a>
@@ -510,7 +517,7 @@ gtag('config', 'G-XXXXXXXXXX');
         </div>
       </div>
 
-      <div class="loadout-sec">
+      <div class="loadout-sec fade-up">
         <div class="sec-hd">
           <h2 class="sec-title">🔫 武器配装推荐 <span class="sec-tag">本版本最优</span></h2>
           <a href="loadouts/" class="sec-more">全部方案 →</a>
@@ -927,8 +934,13 @@ function renderArticles() {
   document.getElementById('articleCount').textContent = G.articles.length;
   document.getElementById('articleList').innerHTML = G.articles.slice(0,5).map(a => {
     const id = a.id || encodeURIComponent(a.title);
+    const coverColors = {guide:'#c8a96e',weapon:'#4a80b0',map:'#6aaa7a',economy:'#e09050',newbie:'#9060d0',quest:'#c8a96e',news:'#5a7080'};
+    const cc = coverColors[a.category]||'#c8a96e';
     return `<a href="articles/${id}.html" class="art-card">
-      <div class="art-icon">${a.icon||'📄'}</div>
+      <div class="art-cover" style="background:linear-gradient(135deg,${cc}15,${cc}05)">
+        <span class="ac-icon">${a.icon||'📄'}</span>
+        <div class="ac-bar" style="background:${cc}"></div>
+      </div>
       <div class="art-body">
         <div class="art-cat ${catStyle[a.category]||'cat-guide'}">${a.categoryName||a.categoryLabel||''}</div>
         <div class="art-title">${a.title}</div>
@@ -1069,6 +1081,8 @@ async function init() {
   document.getElementById('db2').textContent = G.ammo.length + '+';
   document.getElementById('db3').textContent = G.loadouts.length + '+';
   document.getElementById('db4').textContent = G.quests.length + '+';
+  const observer = new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');observer.unobserve(e.target)}})},{threshold:.08});
+  document.querySelectorAll('.fade-up').forEach(el=>observer.observe(el));
 }
 
 init();

@@ -113,8 +113,11 @@ button{font-family:var(--font);cursor:pointer}
 .related-title{font-size:16px;font-weight:700;color:var(--text1);margin-bottom:16px;display:flex;align-items:center;gap:8px}
 .related-title::before{content:'';width:4px;height:20px;background:linear-gradient(180deg,var(--gold),transparent);border-radius:2px}
 .related-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
-.related-card{background:var(--bg3);border:1px solid var(--border);border-radius:var(--r2);padding:14px;cursor:pointer;transition:all .25s;text-decoration:none;display:block;color:inherit}
+.related-card{background:var(--bg3);border:1px solid var(--border);border-radius:var(--r2);padding:12px;cursor:pointer;transition:all .25s;text-decoration:none;display:flex;gap:12px;color:inherit}
 .related-card:hover{border-color:var(--gold);transform:translateY(-2px)}
+.rc-cover{width:60px;height:60px;border-radius:var(--r);display:flex;align-items:center;justify-content:center;font-size:26px;flex-shrink:0;position:relative;overflow:hidden}
+.rc-cover::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:var(--gold);opacity:.5}
+.rc-body{flex:1;min-width:0}
 .rc-cat{font-size:10px;font-weight:800;letter-spacing:1px;text-transform:uppercase;margin-bottom:4px}
 .rc-title{font-size:13px;font-weight:600;color:var(--text1);line-height:1.4}
 .rc-meta{font-size:11px;color:var(--text3);margin-top:6px}
@@ -390,9 +393,14 @@ function renderArticle(art, allArticles) {
       <div class="related-grid">
         ${related.map(r=>`
         <a href="articles/${r.id||encodeURIComponent(r.title)}.html" class="related-card">
-          <div class="rc-cat ${catStyle[r.category]||'cat-guide'}">${r.categoryName||r.categoryLabel||''}</div>
-          <div class="rc-title">${r.icon||''} ${r.title}</div>
-          <div class="rc-meta">👁 ${(r.views||0).toLocaleString()} · ${r.date||r.timeAgo||''}</div>
+          <div class="rc-cover" style="background:linear-gradient(135deg,${['#c8a96e','#4a80b0','#6aaa7a','#e09050','#9060d0','#c8a96e','#5a7080'][['guide','weapon','map','economy','newbie','quest','news'].indexOf(r.category)]||'#c8a96e'}15,transparent)">
+            <span>${r.icon||'📄'}</span>
+          </div>
+          <div class="rc-body">
+            <div class="rc-cat ${catStyle[r.category]||'cat-guide'}">${r.categoryName||r.categoryLabel||''}</div>
+            <div class="rc-title">${r.title}</div>
+            <div class="rc-meta">👁 ${(r.views||0).toLocaleString()} · ${r.date||r.timeAgo||''}</div>
+          </div>
         </a>`).join('')}
       </div>
     </div>` : ''}
