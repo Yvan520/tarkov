@@ -1077,30 +1077,24 @@ sitemap_path = f'{BASE}/sitemap.xml'
 with open(sitemap_path, 'r', encoding='utf-8') as f:
     sitemap = f.read()
 
-# Add new URLs for subdirectory pages
-new_urls = '''
-  <url>
-    <loc>https://tarkov.gamewayz.com/ammo/</loc>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://tarkov.gamewayz.com/loadouts/</loc>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://tarkov.gamewayz.com/quests/</loc>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://tarkov.gamewayz.com/maps/</loc>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://tarkov.gamewayz.com/articles/</loc>
-    <priority>0.9</priority>
-  </url>'''
+# Clean sitemap: remove duplicate .html entries that have directory equivalents
+import re as _re
+existing_locs = set(_re.findall(r'<loc>(.*?)</loc>', sitemap))
+new_urls = ''
+for loc, pri in [
+    ('https://tarkov.gamewayz.com/ammo/', '0.9'),
+    ('https://tarkov.gamewayz.com/loadouts/', '0.8'),
+    ('https://tarkov.gamewayz.com/quests/', '0.8'),
+    ('https://tarkov.gamewayz.com/maps/', '0.9'),
+    ('https://tarkov.gamewayz.com/articles/', '0.9'),
+]:
+    html_version = loc.rstrip('/') + '.html'
+    if loc not in existing_locs and html_version not in existing_locs:
+        new_urls += f'\n  <url>\n    <loc>{loc}</loc>\n    <priority>{pri}</priority>\n  </url>'
+    elif html_version in existing_locs and loc not in existing_locs:
+        sitemap = sitemap.replace(f'<loc>{html_version}</loc>', f'<loc>{loc}</loc>')
 
-# Insert before closing </urlset>
+# Insert new URLs before closing </urlset>
 sitemap = sitemap.replace('</urlset>', new_urls + '\n</urlset>')
 
 with open(sitemap_path, 'w', encoding='utf-8') as f:
