@@ -23,6 +23,7 @@ gtag('js', new Date());
 gtag('config', 'G-XXXXXXXXXX');
 </script>'''
 bd = '<meta name="baidu-site-verification" content="codeva-E78NFWmiO9" />'
+gsc = '<!-- Google Search Console placeholder: replace with your verification tag -->'
 
 
 def md2html(md_text):
@@ -142,8 +143,16 @@ for art in articles:
         '<!DOCTYPE html>\n<html lang="zh-CN">\n<head>\n',
         '<meta charset="UTF-8">\n<meta name="viewport" content="width=device-width, initial-scale=1.0">\n',
         '<meta name="description" content="' + esc_summary + '">\n',
+        '<meta property="og:title" content="' + esc_title + ' | 塔科夫攻略站">\n',
+        '<meta property="og:description" content="' + esc_summary + '">\n',
+        '<meta property="og:type" content="article">\n',
+        '<meta property="og:url" content="https://tarkov.gamewayz.com/articles/' + aid + '.html">\n',
+        '<meta property="og:image" content="https://tarkov.gamewayz.com/favicon.ico">\n',
+        '<meta name="twitter:card" content="summary_large_image">\n',
+        '<link rel="canonical" href="https://tarkov.gamewayz.com/articles/' + aid + '.html">\n',
         '<title>' + esc_title + ' | 塔科夫攻略站</title>\n',
         bd + '\n',
+        gsc + '\n',
         ga + '\n',
         '<script type="application/ld+json">\n' + schema_str + '\n</script>\n',
         '<style>' + css + '</style>\n</head>\n<body>\n',

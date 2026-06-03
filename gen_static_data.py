@@ -38,7 +38,7 @@ function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'G-XXXXXXXXXX');
 </script>'''
-BD = '<meta name="baidu-site-verification" content="codeva-E78NFWmiO9" />'
+BD = '<meta name="baidu-site-verification" content="codeva-E78NFWmiO9" />\n<!-- Google Search Console placeholder: replace with your verification tag -->'
 
 # ├─ Shared JS (search, menu, etc.) ──
 SHARED_JS = '''
@@ -74,13 +74,20 @@ esc = html.escape
 
 def build_page(title, desc, css, hero, main_content, extra_js='', search_data_js=''):
     full_js = search_data_js + '\n' + SHARED_JS + '\n' + extra_js
+    desc_esc = esc(desc)
+    title_esc = esc(title)
     return f'''<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="{esc(desc)}">
-<title>{esc(title)}</title>
+<meta name="description" content="{desc_esc}">
+<meta property="og:title" content="{title_esc}">
+<meta property="og:description" content="{desc_esc}">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://tarkov.gamewayz.com/">
+<meta name="twitter:card" content="summary_large_image">
+<title>{title_esc}</title>
 {BD}
 {GA}
 <style>{css}</style>
@@ -783,6 +790,254 @@ initSearch=function(){{}};
 
 
 # ============================================================
+# 6. HOMEPAGE - SSG (SEO: bake content into HTML)
+# ============================================================
+def build_home():
+    with open(f'{BASE}/index.html', 'r', encoding='utf-8') as f:
+        html = f.read()
+
+    site  = load_json('data/site.json')
+    arts  = load_json('data/articles.json')['articles']
+    ammo  = load_json('data/ammo.json')['ammo']
+    maps  = load_json('data/maps.json')['maps']
+    ld    = load_json('data/loadouts.json')['loadouts']
+    qs    = load_json('data/quests.json')['quests']
+
+    ver = site.get('version', '1.0.0')
+    alert = site.get('alert', {})
+    alert_text = alert.get('text', '') if isinstance(alert, dict) else str(alert)
+    banner_title = site.get('bannerTitle', '🔥 最新版本已上线')
+    banner_time = site.get('time', '')
+    hot_searches = site.get('hotSearches', [])
+    baha_news = site.get('bahamutNews', [])
+    top_items = site.get('topItems', [])
+
+    # ── Replace simple text fields ──
+    replacements = {
+        'id="navVer">v1.5.0': f'id="navVer">v{ver}',
+        'id="navVer">v1.4.0': f'id="navVer">v{ver}',
+        'id="heroBadgeVer">1.0.0': f'id="heroBadgeVer">{ver}',
+        'id="uTag">VER 1.0.0': f'id="uTag">VER {ver}',
+        'id="topBarText">加载中...': f'id="topBarText">{alert_text}',
+        'id="uTitle">🔥 最新版本已上线，点击查看更新内容': f'id="uTitle">{banner_title}',
+        'id="uDesc">加载中...': f'id="uDesc">{alert_text}',
+        'id="uTime"></div>': f'id="uTime">{banner_time}</div>' if banner_time else 'id="uTime"></div>',
+        'id="articleCount">0': f'id="articleCount">{len(arts)}',
+        'id="statArticles">0': f'id="statArticles">{len(arts)}+',
+        'id="statMaps">0': f'id="statMaps">{len(maps)}',
+        'id="statAmmo">0': f'id="statAmmo">{len(ammo)}+',
+        'id="statQuests">0': f'id="statQuests">{len(qs)}+',
+        'id="mapCountTag">加载中': f'id="mapCountTag">{len(maps)}张地图',
+    }
+    for old, new in replacements.items():
+        html = html.replace(old, new)
+
+    # Data banner
+    db_html = f'''
+          <div class="data-block"><span class="data-num" id="db1">{len(maps)}</span><span class="data-label">完整地图攻略</span></div>
+          <div class="data-block"><span class="data-num" id="db2">{len(ammo)}+</span><span class="data-label">弹药数据条目</span></div>
+          <div class="data-block"><span class="data-num" id="db3">{len(ld)}+</span><span class="data-label">武器配装方案</span></div>
+          <div class="data-block"><span class="data-num" id="db4">{len(qs)}+</span><span class="data-label">任务详细攻略</span></div>'''
+    html = re.sub(r'<div class="data-block">.*?<span class="data-label">任务详细攻略</span></div>', db_html, html, flags=re.DOTALL)
+
+    # ── Maps grid (first 6) ──
+    map_bg_map = {
+        'customs':'linear-gradient(135deg,#1a2a1a,#2a3a2a)','woods':'linear-gradient(135deg,#1a2a15,#2a3a1a)',
+        'interchange':'linear-gradient(135deg,#1a1a2a,#252535)','reserve':'linear-gradient(135deg,#252525,#352525)',
+        'shoreline':'linear-gradient(135deg,#15252a,#1a3040)','labs':'linear-gradient(135deg,#0a1520,#102030)',
+        'factory':'linear-gradient(135deg,#1a1510,#2a2018)','lighthouse':'linear-gradient(135deg,#101a20,#182535)',
+        'darkcorner':'linear-gradient(135deg,#0d0d1a,#1a0a2a)','center':'linear-gradient(135deg,#1a2028,#253040)',
+        'groundzero':'linear-gradient(135deg,#1a1520,#2a2030)'
+    }
+    diff_cls = {'新手友好':'d-easy','easy':'d-easy','中等':'d-mid','medium':'d-mid','困难':'d-hard','hard':'d-hard','极难':'d-ex','extreme':'d-ex'}
+
+    map_cards = []
+    for m in maps[:6]:
+        bg = map_bg_map.get(m['id'], 'linear-gradient(135deg,#1a2020,#202a2a)')
+        dc = diff_cls.get(m.get('difficulty',''), 'd-mid')
+        tags = m.get('tags',[])
+        if isinstance(tags,str): tags = [t.strip() for t in tags.split(',') if t.strip()]
+        tags_html = ''.join(f'<span class="map-tag">{t}</span>' for t in tags)
+        boss_html = f'<span>👹 {m["boss"]}</span>' if m.get('boss') else ''
+        map_cards.append(f'''<div class="map-card">
+<div class="map-img" style="background:{bg}"><span>{m.get("icon","🗺️")}</span><span class="map-diff {dc}">{m.get("difficulty","")}</span></div>
+<div class="map-body">
+<div class="map-name">{m.get("name","")}<span class="map-name-en">{m.get("nameEn","")}</span></div>
+<div class="map-meta"><span>⏱ {m.get("time",0)}分钟</span><span>👥 {m.get("players",0)}人</span><span>🚪 {m.get("exits",0)}个出口</span>{boss_html}</div>
+<div class="map-tags">{tags_html}</div>
+</div>
+</div>''')
+    maps_html = ''.join(map_cards)
+    html = re.sub(r'<div class="maps-grid fade-up" id="mapsGrid">.*?</div>\s*(?=\s*<div class="ammo-sec)', lambda m: f'<div class="maps-grid fade-up" id="mapsGrid">{maps_html}</div>', html, flags=re.DOTALL)
+
+    # ── Ammo table (top 20 by pen) ──
+    ammo_sorted = sorted(ammo, key=lambda a: a.get('penetration', 0), reverse=True)[:20]
+    def acells(ac_list):
+        if not ac_list: return '<div class="armc-wrap"><span class="armc armc-n">-</span></div>'
+        res = '<div class="armc-wrap">'
+        for i, v in enumerate(ac_list):
+            cls = 'armc-y' if v == 'yes' else ('armc-m' if v == 'maybe' else 'armc-n')
+            res += f'<span class="armc {cls}">{i+1}</span>'
+        return res + '</div>'
+    ammo_rows = []
+    for a in ammo_sorted:
+        pen = a.get('penetration',0); dmg = a.get('damage',0); armd = a.get('armorDamage',0)
+        pct = min(100, round((pen/70)*100))
+        pc = 'v-hi' if pen>=50 else ('v-md' if pen>=35 else 'v-lo')
+        dc = 'v-hi' if dmg>=70 else ('v-md' if dmg>=50 else 'v-lo')
+        c = a.get('color','#666')
+        price = a.get('price','-'); src = a.get('source','-')
+        acs = acells(a.get('armorClass',[]))
+        ammo_rows.append(f'''<tr>
+<td><div class="td-name"><span class="cal-dot" style="background:{c}"></span>{a["name"]}</div></td>
+<td><span style="font-size:10px;background:var(--bg2);border:1px solid var(--border);padding:2px 7px;border-radius:3px;color:var(--text2)">{a["caliber"]}</span></td>
+<td><div class="pen-wrap"><div class="pen-track"><div class="pen-fill" style="width:{pct}%"></div></div><span class="{pc}">{pen}</span></div></td>
+<td class="{dc}">{dmg}</td>
+<td>{armd}%</td>
+<td>{acs}</td>
+<td style="color:var(--gold);font-family:var(--mono)">{price}</td>
+<td style="font-size:11px;color:var(--text3)">{src}</td>
+</tr>''')
+    html = html.replace('<tbody id="ammoTbody"></tbody>', f'<tbody id="ammoTbody">{"".join(ammo_rows)}</tbody>')
+
+    # ── Loadout grid (first tab: low) ──
+    type_labels = {'pvp':'🔴 PVP','pve':'🟢 PVE','all':'🔵 全能'}
+    budget_labels = {'low':'低预算','mid':'中等预算','high':'高端配置'}
+    lo_cards = []
+    for l in ld[:6]:
+        lo_cards.append(f'''<div class="lc-card">
+<div class="lc-hd"><span class="lc-name">{l.get("icon","🔫")} {l["name"]}</span><span class="lc-price">{l.get("price","")}</span></div>
+<div class="lc-img">{l.get("icon","🔫")}</div>
+<div class="lc-stats">
+<div class="lc-stat"><span class="lc-stat-v">{l.get("recoil","0")}</span><span class="lc-stat-l">后坐力</span></div>
+<div class="lc-stat"><span class="lc-stat-v">{l.get("ergo","0")}</span><span class="lc-stat-l">人机</span></div>
+<div class="lc-stat"><span class="lc-stat-v">{l.get("weight","0")}kg</span><span class="lc-stat-l">重量</span></div>
+</div>
+<div class="lc-tags"><span class="lt lt-rec">推荐</span><span class="lt lt-pvp">{type_labels.get(l.get("type","pvp"),l.get("type",""))}</span>{f'<span class="lt lt-bgt">{budget_labels.get(l.get("budget",""),"")}</span>' if l.get("budget") else ''}</div>
+</div>''')
+    html = html.replace('<div class="loadout-grid" id="loadoutGrid"></div>', f'<div class="loadout-grid" id="loadoutGrid">{"".join(lo_cards)}</div>')
+
+    # ── Quest grid ──
+    diff_styles = {'简单':'background:rgba(74,140,92,.2);color:#6aaa7a','中等':'background:rgba(192,112,48,.2);color:#e09050','困难':'background:rgba(192,80,80,.2);color:#c05050','极难':'background:rgba(144,48,200,.2);color:#9060d0'}
+    q_cards = []
+    for q in qs[:6]:
+        diff = q.get('diffLabel') or q.get('difficulty') or ''
+        ds = diff_styles.get(diff, '')
+        desc = q.get('description') or q.get('desc') or ''
+        reward = q.get('itemReward') or q.get('rewardItem') or ''
+        exp = q.get('exp', '')
+        try: exp_s = str(int(re.sub(r'[^\d]','',str(exp)))) if exp else ''
+        except: exp_s = str(exp) if exp else ''
+        rewards_html = ''
+        if exp_s: rewards_html += f'<span class="qr-exp">{exp_s} EXP</span>'
+        if reward: rewards_html += f'<span class="qr-item">🎁 {reward}</span>'
+        q_cards.append(f'''<div class="qc-card">
+<div class="qc-hd"><span class="qc-name">{q["name"]}</span><span class="qc-diff" style="{ds}">{diff}</span></div>
+<div class="qc-desc">{desc}</div>
+<div class="qc-rewards">{rewards_html}</div>
+</div>''')
+    html = html.replace('<div class="quest-grid" id="questGrid"></div>', f'<div class="quest-grid" id="questGrid">{"".join(q_cards)}</div>')
+
+    # ── Article list (latest 8) ──
+    cat_style = {'guide':'cat-guide','weapon':'cat-weapon','map':'cat-map','economy':'cat-economy','newbie':'cat-newbie','news':'cat-guide','quest':'cat-guide'}
+    cat_labels = {'weapon':'武器攻略','map':'地图攻略','guide':'通用攻略','economy':'经济攻略','newbie':'新手必看','news':'新闻资讯','quest':'任务攻略'}
+    cat_colors = {'guide':'#c8a96e','weapon':'#4a80b0','map':'#6aaa7a','economy':'#e09050','newbie':'#9060d0','news':'#c8a96e','quest':'#c8a96e'}
+    bg_grads = {'guide':'linear-gradient(135deg,#1a1508,#2a2010)','weapon':'linear-gradient(135deg,#081520,#102030)','map':'linear-gradient(135deg,#081a10,#102a18)','economy':'linear-gradient(135deg,#1a1008,#2a1a10)','newbie':'linear-gradient(135deg,#100820,#201030)','news':'linear-gradient(135deg,#1a1508,#2a2010)','quest':'linear-gradient(135deg,#1a1508,#2a2010)'}
+    art_cards = []
+    for a in arts[:8]:
+        cat = a.get('category','guide'); cs = cat_style.get(cat,'cat-guide')
+        cn = a.get('categoryLabel') or cat_labels.get(cat,'攻略')
+        bg = bg_grads.get(cat,'linear-gradient(135deg,#1a1508,#2a2010)')
+        cc = cat_colors.get(cat,'#c8a96e')
+        views = a.get('views',0)
+        try: vs = f'{int(views):,}'
+        except: vs = str(views)
+        date = a.get('date') or a.get('timeAgo') or ''
+        icon = a.get('icon','📄'); title = a['title']
+        hot = a.get('badge')=='hot' or a.get('hot')
+        nw = a.get('badge')=='new' or a.get('isNew')
+        right_html = ''
+        if hot: right_html += '<span class="badge-hot">🔥 HOT</span>'
+        if nw: right_html += '<span class="badge-new">✨ NEW</span>'
+        art_cards.append(f'''<a class="art-card" href="articles/{a["id"]}.html">
+<div class="art-cover" style="background:{bg}"><span class="ac-icon">{icon}</span><div class="ac-bar" style="background:{cc}"></div></div>
+<div class="art-body">
+<div class="art-cat {cs}">{cn}</div>
+<div class="art-title">{title}</div>
+<div class="art-meta"><span>👁 {vs}</span><span>🕐 {date}</span></div>
+</div>
+<div class="art-right">{right_html}<span class="art-arr">→</span></div>
+</a>''')
+    art_list_html = ''.join(art_cards)
+    html = html.replace('<div class="art-list" id="articleList"></div>', f'<div class="art-list" id="articleList">{art_list_html}</div>')
+
+    # ── Bahamut news ──
+    if baha_news:
+        bn_items = []
+        for n in baha_news:
+            tc = n.get('tagColor','#5a7080')
+            bn_items.append(f'''<a class="bn-item" href="{n.get('url','#')}" target="_blank" rel="noopener">
+<span class="bn-tag" style="background:{tc}15;color:{tc};border:1px solid {tc}20">{n.get('tag','资讯')}</span>
+<div class="bn-body"><div class="bn-title">{n.get('title','')}</div><div class="bn-date">{n.get('date','')}</div></div>
+</a>''')
+        bn_html = ''.join(bn_items)
+        html = html.replace('<div class="bn-list" id="bahaNewsList"></div>', f'<div class="bn-list" id="bahaNewsList">{bn_html}</div>')
+
+    # ── Price rank list ──
+    if top_items:
+        rank_icons = ['🥇','🥈','🥉']
+        rank_cls = ['r1','r2','r3']
+        pr_items = []
+        for i, item in enumerate(top_items[:7]):
+            ri = rank_icons[i] if i < 3 else str(i+1)
+            rc = rank_cls[i] if i < 3 else 'r-other'
+            pr_items.append(f'''<div class="ri">
+<div class="ri-rank {rc}">{ri}</div>
+<div class="ri-info"><div class="ri-name">{item.get('name','')}</div><div class="ri-src">{item.get('desc','')}</div></div>
+<div class="ri-price">{item.get('price','')}</div>
+</div>''')
+        html = html.replace('<div class="rank-list" id="priceRankList"></div>', f'<div class="rank-list" id="priceRankList">{"".join(pr_items)}</div>')
+
+    # ── Inline JSON data for JS ──
+    prices = load_json('data/prices.json')
+    inline_data_js = f'''
+// inline data for SEO (no fetch needed)
+const INLINE_SITE = {json.dumps(site, ensure_ascii=False)};
+const INLINE_ARTICLES = {json.dumps(arts, ensure_ascii=False)};
+const INLINE_AMMO = {json.dumps(ammo, ensure_ascii=False)};
+const INLINE_MAPS = {json.dumps(maps, ensure_ascii=False)};
+const INLINE_LOADOUTS = {json.dumps(ld, ensure_ascii=False)};
+const INLINE_QUESTS = {json.dumps(qs, ensure_ascii=False)};
+const INLINE_PRICES = {json.dumps(prices, ensure_ascii=False)};
+'''
+    # Inject after the main <script> tag opening
+    html = html.replace('const BASE = (() => {', inline_data_js + '\nconst BASE = (() => {')
+
+    # ── Pre-populate cache in JS ──
+    cache_populate = '''
+// pre-populated from inline data
+cache['site'] = INLINE_SITE;
+cache['articles'] = INLINE_ARTICLES;
+cache['ammo'] = INLINE_AMMO;
+cache['maps'] = INLINE_MAPS;
+cache['loadouts'] = INLINE_LOADOUTS;
+cache['quests'] = INLINE_QUESTS;
+cache['prices'] = INLINE_PRICES;
+// set inline data as values so G is populated from static content
+G._site = INLINE_SITE;
+'''
+    html = html.replace('// 读取JSON文件（带缓存）', cache_populate + '\n// 读取JSON文件（带缓存）')
+
+    # Write
+    out_path = f'{BASE}/index.html'
+    with open(out_path, 'w', encoding='utf-8') as f:
+        f.write(html)
+    size = os.path.getsize(out_path)
+    print(f'  index.html ({size:,} bytes)')
+    return out_path
+
+
+# ============================================================
 # Generate all pages
 # ============================================================
 os.makedirs(f'{BASE}/ammo', exist_ok=True)
@@ -807,6 +1062,11 @@ for path, html_content in pages:
     print(f'  {path} ({size:,} bytes)')
 
 print(f'\nDone! Generated {len(pages)} static pages.')
+
+# Generate SSG homepage
+print('\nGenerating SSG homepage...')
+build_home()
+print('  Done!')
 
 
 # ============================================================
