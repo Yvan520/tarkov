@@ -1077,8 +1077,9 @@ sitemap_path = f'{BASE}/sitemap.xml'
 with open(sitemap_path, 'r', encoding='utf-8') as f:
     sitemap = f.read()
 
-# Clean sitemap: remove duplicate .html entries that have directory equivalents
+# Clean sitemap: fix malformed URLs and remove duplicate .html entries
 import re as _re
+sitemap = sitemap.replace('https:/tarkov', 'https://tarkov')
 existing_locs = set(_re.findall(r'<loc>(.*?)</loc>', sitemap))
 new_urls = ''
 for loc, pri in [

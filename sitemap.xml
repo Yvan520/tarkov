@@ -1,277 +1,321 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
   <url>
     <loc>https://tarkov.gamewayz.com/</loc>
     <priority>1.0</priority>
   </url>
+
   <url>
-    <loc>https://tarkov.gamewayz.com/maps.html</loc>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://tarkov.gamewayz.com/ammo.html</loc>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://tarkov.gamewayz.com/loadouts.html</loc>
+    <loc>https://tarkov.gamewayz.com/articles/steam-vs-official-guide/</loc>
     <priority>0.8</priority>
   </url>
+
   <url>
-    <loc>https://tarkov.gamewayz.com/quests.html</loc>
+    <loc>https://tarkov.gamewayz.com/articles/twitch-drops-may-2026/</loc>
     <priority>0.8</priority>
   </url>
+
   <url>
-    <loc>https://tarkov.gamewayz.com/articles.html</loc>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https:/tarkov.gamewayz.com/articles/steam-vs-official-guide/</loc>
+    <loc>https://tarkov.gamewayz.com/articles/promo-codes-active/</loc>
     <priority>0.8</priority>
   </url>
+
   <url>
-    <loc>https:/tarkov.gamewayz.com/articles/twitch-drops-may-2026/</loc>
+    <loc>https://tarkov.gamewayz.com/articles/pve-vs-pvp-guide/</loc>
     <priority>0.8</priority>
   </url>
+
   <url>
-    <loc>https:/tarkov.gamewayz.com/articles/promo-codes-active/</loc>
+    <loc>https://tarkov.gamewayz.com/articles/bsg-steam-linking-guide/</loc>
     <priority>0.8</priority>
   </url>
+
   <url>
-    <loc>https:/tarkov.gamewayz.com/articles/pve-vs-pvp-guide/</loc>
+    <loc>https://tarkov.gamewayz.com/articles/newbie-guide-2024/</loc>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://tarkov.gamewayz.com/articles/m4a1-build-015/</loc>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://tarkov.gamewayz.com/articles/dark-corner-map/</loc>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://tarkov.gamewayz.com/articles/ammo-rank-015/</loc>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://tarkov.gamewayz.com/articles/money-guide-2024/</loc>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://tarkov.gamewayz.com/articles/weapon-tier-list/</loc>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://tarkov.gamewayz.com/articles/map-customs-guide/</loc>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://tarkov.gamewayz.com/articles/hideout-upgrade-guide/</loc>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://tarkov.gamewayz.com/articles/armor-guide/</loc>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://tarkov.gamewayz.com/articles/medical-guide/</loc>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://tarkov.gamewayz.com/articles/quest-prapor-guide/</loc>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://tarkov.gamewayz.com/articles/woods-map-guide/</loc>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://tarkov.gamewayz.com/articles/labs-strategy/</loc>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://tarkov.gamewayz.com/articles/scav-guide/</loc>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://tarkov.gamewayz.com/articles/pvp-tactics/</loc>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://tarkov.gamewayz.com/articles/interchange-guide/</loc>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://tarkov.gamewayz.com/articles/streets-guide/</loc>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://tarkov.gamewayz.com/articles/btr-mechanic/</loc>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://tarkov.gamewayz.com/articles/arena-guide/</loc>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://tarkov.gamewayz.com/articles/fps-optimization/</loc>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://tarkov.gamewayz.com/articles/all-bosses-guide/</loc>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://tarkov.gamewayz.com/articles/loot-routes-collection/</loc>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://tarkov.gamewayz.com/articles/tarkov-1.0-steam/</loc>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://tarkov.gamewayz.com/articles/streets-keys-guide/</loc>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://tarkov.gamewayz.com/articles/edition-buying-guide/</loc>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://tarkov.gamewayz.com/articles/flea-market-flip-guide/</loc>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://tarkov.gamewayz.com/articles/kappa-container-quest/</loc>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://tarkov.gamewayz.com/articles/reserve-underground-guide/</loc>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://tarkov.gamewayz.com/articles/lighthouse-water-treatment/</loc>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://tarkov.gamewayz.com/articles/shoreline-resort-secrets/</loc>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://tarkov.gamewayz.com/articles/factory-close-quarters/</loc>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://tarkov.gamewayz.com/articles/tarkov-2026-roadmap/</loc>
     <priority>0.8</priority>
   </url>
+
   <url>
-    <loc>https:/tarkov.gamewayz.com/articles/bsg-steam-linking-guide/</loc>
+    <loc>https://tarkov.gamewayz.com/articles/prestige-system-guide/</loc>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://tarkov.gamewayz.com/articles/pve-mode-guide/</loc>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://tarkov.gamewayz.com/articles/promo-codes-2026/</loc>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://tarkov.gamewayz.com/articles/terminal-endgame-guide/</loc>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://tarkov.gamewayz.com/articles/all-traders-guide/</loc>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://tarkov.gamewayz.com/articles/quest-items-collector/</loc>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://tarkov.gamewayz.com/articles/headphones-audio-guide/</loc>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://tarkov.gamewayz.com/articles/bitcoin-farm-guide/</loc>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://tarkov.gamewayz.com/articles/flea-market-deep-dive/</loc>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://tarkov.gamewayz.com/articles/story-endings-guide/</loc>
     <priority>0.8</priority>
   </url>
+
   <url>
-    <loc>https:/tarkov.gamewayz.com/articles/newbie-guide-2024/</loc>
+    <loc>https://tarkov.gamewayz.com/articles/scav-karma-guide/</loc>
     <priority>0.7</priority>
   </url>
+
   <url>
-    <loc>https:/tarkov.gamewayz.com/articles/m4a1-build-015/</loc>
+    <loc>https://tarkov.gamewayz.com/articles/therapist-quest-guide/</loc>
     <priority>0.7</priority>
   </url>
+
   <url>
-    <loc>https:/tarkov.gamewayz.com/articles/dark-corner-map/</loc>
+    <loc>https://tarkov.gamewayz.com/articles/graphics-settings-guide/</loc>
     <priority>0.7</priority>
   </url>
+
   <url>
-    <loc>https:/tarkov.gamewayz.com/articles/ammo-rank-015/</loc>
+    <loc>https://tarkov.gamewayz.com/articles/version-history-guide/</loc>
     <priority>0.7</priority>
   </url>
+
   <url>
-    <loc>https:/tarkov.gamewayz.com/articles/money-guide-2024/</loc>
+    <loc>https://tarkov.gamewayz.com/articles/weapon-modding-guide/</loc>
     <priority>0.7</priority>
   </url>
+
   <url>
-    <loc>https:/tarkov.gamewayz.com/articles/weapon-tier-list/</loc>
+    <loc>https://tarkov.gamewayz.com/articles/inventory-management-guide/</loc>
     <priority>0.7</priority>
   </url>
+
   <url>
-    <loc>https:/tarkov.gamewayz.com/articles/map-customs-guide/</loc>
+    <loc>https://tarkov.gamewayz.com/articles/tarkov-glossary/</loc>
     <priority>0.7</priority>
   </url>
+
   <url>
-    <loc>https:/tarkov.gamewayz.com/articles/hideout-upgrade-guide/</loc>
+    <loc>https://tarkov.gamewayz.com/articles/throwables-guide/</loc>
     <priority>0.7</priority>
   </url>
-  <url>
-    <loc>https:/tarkov.gamewayz.com/articles/armor-guide/</loc>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https:/tarkov.gamewayz.com/articles/medical-guide/</loc>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https:/tarkov.gamewayz.com/articles/quest-prapor-guide/</loc>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https:/tarkov.gamewayz.com/articles/woods-map-guide/</loc>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https:/tarkov.gamewayz.com/articles/labs-strategy/</loc>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https:/tarkov.gamewayz.com/articles/scav-guide/</loc>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https:/tarkov.gamewayz.com/articles/pvp-tactics/</loc>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https:/tarkov.gamewayz.com/articles/interchange-guide/</loc>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https:/tarkov.gamewayz.com/articles/streets-guide/</loc>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https:/tarkov.gamewayz.com/articles/btr-mechanic/</loc>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https:/tarkov.gamewayz.com/articles/arena-guide/</loc>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https:/tarkov.gamewayz.com/articles/fps-optimization/</loc>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https:/tarkov.gamewayz.com/articles/all-bosses-guide/</loc>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https:/tarkov.gamewayz.com/articles/loot-routes-collection/</loc>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https:/tarkov.gamewayz.com/articles/tarkov-1.0-steam/</loc>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https:/tarkov.gamewayz.com/articles/streets-keys-guide/</loc>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https:/tarkov.gamewayz.com/articles/edition-buying-guide/</loc>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https:/tarkov.gamewayz.com/articles/flea-market-flip-guide/</loc>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https:/tarkov.gamewayz.com/articles/kappa-container-quest/</loc>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https:/tarkov.gamewayz.com/articles/reserve-underground-guide/</loc>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https:/tarkov.gamewayz.com/articles/lighthouse-water-treatment/</loc>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https:/tarkov.gamewayz.com/articles/shoreline-resort-secrets/</loc>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https:/tarkov.gamewayz.com/articles/factory-close-quarters/</loc>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https:/tarkov.gamewayz.com/articles/tarkov-2026-roadmap/</loc>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https:/tarkov.gamewayz.com/articles/prestige-system-guide/</loc>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https:/tarkov.gamewayz.com/articles/pve-mode-guide/</loc>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https:/tarkov.gamewayz.com/articles/promo-codes-2026/</loc>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https:/tarkov.gamewayz.com/articles/terminal-endgame-guide/</loc>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https:/tarkov.gamewayz.com/articles/all-traders-guide/</loc>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https:/tarkov.gamewayz.com/articles/quest-items-collector/</loc>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https:/tarkov.gamewayz.com/articles/headphones-audio-guide/</loc>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https:/tarkov.gamewayz.com/articles/bitcoin-farm-guide/</loc>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https:/tarkov.gamewayz.com/articles/flea-market-deep-dive/</loc>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https:/tarkov.gamewayz.com/articles/story-endings-guide/</loc>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https:/tarkov.gamewayz.com/articles/scav-karma-guide/</loc>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https:/tarkov.gamewayz.com/articles/therapist-quest-guide/</loc>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https:/tarkov.gamewayz.com/articles/graphics-settings-guide/</loc>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https:/tarkov.gamewayz.com/articles/version-history-guide/</loc>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https:/tarkov.gamewayz.com/articles/weapon-modding-guide/</loc>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https:/tarkov.gamewayz.com/articles/inventory-management-guide/</loc>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https:/tarkov.gamewayz.com/articles/tarkov-glossary/</loc>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https:/tarkov.gamewayz.com/articles/throwables-guide/</loc>
-    <priority>0.7</priority>
-  </url>
+
   <url>
     <loc>https://tarkov.gamewayz.com/privacy.html</loc>
     <priority>0.3</priority>
   </url>
+
   <url>
     <loc>https://tarkov.gamewayz.com/terms.html</loc>
     <priority>0.3</priority>
   </url>
+
   <url>
     <loc>https://tarkov.gamewayz.com/about.html</loc>
     <priority>0.4</priority>
   </url>
+
   <url>
     <loc>https://tarkov.gamewayz.com/ammo/</loc>
     <priority>0.9</priority>
   </url>
+
   <url>
     <loc>https://tarkov.gamewayz.com/loadouts/</loc>
     <priority>0.8</priority>
   </url>
+
   <url>
     <loc>https://tarkov.gamewayz.com/quests/</loc>
     <priority>0.8</priority>
   </url>
+
   <url>
     <loc>https://tarkov.gamewayz.com/maps/</loc>
     <priority>0.9</priority>
   </url>
+
   <url>
     <loc>https://tarkov.gamewayz.com/articles/</loc>
     <priority>0.9</priority>
