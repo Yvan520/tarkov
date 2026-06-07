@@ -1033,7 +1033,26 @@ const INLINE_PRICES = {json.dumps(prices, ensure_ascii=False)};
     if 'const BASE = ' in html:
         html = html.replace('const BASE = (() => {', inline_data_js + '\nconst BASE = (() => {')
 
-    # ── Pre-populate cache in JS ──
+    # ── Pre-populate cache in JS (AFTER const cache declaration) ──
+    # First, remove ALL old cache pre-populate blocks (accumulated duplicates)
+    while True:
+        start = html.find('\n// pre-populated from inline data')
+        if start < 0:
+            break
+        # Find end of block: either another prepop block or the actual const cache line
+        next_block = html.find('\n// pre-populated from inline data', start + 5)
+        find_cache = html.find('\n// 读取JSON文件（带缓存）', start)
+        find_fn = html.find('\nasync function loadJSON', start)
+        # End at whichever comes first after start
+        candidates = [p for p in [next_block, find_cache, find_fn] if p > start]
+        end_block = min(candidates) if candidates else start + 250
+        html = html[:start] + html[end_block:]
+    # Remove orphaned cleanup leftovers
+    html = html.replace('\n// set inline data as values so G is populated from static content', '')
+    html = html.replace('// set inline data as values so G is populated from static content\n', '')
+    html = html.replace('\nG._site = INLINE_SITE;', '')
+    html = html.replace('G._site = INLINE_SITE;\n', '')
+
     cache_populate = '''
 // pre-populated from inline data
 cache['site'] = INLINE_SITE;
@@ -1043,10 +1062,16 @@ cache['maps'] = INLINE_MAPS;
 cache['loadouts'] = INLINE_LOADOUTS;
 cache['quests'] = INLINE_QUESTS;
 cache['prices'] = INLINE_PRICES;
+'''
+    # Insert cache prepop AFTER const cache = {}, BETWEEN it and async function loadJSON
+    html = html.replace('const cache = {};\nasync function', 'const cache = {};' + cache_populate + '\nasync function')
+
+    # Also set G._site from INLINE_SITE, but AFTER let G = { ... } is declared
+    g_site_set = '''
 // set inline data as values so G is populated from static content
 G._site = INLINE_SITE;
 '''
-    html = html.replace('// 读取JSON文件（带缓存）', cache_populate + '\n// 读取JSON文件（带缓存）')
+    html = html.replace('let G = { maps:[], ammo:[], loadouts:[], quests:[], articles:[], prices:[], _site:{} };', 'let G = { maps:[], ammo:[], loadouts:[], quests:[], articles:[], prices:[], _site:{} };' + g_site_set)
 
     # Write
     out_path = f'{BASE}/index.html'
