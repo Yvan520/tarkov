@@ -1009,9 +1009,29 @@ const INLINE_MAPS = {json.dumps(maps, ensure_ascii=False)};
 const INLINE_LOADOUTS = {json.dumps(ld, ensure_ascii=False)};
 const INLINE_QUESTS = {json.dumps(qs, ensure_ascii=False)};
 const INLINE_PRICES = {json.dumps(prices, ensure_ascii=False)};
+// end inline data
 '''
-    # Inject after the main <script> tag opening
-    html = html.replace('const BASE = (() => {', inline_data_js + '\nconst BASE = (() => {')
+    # Replace existing inline block, or insert before BASE
+    inline_marker = '\n// inline data for SEO'
+    if inline_marker in html:
+        # Remove ALL existing inline data (old + new format)
+        while True:
+            start = html.find('// inline data for SEO')
+            if start < 0:
+                break
+            line_start = html.rfind('\n', 0, start)
+            if line_start < 0:
+                line_start = 0
+            # End at const BASE (keep BASE intact)
+            rest = html.find('\nconst BASE = ', start)
+            if rest < 0:
+                rest = start
+            html = html[:line_start] + '\n' + html[rest:]
+        # Remove orphaned end markers
+        html = html.replace('// end inline data\n', '')
+    # Insert fresh inline data before BASE (run whether old data was found or not)
+    if 'const BASE = ' in html:
+        html = html.replace('const BASE = (() => {', inline_data_js + '\nconst BASE = (() => {')
 
     # ── Pre-populate cache in JS ──
     cache_populate = '''
