@@ -100,6 +100,11 @@ button{font-family:var(--font);cursor:pointer}
 
 /* 工具栏 */
 .tools-bar{background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);overflow-x:auto}
+.site-intro{background:var(--bg);border-bottom:1px solid var(--border);padding:32px 0}
+.intro-body{max-width:720px;margin:0 auto;padding:0 20px}
+.intro-body p{font-size:14px;line-height:1.9;color:var(--text2);margin-bottom:16px}
+.intro-body p:last-child{margin-bottom:0}
+.intro-body p em{color:var(--gold);font-style:normal}
 .tools-bar::-webkit-scrollbar{height:3px}
 .tools-bar::-webkit-scrollbar-thumb{background:var(--gold3)}
 .tools-inner{display:flex;min-width:max-content;max-width:1400px;margin:0 auto;padding:0 32px}
@@ -435,7 +440,7 @@ gtag('config', 'G-XXXXXXXXXX');
       <span class="l1" id="heroL1">不是每一次撤离</span>
       <span class="l2" id="heroL2">都靠运气</span>
     </h1>
-    <p class="hero-sub" id="heroSub">专为塔科夫玩家打造 · 地图/武器/弹药/任务一站搞定<br>实时数据 · 深度攻略 · 让你每局都有胜算</p>
+    <p class="hero-sub" id="heroSub">塔科夫这游戏信息就是命。地图不熟被人蹲，弹药不对打不动甲，配装不对白送装备。我们把海关、森林、储备基地、海岸线一共11张地图的出口位置、Boss刷新点、撤离条件都标出来了。弹药数据跟着版本实时刷，7N39穿甲62、M61伤害75，看一眼就知道带什么子弹进图。配装从不到四万的丐版AK到二十万的满改M4，后坐力和人机都摆在那，按你手头的钱配就行。任务从帕帕第一个到机修工的Kappa链，每步怎么做都有。</p>
     <div class="hero-search">
       <span class="si">🔍</span>
       <input type="text" placeholder="搜索地图、武器、任务、弹药..." onclick="openSearch()" readonly>
@@ -458,6 +463,14 @@ gtag('config', 'G-XXXXXXXXXX');
       <div class="hero-div"></div>
       <div class="hero-num"><span class="n" id="statQuests">18+</span><span class="l">任务攻略</span></div>
     </div>
+  </div>
+</section>
+
+<section class="site-intro">
+  <div class="intro-body">
+    <p>这个站是我自己玩塔科夫时候做的。最早就是记不住海关出口死太多次了，慢慢整理了地图、弹药、配装这些资料。后来发现朋友都在问一样的问题——海关工厂钥匙在哪刷、M4怎么改性价比最高、7.62×39用BP还是PS——就把这些都写下来了。</p>
+    <p>现在站上有11张地图的完整攻略、34种弹药的穿透和伤害数据、16套武器配装和20个任务的详细解法。每个版本更新我都会逐一过一遍数据，把过时的改掉。弹药穿透表已经跟着0.15版本的弹道重做重新排过一轮了，哪些还能用哪些已经废了都标了。</p>
+    <p>站里没有广告，不卖东西，纯玩家自己搞的攻略站。数据不准确的地方可以直接跟我说，我会改。</p>
   </div>
 </section>
 
@@ -878,6 +891,7 @@ gtag('config', 'G-XXXXXXXXXX');
           
           
           
+          
           <div class="data-block"><span class="data-num" id="db1">11</span><span class="data-label">完整地图攻略</span></div>
           <div class="data-block"><span class="data-num" id="db2">70+</span><span class="data-label">弹药数据条目</span></div>
           <div class="data-block"><span class="data-num" id="db3">16+</span><span class="data-label">武器配装方案</span></div>
@@ -1052,7 +1066,7 @@ gtag('config', 'G-XXXXXXXXXX');
     <div class="footer-grid">
       <div>
         <div class="fb-name">⚔ TARKOVGUIDE</div>
-        <p class="fb-desc">逃离塔科夫最专业的中文攻略站。<br>由玩家驱动，为玩家服务。<br>版本同步更新，数据持续优化。</p>
+        <p class="fb-desc">一个塔科夫玩家自己做的中文攻略站。地图出口、弹药数据、武器配装、任务攻略全都自己整理，跟着版本实时更新，不收费没广告。每篇攻略都是自己打出来的经验，希望能帮你少死几次。</p>
         <div class="fb-chips"><span class="fb-chip">📱 移动端适配</span><span class="fb-chip">🔄 实时更新</span><span class="fb-chip">🆓 完全免费</span></div>
       </div>
       <div>
@@ -1126,6 +1140,8 @@ gtag('config', 'G-XXXXXXXXXX');
 
 <script>
 /* ── 工具函数 ── */
+
+
 
 
 
@@ -1255,6 +1271,7 @@ const DEF_PRICES = [
 let G = { maps:[], ammo:[], loadouts:[], quests:[], articles:[], prices:[], _site:{} };
 // set inline data as values so G is populated from static content
 G._site = INLINE_SITE;
+
 
 let ammoFilter = '', ammoSortKey = 'penetration', ammoSortDir = -1;
 let loadoutFilter = 'low', questFilter = '';
