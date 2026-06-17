@@ -1,20 +1,20 @@
 {
   "version": "1.6.0",
   "alert": {
-    "text": "本站已更新至 v1.6.0 · 新增5篇巴哈姆特实时资讯文章（Steam版指南/兑换码/Twitch掉宝/PVEvsPVP/账号绑定）· 持续更新中",
+    "text": "最新：6月经验加成周末结束 · Season 1七月上线 · Prestige 1-4级门槛降低",
     "active": true
   },
   "hotSearches": [
-    "四大结局",
+    "经验加成",
+    "Season 1",
+    "Prestige转生",
+    "破冰船地图",
+    "Lewis机枪皮肤",
+    "Steam国区价格",
     "武器改装",
-    "仓库管理",
-    "术语大全",
-    "手雷攻略",
-    "SCAV Karma",
-    "剧情攻略",
-    "跳蚤市场",
-    "比特币农场",
-    "画质设置"
+    "弹药穿透排行",
+    "新手入门",
+    "海关地图"
   ],
   "servers": [
     {
@@ -87,23 +87,23 @@
   ],
   "bahamutNews": [
     {
-      "title": "Steam版正式上线！版本差异与购买指南",
-      "url": "/articles/steam-vs-official-guide.html",
+      "title": "6月经验加成周末结束 · Season 1七月上线",
+      "url": "/articles/tarkov-june-2026-news.html",
       "tag": "🔥 热门",
       "tagColor": "#c05050",
-      "date": "最新"
+      "date": "刚刚"
     },
     {
-      "title": "Twitch掉宝活动 5/26-5/31 最新情报",
-      "url": "/articles/twitch-drops-may-2026.html",
-      "tag": "🎁 掉宝",
+      "title": "Twitch掉宝 · 登录送Lewis机枪皮肤",
+      "url": "/articles/tarkov-june-2026-news.html",
+      "tag": "🎁 活动",
       "tagColor": "#e09050",
-      "date": "最新"
+      "date": "6月"
     },
     {
-      "title": "可用兑换码汇总：SCAVYBOI / GOONSQUAD 等",
-      "url": "/articles/promo-codes-active.html",
-      "tag": "🎟️ 兑换",
+      "title": "Prestige重做 · 1-4级门槛大幅降低",
+      "url": "/articles/tarkov-june-2026-news.html",
+      "tag": "🔄 改版",
       "tagColor": "#6aaa7a",
       "date": "最新"
     },
